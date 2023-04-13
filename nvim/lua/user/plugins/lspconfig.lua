@@ -23,6 +23,28 @@ require('lspconfig').jsonls.setup({
   },
 })
 
+-- Setup lspconfig.
+require("lspconfig").cssls.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+})
+
+require("lspconfig").tsserver.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+})
+
+-- Here is the formatting config
+local null_ls = require("null-ls")
+local lSsources = {
+	null_ls.builtins.formatting.prettier.with({
+		filetypes = {
+			"javascript","typescript","css","scss","html","json","yaml","markdown","graphql","md","txt",
+		},
+	}),
+	null_ls.builtins.formatting.stylua,
+}
+null_ls.setup({
+	sources = lSsources,
+})
 
 -- Keymaps
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
@@ -33,6 +55,9 @@ vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
 vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+
+--commands
+vim.cmd("autocmd BufWritePost * lua vim.lsp.buf.format()")
 
 -- Diagnostic configuration
 vim.diagnostic.config({
