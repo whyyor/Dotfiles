@@ -1,0 +1,84 @@
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 20
+    y: 10
+  dimensions:
+    columns: 100
+    lines: 30
+  dynamic_padding: true
+  decorations: full
+  title: Alacritty@Whyyor
+  background_opacity: .8
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  size: 12
+  offset:
+    x: 0    # For letter spacing.
+    y: 5    # For line spacing. 
+  normal:
+    family: FiraCode Nerd Font Mono
+  bold:
+    family:  FiraCode Nerd Font Mono
+  italic:
+    family:  FiraCode Nerd Font Mono
+  bold_italic:
+    family:  FiraCode Nerd Font Mono
+    size: 12.0
+
+draw_bold_text_with_bright_colors: true
+
+save_to_clipboard: true
+
+window.dynamic_title: true
+
+cursor:
+  style: block
+
+live_config_reload: true
+
+mouse:
+  hide_when_typing: true
+#!/usr/bin/env bash
+colors:
+  # Default colors
+  primary:
+    background: '0x212121'
+    foreground: '0xdedede'
+
+  # Cursor colors
+  cursor:
+    text:   '0xffffff'
+    cursor: '0xffa460'
+
+ 
+  # Normal colors
+  normal:
+    black:   '0x2c2525'
+    red:     '0xfd6883'
+    green:   '0xadda78'
+    yellow:  '0xf9cc6c'
+    blue:    '0xf38d70'
+    magenta: '0xa8a9eb'
+    cyan:    '0x85dacc'
+    white:   '0xfff1f3'
+
+  # Bright colors
+  bright:
+    black:   '0x72696a'
+    red:     '0xfd6883'
+    green:   '0xadda78'
+    yellow:  '0xf9cc6c'
+    blue:    '0xf38d70'
+    magenta: '0xa8a9eb'
+    cyan:    '0x85dacc'
+    white:   '0xfff1f3'
