@@ -21,18 +21,18 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 12
+  size: 12.5
   offset:
-    x: 0    # For letter spacing.
-    y: 5    # For line spacing. 
+    x: 0 # For letter spacing.
+    y: 9 # For line spacing.
   normal:
     family: FiraCode Nerd Font Mono
   bold:
-    family:  FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font Mono
   italic:
-    family:  FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font Mono
   bold_italic:
-    family:  FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font Mono
     size: 12.0
 
 draw_bold_text_with_bright_colors: true
@@ -52,33 +52,32 @@ mouse:
 colors:
   # Default colors
   primary:
-    background: '0x262626'
-    foreground: '0xdedede'
+    background: "0x262626"
+    foreground: "0xdedede"
 
   # Cursor colors
   cursor:
-    text:   '0xffffff'
-    cursor: '0xffa460'
+    text: "0xffffff"
+    cursor: "0xffa460"
 
- 
   # Normal colors
   normal:
-    black:   '0x2c2525'
-    red:     '0xfd6883'
-    green:   '0xadda78'
-    yellow:  '0xf9cc6c'
-    blue:    '0xf38d70'
-    magenta: '0xa8a9eb'
-    cyan:    '0x85dacc'
-    white:   '0xfff1f3'
+    black: "0x2c2525"
+    red: "0xfd6883"
+    green: "0xadda78"
+    yellow: "0xf9cc6c"
+    blue: "0xf38d70"
+    magenta: "0xa8a9eb"
+    cyan: "0x85dacc"
+    white: "0xfff1f3"
 
   # Bright colors
   bright:
-    black:   '0x72696a'
-    red:     '0xfd6883'
-    green:   '0xadda78'
-    yellow:  '0xf9cc6c'
-    blue:    '0xf38d70'
-    magenta: '0xa8a9eb'
-    cyan:    '0x85dacc'
-    white:   '0xfff1f3'
+    black: "0x72696a"
+    red: "0xfd6883"
+    green: "0xadda78"
+    yellow: "0xf9cc6c"
+    blue: "0xf38d70"
+    magenta: "0xa8a9eb"
+    cyan: "0x85dacc"
+    white: "0xfff1f3"
