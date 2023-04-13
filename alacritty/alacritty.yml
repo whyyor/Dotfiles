@@ -3,8 +3,8 @@ env:
 
 window:
   padding:
-    x: 20
-    y: 10
+    x: 17
+    y: 12
   dimensions:
     columns: 100
     lines: 30
@@ -52,7 +52,7 @@ mouse:
 colors:
   # Default colors
   primary:
-    background: '0x212121'
+    background: '0x262626'
     foreground: '0xdedede'
 
   # Cursor colors

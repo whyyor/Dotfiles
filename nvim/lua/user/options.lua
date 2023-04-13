@@ -20,7 +20,7 @@ vim.opt.termguicolors = true
 vim.opt.spell = true
 
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.opt.smartcase = true -- it becomes cases sensitive if we put in capital letters
 
 vim.opt.list = true -- enable the below listchars
 vim.opt.listchars = { tab = '▸ ', trail = '·' }
