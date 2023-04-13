@@ -221,8 +221,11 @@ use({
 
 -- Git commands.
 use({
-'kdheepak/lazygit.nvim',
-  requires = 'kdheepak/lazygit.nvim',
+  'kdheepak/lazygit.nvim',
+  config = function()
+    vim.keymap.set('n', '<F2>', ':LazyGit<CR>')
+    vim.keymap.set('t', '<F2>', '<C-\\><C-n>:LazyGit<CR>')
+  end
 })
 
 --- Floating terminal.
