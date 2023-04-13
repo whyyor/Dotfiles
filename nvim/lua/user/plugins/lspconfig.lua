@@ -2,6 +2,8 @@
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- LSP configuration
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup{}
@@ -9,7 +11,18 @@ lspconfig.html.setup{}
 lspconfig.cssls.setup{}
 
 -- Tailwind CSS
-require('lspconfig').tailwindcss.setup({})
+require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+
+-- JSON
+require('lspconfig').jsonls.setup({
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+})
+
 
 -- Keymaps
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
@@ -23,7 +36,7 @@ vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
 -- Diagnostic configuration
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   float = {
     source = true,
   }

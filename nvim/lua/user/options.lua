@@ -11,6 +11,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.wildmode = 'longest:full,full' -- complete the longest common match, and allow tabbing the results to fully complete them
+vim.opt.completeopt = 'menuone,longest,preview'
 
 vim.opt.title = true
 vim.opt.mouse = 'a' -- enable mouse for all modes
@@ -36,7 +37,7 @@ vim.opt.clipboard = 'unnamedplus' -- Use system clipboard
 
 vim.opt.confirm = true -- ask for confirmation instead of erroring
 
-vim.opt.signcolumn = 'yes:1'
+vim.opt.signcolumn = 'yes:2'
 
 vim.opt.undofile = true -- persistent undo
 vim.opt.backup = true -- automatically save a backup file

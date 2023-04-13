@@ -23,6 +23,8 @@ require('telescope').setup({
         ['<esc>'] = actions.close,
         ['<C-Down>'] = actions.cycle_history_next,
         ['<C-Up>'] = actions.cycle_history_prev,
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
       },
     },
     file_ignore_patterns = { '.git/' },
@@ -55,7 +57,7 @@ vim.keymap.set('n', '<leader>f', [[<cmd>lua require('telescope.builtin').find_fi
 vim.keymap.set('n', '<leader>F', [[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]])
 -- buffers
 vim.keymap.set('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
--- live grep - requires you to install `ripgrep`
+-- live grep - requires you to install 
 vim.keymap.set('n', '<leader>g', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]])
 -- file history
 vim.keymap.set('n', '<leader>h', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
