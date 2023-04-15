@@ -21,10 +21,10 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 12.5
+  size: 12.7
   offset:
     x: 0 # For letter spacing.
-    y: 9 # For line spacing.
+    y: 10 # For line spacing.
   normal:
     family: FiraCode Nerd Font Mono
   bold:
