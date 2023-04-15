@@ -6,9 +6,37 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 
 -- LSP configuration
 local lspconfig = require("lspconfig")
-lspconfig.tsserver.setup({})
-lspconfig.html.setup({})
-lspconfig.cssls.setup({})
+lspconfig.tsserver.setup({ capabilities })
+lspconfig.html.setup({ capabilities })
+lspconfig.cssls.setup({ capabilities })
+
+-- Emmet_ls
+lspconfig.emmet_ls.setup({
+	-- on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = {
+		"css",
+		"eruby",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"svelte",
+		"pug",
+		"typescriptreact",
+		"vue",
+	},
+	init_options = {
+		html = {
+			options = {
+				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+				["bem.enabled"] = true,
+			},
+		},
+	},
+})
 
 -- Tailwind CSS
 require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
