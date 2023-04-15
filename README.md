@@ -13,3 +13,6 @@ My dev enviroment configs - links dotfiles to currentfile
     <li>tmux</li>
     <li>lazy-git</li>
 </ul>
+
+<h3> Fonts used </h3>
+<p>Fira code nerd fonts can be found here -> https://www.nerdfonts.com/font-downloads</p>
