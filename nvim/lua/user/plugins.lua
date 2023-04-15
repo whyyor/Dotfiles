@@ -151,13 +151,13 @@ use({
 	end,
 })
 
--- auto-save
-use({
-	"Pocco81/auto-save.nvim",
-	config = function()
-		require("user/plugins/auto-save")
-	end,
-})
+-- -- auto-save
+-- use({
+-- 	"Pocco81/auto-save.nvim",
+-- 	config = function()
+-- 		require("user/plugins/auto-save")
+-- 	end,
+-- })
 
 -- Fuzzy finder
 use({
