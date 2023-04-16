@@ -33,6 +33,9 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 -- Open the current file in the default program (on Mac this should just be just `open`).
 vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>")
 
+-- save file
+vim.keymap.set("n", "<Leader>s", ":w<CR>")
+
 -- Move lines up and down.
 vim.keymap.set("i", "<A-j>", "<Esc>:move .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
