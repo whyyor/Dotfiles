@@ -200,8 +200,9 @@ use({
 -- Add a dashboard.
 use({
 	"glepnir/dashboard-nvim",
+	event = "VimEnter",
 	config = function()
-		require("user/plugins/dashboard-nvim")
+		require("user/plugins/dashboard")
 	end,
 })
 
