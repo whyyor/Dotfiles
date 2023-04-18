@@ -50,6 +50,7 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("lazygit")
 
 -- calls find files picker
 vim.keymap.set("n", "<leader>f", [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
@@ -67,3 +68,5 @@ vim.keymap.set("n", "<leader>g", [[<cmd>lua require('telescope').extensions.live
 vim.keymap.set("n", "<leader>h", [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 -- lsp thing
 vim.keymap.set("n", "<leader>w", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
+-- lazygit
+vim.keymap.set("n", "<Leader>l", ":LazyGit<CR>")

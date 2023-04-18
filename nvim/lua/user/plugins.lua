@@ -158,6 +158,7 @@ use({
 		"nvim-lua/plenary.nvim",
 		"kyazdani42/nvim-web-devicons",
 		"nvim-telescope/telescope-live-grep-args.nvim",
+		"kdheepak/lazygit.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	},
 	config = function()
@@ -220,21 +221,14 @@ use({
 	end,
 })
 
--- Git commands.
-use({
-	"kdheepak/lazygit.nvim",
-	config = function()
-		vim.keymap.set("n", "<Leader>l", ":LazyGit<CR>")
-	end,
-})
-
 --- Floating terminal.
 use({
 	"voldikss/vim-floaterm",
 	config = function()
 		vim.g.floaterm_width = 0.8
 		vim.g.floaterm_height = 0.8
-		vim.keymap.set("n", "<Leader>t", ":FloatermToggle<CR>")
+		vim.keymap.set("n", "<C-t>", ":FloatermToggle<CR>")
+		vim.keymap.set("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>")
 		vim.cmd([[
 		    highlight link Floaterm CursorLine
 			highlight link FloatermBorder CursorLineBg
