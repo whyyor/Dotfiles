@@ -9,6 +9,7 @@ local lspconfig = require("lspconfig")
 lspconfig.tsserver.setup({ capabilities })
 lspconfig.html.setup({ capabilities })
 lspconfig.cssls.setup({ capabilities })
+lspconfig.prismals.setup({ capabilities = capabilities, filetypes = { "prisma" } })
 
 -- Emmet_ls
 lspconfig.emmet_ls.setup({
@@ -40,6 +41,9 @@ lspconfig.emmet_ls.setup({
 
 -- Tailwind CSS
 require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
+
+-- Prisma LS - make sure you install prisma globally using @prisma/language-server
+require("lspconfig").prismals.setup({ capabilities = capabilities })
 
 -- JSON
 require("lspconfig").jsonls.setup({

@@ -89,6 +89,9 @@ use("nelstrom/vim-visual-star-search")
 -- Automatically create parent dirs when saving.
 use("jessarcher/vim-heritage")
 
+-- Detect prisma filetypes
+use("prisma/vim-prisma")
+
 -- Text objects for HTML attributes.
 use({
 	"whatyouhide/vim-textobj-xmlattr",
