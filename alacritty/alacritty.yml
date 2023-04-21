@@ -21,18 +21,18 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 12.7
+  size: 13.4
   offset:
     x: 0 # For letter spacing.
-    y: 10 # For line spacing.
+    y: 12 # For line spacing.
   normal:
-    family: FiraCode Nerd Font Mono
+    family: DejaVuSansMono Nerd Font Mono
   bold:
-    family: FiraCode Nerd Font Mono
+    family: DejaVuSansMono Nerd Font Mono
   italic:
-    family: FiraCode Nerd Font Mono
+    family: DejaVuSansMono Nerd Font Mono
   bold_italic:
-    family: FiraCode Nerd Font Mono
+    family: DejaVuSansMono Nerd Font Mono
     size: 12.0
 
 draw_bold_text_with_bright_colors: true
