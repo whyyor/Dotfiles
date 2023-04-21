@@ -15,4 +15,4 @@ My dev enviroment configs - links dotfiles to currentfile
 </ul>
 
 <h3> Fonts used </h3>
-<p>Fira code nerd fonts can be found here -> https://www.nerdfonts.com/font-downloads</p>
+<p>DejaVuSansMono nerd fonts can be found here -> https://www.nerdfonts.com/font-downloads</p>
