@@ -27,8 +27,8 @@ vim.keymap.set("i", ",,", "<Esc>A,")
 -- Quickly clear search highlighting.
 vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>")
 
--- set quick save
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+-- autosave on buffer change
+vim.cmd("autocmd BufHidden * :wa")
 
 -- Open the current file in the default program (on Mac this should just be just `open`).
 vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>")
