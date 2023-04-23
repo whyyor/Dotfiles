@@ -30,7 +30,7 @@ use("wbthomason/packer.nvim")
 use({
 	"tanvirtin/monokai.nvim",
 	config = function()
-		require('user/plugins/monokai')
+		require("user/plugins/monokai")
 	end,
 })
 
@@ -110,9 +110,6 @@ use({
 -- All closing buffers without closing the split window.
 use({
 	"famiu/bufdelete.nvim",
-	config = function()
-		vim.keymap.set("n", "<Leader>q", ":Bdelete<CR>")
-	end,
 })
 
 -- Split arrays and methods onto multiple lines, or join them back up.
@@ -155,12 +152,6 @@ use({
 	requires = "kyazdani42/nvim-web-devicons",
 	config = function()
 		require("user/plugins/nvim-tree")
-		vim.api.nvim_set_hl(0, "StatusLineNonText", {
-			fg = vim.api.nvim_get_hl_by_name("NonText", true).foreground,
-			bg = vim.api.nvim_get_hl_by_name("StatusLine", true).background,
-		})
-
-		vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#2F313C" })
 	end,
 })
 
@@ -195,12 +186,6 @@ use({
 	"lewis6991/gitsigns.nvim",
 	config = function()
 		require("gitsigns").setup({ current_line_blame = true })
-		vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>")
-		vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>")
-		vim.keymap.set("n", "gs", ":Gitsigns stage_hunk<CR>")
-		vim.keymap.set("n", "gS", ":Gitsigns undo_stage_hunk<CR>")
-		vim.keymap.set("n", "gp", ":Gitsigns preview_hunk<CR>")
-		vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
 	end,
 })
 
