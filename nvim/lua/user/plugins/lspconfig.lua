@@ -2,90 +2,31 @@
 require("mason").setup()
 require("mason-lspconfig").setup({ automatic_installation = true })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+--lsp loading
+require("user/plugins/lsp/prismals")
+require("user/plugins/lsp/tsserver")
+require("user/plugins/lsp/jsonls")
+
+-- Null-ls
+require("user/plugins/lsp/null-ls")
+
+-- Emmet-ls
+require("user/plugins/lsp/emmet-ls")
+
 
 -- LSP configuration
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
-lspconfig.tsserver.setup({ capabilities })
+
 lspconfig.html.setup({ capabilities })
 lspconfig.cssls.setup({ capabilities })
-lspconfig.prismals.setup({ capabilities = capabilities, filetypes = { "prisma" } })
-
--- Emmet_ls
-lspconfig.emmet_ls.setup({
-	-- on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = {
-		"css",
-		"eruby",
-		"html",
-		"javascript",
-		"javascriptreact",
-		"less",
-		"sass",
-		"scss",
-		"svelte",
-		"pug",
-		"typescriptreact",
-		"vue",
-	},
-	init_options = {
-		html = {
-			options = {
-				["bem.enabled"] = true,
-			},
-		},
-	},
-})
 
 -- Tailwind CSS
 require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
 
--- Prisma LS - make sure you install prisma globally using @prisma/language-server
-require("lspconfig").prismals.setup({ capabilities = capabilities })
-
--- JSON
-require("lspconfig").jsonls.setup({
-	capabilities = capabilities,
-	settings = {
-		json = {
-			schemas = require("schemastore").json.schemas(),
-		},
-	},
-})
-
 -- Null-ls.
 require("lspconfig").cssls.setup({
 	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-})
-
-require("lspconfig").tsserver.setup({
-	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-})
-
-local null_ls = require("null-ls")
-local lSsources = {
-	-- add language servers here
-	null_ls.builtins.formatting.prettier.with({
-		filetypes = {
-			"javascript",
-			"typescript",
-			"css",
-			"scss",
-			"html",
-			"json",
-			"yaml",
-			"markdown",
-			"graphql",
-			"html",
-			"md",
-			"txt",
-		},
-	}),
-	null_ls.builtins.formatting.stylua,
-}
-null_ls.setup({
-	sources = lSsources,
 })
 
 -- Keymaps
