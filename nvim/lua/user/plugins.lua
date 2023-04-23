@@ -12,9 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Packer can manage itself.
-	{ "wbthomason/packer.nvim" },
-
 	-- Monokai theme
 	{
 		"tanvirtin/monokai.nvim",
