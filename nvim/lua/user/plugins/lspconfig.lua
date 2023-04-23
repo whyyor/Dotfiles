@@ -7,6 +7,10 @@ require("user/plugins/lsp/prismals")
 require("user/plugins/lsp/tsserver")
 require("user/plugins/lsp/jsonls")
 
+-- Java configuration
+require("user/plugins/lsp/java")
+
+
 -- Null-ls
 require("user/plugins/lsp/null-ls")
 
