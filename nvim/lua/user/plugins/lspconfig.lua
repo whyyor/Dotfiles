@@ -13,7 +13,6 @@ require("user/plugins/lsp/null-ls")
 -- Emmet-ls
 require("user/plugins/lsp/emmet-ls")
 
-
 -- LSP configuration
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
