@@ -14,11 +14,6 @@ local lSsources = {
 			"txt",
 		},
 	}),
-	null_ls.builtins.formatting.google_java_format.with({
-		filetypes = {
-			"java",
-		},
-	}),
 	null_ls.builtins.formatting.stylua,
 }
 null_ls.setup({

@@ -55,9 +55,6 @@ require("lazy").setup({
 	-- Detect prisma filetypes
 	{ "prisma/vim-prisma" },
 
-	-- Java parser detection
-	{ "mfussenegger/nvim-jdtls", event = "BufRead" },
-
 	-- Text objects for HTML
 	{
 		"whatyouhide/vim-textobj-xmlattr",
