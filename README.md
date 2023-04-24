@@ -1,4 +1,3 @@
-# Tmux_Nvim_Alcritty_config
 My dev enviroment configs - links dotfiles to currentfile
 
 <h3> Installation </h3>
