@@ -26,13 +26,14 @@ font:
     x: 0 # For letter spacing.
     y: 12 # For line spacing.
   normal:
-    family: DejaVuSansMono Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
   bold:
-    family: DejaVuSansMono Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
   italic:
-    family: DejaVuSansMono Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
   bold_italic:
-    family: DejaVuSansMono Nerd Font Mono
+
+    family: JetBrainsMono Nerd Font Mono
     size: 12.0
 
 draw_bold_text_with_bright_colors: true
