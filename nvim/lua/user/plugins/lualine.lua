@@ -38,7 +38,7 @@ require('lualine').setup({
     },
     lualine_y = {
       separator,
-      '(vim.bo.expandtab and "␠ " or "⇥ ") .. " " .. vim.bo.shiftwidth',
+      '(vim.bo.expandtab and " " or "⇥ ") .. " " .. vim.bo.shiftwidth',
       separator,
     },
     lualine_z = {
