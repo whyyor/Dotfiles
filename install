@@ -10,6 +10,9 @@ ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 
 mkdir -p $HOME/.local/bin
 
+rm -rf $HOME/.config/sioyek/
+ln -s $DOTFILES/sioyek $HOME/.config/
+
 rm -rf $HOME/.local/bin/t
 ln -s $DOTFILES/scripts/t $HOME/.local/bin/t
 
