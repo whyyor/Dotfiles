@@ -40,6 +40,9 @@ require("lazy").setup({
 	-- Allow plugins to enable repeating of commands.
 	{ "tpope/vim-repeat" },
 
+	-- DAP
+	{'mfussenegger/nvim-dap'},
+
 	-- Navigate seamlessly between Vim windows and Tmux panes.
 	{ "christoomey/vim-tmux-navigator" },
 
@@ -51,9 +54,6 @@ require("lazy").setup({
 
 	-- Automatically create parent dirs when saving.
 	{ "jessarcher/vim-heritage" },
-
-	-- Detect prisma filetypes
-	{ "prisma/vim-prisma" },
 
 	-- Text objects for HTML
 	{
@@ -232,4 +232,22 @@ require("lazy").setup({
 			require("user/plugins/cmp")
 		end,
 	},
+
+	----------------------------- Languages ---------------------------------
+
+	-- Flutter
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		config = function()
+			require("user/plugins/lsp/flutter").setup()
+		end,
+	},
+
+	-- Prisma
+	{ "prisma/vim-prisma" },
 })
