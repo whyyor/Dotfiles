@@ -41,7 +41,7 @@ require("lazy").setup({
 	{ "tpope/vim-repeat" },
 
 	-- DAP
-	{'mfussenegger/nvim-dap'},
+	{ "mfussenegger/nvim-dap" },
 
 	-- Navigate seamlessly between Vim windows and Tmux panes.
 	{ "christoomey/vim-tmux-navigator" },
@@ -207,6 +207,7 @@ require("lazy").setup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"b0o/schemastore.nvim",
+
 			-- null-ls plugins
 			"jose-elias-alvarez/null-ls.nvim",
 			"jayp0521/mason-null-ls.nvim",
@@ -235,16 +236,12 @@ require("lazy").setup({
 
 	----------------------------- Languages ---------------------------------
 
-	-- Flutter
+	-- Flutter - for some reason savings gives error so you will have to change buffer to save
 	{
 		"akinsho/flutter-tools.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"stevearc/dressing.nvim", -- optional for vim.ui.select
-		},
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("user/plugins/lsp/flutter").setup()
+			require("flutter-tools").setup({})
 		end,
 	},
 
