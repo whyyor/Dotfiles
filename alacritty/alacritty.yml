@@ -5,9 +5,6 @@ window:
   padding:
     x: 17
     y: 12
-  dimensions:
-    columns: 100
-    lines: 30
   dynamic_padding: true
   decorations: full
   title: Alacritty@Whyyor
@@ -32,7 +29,6 @@ font:
   italic:
     family: JetBrainsMono Nerd Font Mono
   bold_italic:
-
     family: JetBrainsMono Nerd Font Mono
     size: 12.0
 

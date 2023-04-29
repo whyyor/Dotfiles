@@ -236,7 +236,8 @@ require("lazy").setup({
 
 	----------------------------- Languages ---------------------------------
 
-	-- Flutter - for some reason savings gives error so you will have to change buffer to save
+	-- Flutter - for some reason savings gives error
+	-- Workaround - edit a dart file go to another buffer and come back to previous buffer
 	{
 		"akinsho/flutter-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
