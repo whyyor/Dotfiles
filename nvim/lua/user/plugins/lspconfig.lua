@@ -6,39 +6,16 @@ require("mason-lspconfig").setup({ automatic_installation = true })
 local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")
 lsp_zero.ensure_installed({
-	"tsserver",
-	"tailwindcss",
-	"jsonls",
+	"cssls",
+	"html",
 	"eslint",
 	"emmet_ls",
+	"jsonls",
 	"lua_ls",
+	"prettier",
 	"prismals",
-})
-
---lsp loading
-require("user/plugins/lsp/prismals")
-require("user/plugins/lsp/tsserver")
-require("user/plugins/lsp/jsonls")
-
--- Null-ls
-require("user/plugins/lsp/null-ls")
-
--- Emmet-ls
-require("user/plugins/lsp/emmet-ls")
-
--- LSP configuration
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lspconfig = require("lspconfig")
-
--- CSS setup
-lspconfig.cssls.setup({ capabilities })
-
--- Tailwind CSS
-require("lspconfig").tailwindcss.setup({ capabilities = capabilities })
-
--- Null-ls.
-require("lspconfig").cssls.setup({
-	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	"tsserver",
+	"tailwindcss",
 })
 
 -- Keymaps
@@ -68,7 +45,6 @@ vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-
 
 -- setup lsp_zero
 lsp_zero.setup()
