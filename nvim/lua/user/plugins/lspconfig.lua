@@ -12,7 +12,6 @@ lsp_zero.ensure_installed({
 	"emmet_ls",
 	"jsonls",
 	"lua_ls",
-	"prettier",
 	"prismals",
 	"tsserver",
 	"tailwindcss",
