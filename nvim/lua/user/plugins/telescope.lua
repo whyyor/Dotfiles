@@ -53,7 +53,7 @@ require("telescope").load_extension("live_grep_args")
 require("telescope").load_extension("lazygit")
 
 ---- Flutter
-require("telescope").load_extension "flutter"
+require("telescope").load_extension("flutter")
 
 -- calls find files picker
 vim.keymap.set("n", "<leader>f", [[<cmd>lua require('telescope.builtin').find_files()<CR>]])

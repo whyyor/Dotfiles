@@ -2,6 +2,18 @@
 require("mason").setup()
 require("mason-lspconfig").setup({ automatic_installation = true })
 
+-- Setup lsp-zero
+local lsp_zero = require("lsp-zero")
+lsp_zero.preset("recommended")
+lsp_zero.ensure_installed({
+	"tsserver",
+	"tailwindcss",
+	"jsonls",
+	"eslint",
+	"lua_ls",
+	"prismals",
+})
+
 --lsp loading
 require("user/plugins/lsp/prismals")
 require("user/plugins/lsp/tsserver")
@@ -17,7 +29,7 @@ require("user/plugins/lsp/emmet-ls")
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
 
-lspconfig.html.setup({ capabilities })
+-- CSS setup
 lspconfig.cssls.setup({ capabilities })
 
 -- Tailwind CSS
@@ -36,7 +48,7 @@ vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
 vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>")
 vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-vim.keymap.set('n', '<Leader>ca','<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
 --commands
@@ -55,3 +67,7 @@ vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
+
+-- setup lsp_zero
+lsp_zero.setup()
