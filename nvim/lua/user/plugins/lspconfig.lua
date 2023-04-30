@@ -10,6 +10,7 @@ lsp_zero.ensure_installed({
 	"tailwindcss",
 	"jsonls",
 	"eslint",
+	"emmet_ls",
 	"lua_ls",
 	"prismals",
 })
