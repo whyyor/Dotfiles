@@ -24,7 +24,9 @@ require("lazy").setup({
 	{ "tpope/vim-commentary" },
 
 	-- Add, change, and delete surrounding text.
-	-- `cs'"` will change surrounding to ""
+	-- ys means you surround so usage will be ysw"" to surround a word
+	-- `cs'"` will change surrounding to "" and cs means change surround
+	-- ds means delete su
 	-- Even works with html and shit. Refer to docs for more
 	{ "tpope/vim-surround" },
 
