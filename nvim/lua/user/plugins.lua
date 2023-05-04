@@ -173,7 +173,12 @@ require("lazy").setup({
 	},
 
 	--- Floating terminal.
-		{"voldikss/vim-floaterm"},
+	{
+		"voldikss/vim-floaterm",
+		config = function()
+			require("user/plugins/floaterm")
+		end,
+	},
 
 	-- Improved syntax highlighting
 	{
