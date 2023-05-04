@@ -236,7 +236,9 @@ require("lazy").setup({
 	-- Workaround - edit a dart file go to another buffer and come back to previous buffer
 	{
 		"akinsho/flutter-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim",
+			"reisub0/hot-reload.vim",
+		},
 		config = function()
 			require("flutter-tools").setup({})
 		end,
