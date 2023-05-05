@@ -203,10 +203,6 @@ require("lazy").setup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"b0o/schemastore.nvim",
-
-			-- null-ls plugins
-			"jose-elias-alvarez/null-ls.nvim",
-			"jayp0521/mason-null-ls.nvim",
 		},
 		config = function()
 			require("user/plugins/lspconfig")
@@ -227,6 +223,19 @@ require("lazy").setup({
 		},
 		config = function()
 			require("user/plugins/cmp")
+		end,
+	},
+
+	-- Mason null-ls setup
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+					"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+		config = function()
+			require("user/plugins/null-ls")
 		end,
 	},
 
