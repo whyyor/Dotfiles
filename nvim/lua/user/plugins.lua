@@ -209,6 +209,19 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Mason null-ls setup
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+		config = function()
+			require("user/plugins/null-ls")
+		end,
+	},
+
 	-- Completion
 	{
 		"hrsh7th/nvim-cmp",
@@ -223,19 +236,6 @@ require("lazy").setup({
 		},
 		config = function()
 			require("user/plugins/cmp")
-		end,
-	},
-
-	-- Mason null-ls setup
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-					"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-		config = function()
-			require("user/plugins/null-ls")
 		end,
 	},
 
