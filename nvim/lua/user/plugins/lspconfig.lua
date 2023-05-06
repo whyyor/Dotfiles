@@ -2,6 +2,9 @@
 require("mason").setup()
 require("mason-lspconfig").setup({ automatic_installation = true })
 
+-- Null-ls Setup
+require("user/plugins/lsp/null-ls")
+
 -- Setup lsp-zero
 local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")

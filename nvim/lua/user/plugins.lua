@@ -209,7 +209,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Mason null-ls setup
+	-- Mason null-ls ensure installer
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -218,7 +218,7 @@ require("lazy").setup({
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 		config = function()
-			require("user/plugins/null-ls")
+			require("user/plugins/mason-null-ls")
 		end,
 	},
 
