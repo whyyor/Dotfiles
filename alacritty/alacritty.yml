@@ -49,7 +49,8 @@ mouse:
 colors:
   # Default colors
   primary:
-    background: "0x26292c"
+    # background: "0x26292c"
+    background: "0x262626"
     foreground: "0xdedede"
 
   # Cursor colors
