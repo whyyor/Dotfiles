@@ -16,6 +16,7 @@ lsp_zero.ensure_installed({
 	"jsonls",
 	"lua_ls",
 	"prismals",
+	"pylsp",
 	"tsserver",
 	"tailwindcss",
 })
