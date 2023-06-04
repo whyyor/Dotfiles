@@ -10,6 +10,7 @@ local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")
 lsp_zero.ensure_installed({
 	"cssls",
+	"dockerls",
 	"html",
 	"eslint",
 	"emmet_ls",
