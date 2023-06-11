@@ -18,9 +18,11 @@ lsp_zero.ensure_installed({
 	"lua_ls",
 	"prismals",
 	"pylsp",
+	-- You may need to install python3-venv to install pylsp
 	"tsserver",
 	"tailwindcss",
 })
+-- Use vpn if they dont install for some reas
 
 -- Keymaps
 vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
