@@ -13,7 +13,6 @@ lsp_zero.ensure_installed({
 	"dockerls",
 	"html",
 	"eslint",
-	"black",
 	"emmet_ls",
 	"jsonls",
 	"lua_ls",
