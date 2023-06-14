@@ -13,16 +13,20 @@ lsp_zero.ensure_installed({
 	"dockerls",
 	"html",
 	"eslint",
+	"black",
 	"emmet_ls",
 	"jsonls",
 	"lua_ls",
 	"prismals",
+	"pyright",
 	"pylsp",
 	-- You may need to install python3-venv to install pylsp
 	"tsserver",
 	"tailwindcss",
 })
--- Use vpn if they dont install for some reas
+
+require("user/plugins/lsp/html")
+-- Use vpn if they don't install for some reason
 
 -- Keymaps
 vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
