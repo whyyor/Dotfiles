@@ -18,9 +18,12 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 13.4
+  size: 13.9
+  # size for table
+  # size: 13.3
+  # add size for bed
   offset:
-    x: 0 # For letter spacing.
+    x: -1 # For letter spacing.
     y: 12 # For line spacing.
   normal:
     family: JetBrainsMono Nerd Font Mono
@@ -30,7 +33,6 @@ font:
     family: JetBrainsMono Nerd Font Mono
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
-    size: 12.0
 
 draw_bold_text_with_bright_colors: true
 
