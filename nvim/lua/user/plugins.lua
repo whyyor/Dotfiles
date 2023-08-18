@@ -239,6 +239,10 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		'sindrets/diffview.nvim',	
+	},
+
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error

@@ -48,10 +48,13 @@ vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>q", ":Bdelete<CR>")
 
 -- Git keybindings
-
 vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>")
 vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>")
 vim.keymap.set("n", "gs", ":Gitsigns stage_hunk<CR>")
 vim.keymap.set("n", "gS", ":Gitsigns undo_stage_hunk<CR>")
 vim.keymap.set("n", "gp", ":Gitsigns preview_hunk<CR>")
 vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
+
+-- Git diff
+vim.keymap.set("n", "<Leader>a", ":DiffviewOpen<CR>")
+vim.keymap.set("n", "<Leader>A", ":DiffviewClose<CR>")
