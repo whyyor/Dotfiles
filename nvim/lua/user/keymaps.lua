@@ -56,5 +56,12 @@ vim.keymap.set("n", "gp", ":Gitsigns preview_hunk<CR>")
 vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
 
 -- Git diff
-vim.keymap.set("n", "<Leader>a", ":DiffviewOpen<CR>")
-vim.keymap.set("n", "<Leader>A", ":DiffviewClose<CR>")
+vim.keymap.set("n", "<Leader>af", ":DiffviewOpen<CR>")
+vim.keymap.set("n", "<Leader>ah", ":DiffviewFileHistory<CR>")
+vim.keymap.set("n", "<Leader>ax", ":DiffviewClose<CR>")
+
+-- Set up the key mappings
+vim.keymap.set("n", "<C-up>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-down>", ":resize -2<CR>")
+vim.keymap.set("n", "<C-right>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<C-left>", ":vertical resize -2<CR>")
