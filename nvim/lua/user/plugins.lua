@@ -239,8 +239,22 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Diff view
 	{
-		'sindrets/diffview.nvim',	
+		"sindrets/diffview.nvim",
+	},
+
+	-- UFO
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = {
+			"kevinhwang91/promise-async",
+			"luukvbaal/statuscol.nvim",
+		},
+		config = function()
+			require("user/plugins/ufo")
+		end,
+		-- fold toggle using 'za'
 	},
 
 	----------------------------- Languages ---------------------------------
@@ -249,9 +263,7 @@ require("lazy").setup({
 	-- Workaround - edit a dart file go to another buffer and come back to previous buffer
 	{
 		"akinsho/flutter-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim",
-			"reisub0/hot-reload.vim",
-		},
+		dependencies = { "nvim-lua/plenary.nvim", "reisub0/hot-reload.vim" },
 		config = function()
 			require("flutter-tools").setup({})
 		end,
