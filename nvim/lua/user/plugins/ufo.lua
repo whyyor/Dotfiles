@@ -1,14 +1,16 @@
 require("ufo").setup({})
 
-require("statuscol").setup(
-              {
-                relculright = true,
-               segments = {
-                  {text = {"%s"}, click = "v:lua.ScSa"},
-                }
-              }
-            )
-
+local builtin = require("statuscol.builtin")
+require("statuscol").setup({
+  relculright = true,
+  segments = {
+    { text = { "%s" }, click = "v:lua.ScSa" },
+    {
+      text = { builtin.lnumfunc, " " },
+      condition = { true, builtin.not_empty },
+    },
+  },
+})
 
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
