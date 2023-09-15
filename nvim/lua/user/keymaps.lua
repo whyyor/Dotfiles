@@ -59,7 +59,7 @@ vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
 vim.keymap.set("n", "<Leader>af", ":DiffviewOpen<CR>")
 vim.keymap.set("n", "<Leader>ah", ":DiffviewFileHistory<CR>")
 vim.keymap.set("n", "<Leader>ax", ":DiffviewClose<CR>")
-vim.keymap.set("n", "<Leader>ac", ":DiffviewFileHistory %:p<CR>")
+vim.keymap.set("n", "<Leader>aj", ":DiffviewFileHistory %:p<CR>")
 
 -- Set up the key mappings
 vim.keymap.set("n", "<C-up>", ":resize +2<CR>")
