@@ -7,6 +7,14 @@ local lSsources = {
     },
   }),
 
+
+  null_ls.builtins.formatting.mdformat.with({
+    filetypes = {
+      "vimwiki",
+      "md",
+    },
+  }),
+
   null_ls.builtins.formatting.black,
   null_ls.builtins.formatting.stylua,
 }
