@@ -69,7 +69,7 @@ vim.keymap.set("n", "<leader>b", [[<cmd>lua require('telescope.builtin').buffers
 vim.keymap.set("n", "<leader>g", [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]])
 -- file history
 vim.keymap.set("n", "<leader>h", [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
--- lsp thing
-vim.keymap.set("n", "<leader>w", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
+-- grep variables in current file
+vim.keymap.set("n", "<leader>ws", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
 -- lazygit
 vim.keymap.set("n", "<Leader>l", ":LazyGit<CR>")

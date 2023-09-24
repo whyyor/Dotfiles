@@ -44,6 +44,9 @@ vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
 vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
+-- Current date
+vim.api.nvim_set_keymap("n", "<Leader>wd", ":r!date +\\%Y-\\%m-\\%d<CR>", { noremap = true, silent = true })
+
 -- Plugin keybindings
 vim.keymap.set("n", "<Leader>q", ":Bdelete<CR>")
 

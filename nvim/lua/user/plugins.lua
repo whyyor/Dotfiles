@@ -272,15 +272,11 @@ require("lazy").setup({
 	-- Prisma
 	{ "prisma/vim-prisma" },
 
-	----------------------------- Neorg ---------------------------------
-
-	-- on mac build might fail watch tutorial by vhyrro he has mentioned fixes
+	----------------------------- Vim Wiki ---------------------------------
 	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("user/plugins/neorg")
-		end,
+	  "vimwiki/vimwiki",
+	  init = function()
+		require("user.plugins.vimwiki").setup()
+	  end,
 	},
 })
