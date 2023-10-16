@@ -3,15 +3,9 @@ local lSsources = {
   -- add language servers here
   null_ls.builtins.formatting.prettier.with({
     filetypes = {
-      "yaml",
-    },
-  }),
-
-
-  null_ls.builtins.formatting.mdformat.with({
-    filetypes = {
       "vimwiki",
       "md",
+      "yaml"
     },
   }),
 
