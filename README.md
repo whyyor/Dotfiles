@@ -1,4 +1,4 @@
-My dev enviroment configs - links dotfiles to currentfile
+# My dev enviroment configs - links dotfiles to currentfile , Main is maintained as macos branch now
 
 <h3> Installation </h3>
 <p>Just run ./install</p>
