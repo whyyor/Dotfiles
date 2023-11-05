@@ -18,7 +18,7 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 13.9
+  size: 15
   # size for table
   # size: 13.3
   # add size for bed

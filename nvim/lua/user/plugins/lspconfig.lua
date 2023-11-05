@@ -8,21 +8,22 @@ require("user/plugins/lsp/null-ls")
 -- Setup lsp-zero
 local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")
-lsp_zero.ensure_installed({
-	"cssls",
-	"dockerls",
-	"html",
-	"eslint",
-	"emmet_ls",
-	"jsonls",
-	"lua_ls",
-	"prismals",
-	"pyright",
-	"pylsp",
-	-- You may need to install python3-venv to install pylsp
-	"tsserver",
-	"tailwindcss",
-})
+-- Enable if want to install language servers might work fine
+-- lsp_zero.({
+-- 	"cssls",
+-- 	"dockerls",
+-- 	"html",
+-- 	"eslint",
+-- 	"emmet_ls",
+-- 	"jsonls",
+-- 	"lua_ls",
+-- 	"prismals",
+-- 	"pyright",
+-- 	"pylsp",
+-- 	-- You may need to install python3-venv to install pylsp
+-- 	"tsserver",
+-- 	"tailwindcss",
+-- })
 
 require("user/plugins/lsp/html")
 -- Use vpn if they don't install for some reason

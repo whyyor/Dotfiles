@@ -37,7 +37,7 @@ vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>")
 vim.keymap.set("n", "<Leader>s", ":w<CR>")
 
 -- Move lines up and down.
-vim.keymap.set("i", "<A-j>", "<Esc>:move .+1<CR>==gi")
+vim.keymap.set("i", "<fn-C-j>", "<Esc>:move .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
 vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
 vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
