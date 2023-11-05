@@ -147,14 +147,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Display indentation lines.
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("user/plugins/indent-blankline")
-		end,
-	},
-
 	-- Add a dashboard.
 	{
 		"glepnir/dashboard-nvim",
