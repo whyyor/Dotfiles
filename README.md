@@ -4,11 +4,13 @@ My dev enviroment configs - links dotfiles to currentfile
 <p>Just run ./install</p>
 <p>If for some reason ./install doesn't work make sure you make it executable using chmod +x ./install</p>
 
-<h2>Applications Used<p> - make sure you have installed you can install all by brew</p></h2>
+<h2>Applications Used<p> - make sure you have installed you can install all by brew instructions must be in wiki</p></h2>
 <ul>
     <li>Alacritty</li>
     <li>Neovim</li>
     <li>Tmux</li>
+    <li>Yabai</li>
+    <li>skhd</li>
 </ul>
 
 <h2>Dependenciees<p> - make sure you have installed you can install all by brew</p></h2>
