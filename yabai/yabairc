@@ -24,3 +24,4 @@ yabai -m rule --add app="Slack" sticky=on layer=above manage=off
 yabai -m rule --add app="System Settings" sticky=on layer=above manage=off
 yabai -m rule --add app="WhatsApp" sticky=on layer=above manage=off
 yabai -m rule --add app="Telegram" sticky=on layer=above manage=off
+yabai -m rule --add app="qemu-system-aarch64" sticky=on layer=above manage=off
