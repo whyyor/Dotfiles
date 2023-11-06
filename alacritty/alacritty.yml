@@ -26,11 +26,11 @@ font:
     x: -1 # For letter spacing.
     y: 12 # For line spacing.
   normal:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono Nerd Font
   bold:
     family: JetBrainsMono Nerd Font Mono
   italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono Nerd Font
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
 
