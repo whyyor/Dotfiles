@@ -19,6 +19,7 @@ yabai -m mouse_drop_action swap
 # Ignore tiling applications
 yabai -m rule --add app="Calculator" sticky=on layer=above manage=off
 yabai -m rule --add app="Finder" sticky=on layer=above manage=off
+yabai -m rule --add app="Simulator" sticky=on layer=above manage=off
 yabai -m rule --add app="Slack" sticky=on layer=above manage=off
 yabai -m rule --add app="System Settings" sticky=on layer=above manage=off
 yabai -m rule --add app="WhatsApp" sticky=on layer=above manage=off
