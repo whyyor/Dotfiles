@@ -19,27 +19,27 @@ dashboard.setup({
 		}, --your header
 		center = {
 			{
-				icon = "                 ",
+				icon = "               󰈔  ",
 				desc = "New file",
 				action = "enew",
 			},
 
 			{
-				icon = "                 ",
+				icon = "                 ",
 				shortcut = "SPC f",
 				desc = "Find file",
 				action = "Telescope find_files",
 			},
 
 			{
-				icon = "                 ",
+				icon = "               󱣹  ",
 				shortcut = "SPC h",
 				desc = "Recent files           ",
 				action = "Telescope oldfiles",
 			},
 
 			{
-				icon = "                 ",
+				icon = "               󰈞  ",
 				shortcut = "SPC g",
 				desc = "Find Word           ",
 				action = "Telescope live_grep",
