@@ -1,6 +1,5 @@
 -- Setup Mason to automatically install LSP servers
 require("mason").setup()
-require("mason-lspconfig").setup({ automatic_installation = true })
 
 -- Null-ls Setup
 require("user/plugins/lsp/null-ls")
@@ -8,25 +7,30 @@ require("user/plugins/lsp/null-ls")
 -- Setup lsp-zero
 local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")
--- Enable if want to install language servers might work fine
--- lsp_zero.({
--- 	"cssls",
--- 	"dockerls",
--- 	"html",
--- 	"eslint",
--- 	"emmet_ls",
--- 	"jsonls",
--- 	"lua_ls",
--- 	"prismals",
--- 	"pyright",
--- 	"pylsp",
--- 	-- You may need to install python3-venv to install pylsp
--- 	"tsserver",
--- 	"tailwindcss",
--- })
+
+
+require("mason-lspconfig").setup({
+	automatic_installation = true, -- Automatically install LSP servers.
+	ensure_installed = {
+		"cssls",
+		"dockerls",
+		"html",
+		"eslint",
+		"emmet_ls",
+		"jsonls",
+		"lua_ls",
+		"prismals",
+		"pyright",
+		"pylsp",
+		-- You may need to install python3-venv to install pylsp
+		"tsserver",
+		"tailwindcss",
+	},
+})
 
 require("user/plugins/lsp/html")
 -- Use vpn if they don't install for some reason
+
 
 -- Keymaps
 vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
@@ -58,3 +62,11 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 
 -- setup lsp_zero
 lsp_zero.setup()
+
+-- setup ts-server for all sorts of languages
+require("lspconfig").tsserver.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingRangeProvider = false
+	end,
+})
