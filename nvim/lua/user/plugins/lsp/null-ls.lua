@@ -3,6 +3,7 @@ local lSsources = {
 	-- add language servers here
 	null_ls.builtins.formatting.prettier.with({
 		filetypes = {
+			"javascript",
 			"typescript",
 			"scss",
 			"css",
