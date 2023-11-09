@@ -23,7 +23,7 @@ require("lualine").setup({
 			"diff",
 			separator,
 			--number to language server client running in each buffer
-			'"󱡃  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
+			'"  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
 			--how many syntax error in buffer
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 			separator,
