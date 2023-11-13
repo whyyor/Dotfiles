@@ -19,6 +19,7 @@
     <li>ripgrep</li>
     <li>tmux</li>
     <li>xclip</li>
+    <li>pngpaste</li>
     <li>lazy-git</li>
 </ul>
 

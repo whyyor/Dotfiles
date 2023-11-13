@@ -266,19 +266,27 @@ require("lazy").setup({
 
 	----------------------------- Vim Wiki ---------------------------------
 	{
-	  "vimwiki/vimwiki",
-	  init = function()
-		require("user.plugins.vimwiki").setup()
-	  end,
+		"vimwiki/vimwiki",
+		init = function()
+			require("user.plugins.vimwiki").setup()
+		end,
 	},
 
-{
-  "iamcco/markdown-preview.nvim",
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "cd app && yarn install",
-  init = function()
-    vim.g.mkdp_filetypes = { "markdown" }
-  end,
-  ft = { "markdown" },
-},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = require("user/plugins/markdown-preview"), -- This line is changed
+		ft = { "markdown" },
+	},
+
+	-- For pasting images
+	{
+		-- Not using original clipboard-image due to check-health bug
+		-- "ekickx/clipboard-image.nvim",
+		"dfendr/clipboard-image.nvim",
+		config = function()
+			require("user/plugins/clipboard-image")
+		end,
+	},
 })
