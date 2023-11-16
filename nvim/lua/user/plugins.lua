@@ -249,6 +249,19 @@ require("lazy").setup({
 		-- fold toggle using 'za'
 	},
 
+	-- Noice
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error
