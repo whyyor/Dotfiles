@@ -67,6 +67,9 @@ vim.keymap.set("n", "<Leader>ah", ":DiffviewFileHistory<CR>")
 vim.keymap.set("n", "<Leader>ax", ":DiffviewClose<CR>")
 vim.keymap.set("n", "<Leader>aj", ":DiffviewFileHistory %:p<CR>")
 
+-- Noice
+vim.keymap.set("n", "<Leader>[", ":NoiceDismiss<CR>")
+
 -- Set up the key mappings
 vim.keymap.set("n", "<A-up>", ":resize +2<CR>")
 vim.keymap.set("n", "<A-down>", ":resize -2<CR>")
