@@ -17,6 +17,7 @@ Make sure you have these installed. You can install all by brew instructions, wh
 - Tmux
 - Yabai
 - skhd
+- Oh my posh
 
 ## Dependencies
 
