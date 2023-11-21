@@ -17,9 +17,9 @@ Make sure you have these installed. You can install all by brew instructions, wh
 - Tmux
 - Yabai
 - skhd
-- Oh my posh
+- [oh my posh](https://ohmyposh.dev/)
   - Make sure to add `eval "$(oh-my-posh --init --shell zsh --config ~/poshthemes/monokai.omp.json)"` to your shell rc
-  
+  - Replace `"template": "Whyyor"` to `"template": "{{ .UserName }} "` if you want your username
 
 ## Dependencies
 
