@@ -20,6 +20,10 @@ ln -s $DOTFILES/yabai $HOME/.config/
 rm -rf $HOME/.config/skhd
 ln -s $DOTFILES/skhd $HOME/.config/
 
+
+rm -rf $HOME/poshthemes
+ln -s $DOTFILES/poshthemes $HOME/
+
 rm -rf $HOME/.local/bin/t
 ln -s $DOTFILES/scripts/t $HOME/.local/bin/t
 
