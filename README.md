@@ -18,6 +18,8 @@ Make sure you have these installed. You can install all by brew instructions, wh
 - Yabai
 - skhd
 - Oh my posh
+  - Make sure to add `eval "$(oh-my-posh --init --shell zsh --config ~/poshthemes/monokai.omp.json)"` to your shell rc
+  
 
 ## Dependencies
 
