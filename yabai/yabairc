@@ -30,5 +30,5 @@ yabai -m rule --add app="Simulator" sticky=on layer=above manage=off
 yabai -m rule --add app="OBS Studio" sticky=on layer=above manage=off
 yabai -m rule --add app="System Settings" sticky=on layer=above manage=off
 yabai -m rule --add app="NeatDownloadManager" sticky=on layer=above manage=off
-yabai -m rule --add app="Ferdium" sticky=on layer=above manage=off
+yabai -m rule --add app="Chat" sticky=on layer=above manage=off
 yabai -m rule --add app="qemu-system-aarch64" sticky=on layer=above manage=off

@@ -4,41 +4,19 @@
 
 ## Installation
 
-Just run `./install`.
-
+Just run `./install`. it will walk you through installing all applications and dependencies. Make sure brew in installed.
 If for some reason `./install` doesn't work, make sure you make it executable using `chmod +x ./install`.
 
-## Applications Used
+# Things to do yourself
 
-Make sure you have these installed. You can install all by brew instructions, which must be in the wiki.
+## Applications to install
 
-- Alacritty
-- Neovim
-- Tmux
-- Yabai
-- skhd
 - [oh my posh](https://ohmyposh.dev/)
   - Make sure to add `eval "$(oh-my-posh --init --shell zsh --config ~/poshthemes/monokai.omp.json)"` to your shell rc
   - Replace `"template": "Whyyor"` to `"template": "{{ .UserName }} "` if you want your username
 
-## Dependencies
-
-Make sure you have these installed. You can install all by brew.
-
-- fzf
-- ripgrep
-- tmux
-- xclip
-- pngpaste
-- lazy-git
-
-## Theme: Monokai
-
-## Fonts Used
-
-JetBrainMono Nerd Font can be found here -> [Nerd Fonts](https://www.nerdfonts.com/font-downloads).
-
-In neovim use `:TSUpdate` to fix treesitter error.
+## Fixing errors
+- In neovim use `:TSUpdate` to fix treesitter error.
 
 ### To Make Sure That `t` Works
 
@@ -61,3 +39,33 @@ chmod +x $HOME/.local/bin/t
 ```
 
 Remember, when creating a symbolic link on macOS (or any Unix-like OS), the target of the link (in your case, `$DOTFILES/scripts/t`) must also be an executable file for the link to work as a command.
+
+# Info
+
+## Applications Used
+
+- Alacritty
+- Neovim
+- Tmux
+- Yabai
+- skhd
+
+## Dependencies
+
+- fzf
+- ripgrep
+- xclip
+- pngpaste
+- lazy-git
+
+## Theme: Monokai
+
+## Fonts Used
+
+JetBrainMono Nerd Font can be found here -> [Nerd Fonts](https://www.nerdfonts.com/font-downloads).
+
+
+### More apps I personally use for mac and have included scripts for
+
+- Intermission: I have included a restart script for instermission that will prompt when installing script press 3 to avoid that config
+  - Intermission is an RSI prevention software that I generally use.
