@@ -1,24 +1,25 @@
-## Dotfiles Setup
+# Dotfiles Setup
 
 ![Meme](./img/2023-11-14-21-14-23.png)
 
-## Installation
+# Installation
 
 Just run `./install`. it will walk you through installing all applications and dependencies. Make sure brew in installed.
 If for some reason `./install` doesn't work, make sure you make it executable using `chmod +x ./install`.
 
-# Things to do yourself
+## Things to do yourself
 
-## Applications to install
+### Applications to install
 
 - [oh my posh](https://ohmyposh.dev/)
   - Make sure to add `eval "$(oh-my-posh --init --shell zsh --config ~/poshthemes/monokai.omp.json)"` to your shell rc
   - Replace `"template": "Whyyor"` to `"template": "{{ .UserName }} "` if you want your username
 
-## Fixing errors
+### Fixing errors
+
 - In neovim use `:TSUpdate` to fix treesitter error.
 
-### To Make Sure That `t` Works
+### Making sure that `t` works cause t is the real chad - Thanks to primeagen for script
 
 To ensure that your script `t` can be recognized as a command on macOS, you need to add `~/.local/bin` to your PATH if it's not already there. Here's how you can do that:
 
@@ -63,7 +64,6 @@ Remember, when creating a symbolic link on macOS (or any Unix-like OS), the targ
 ## Fonts Used
 
 JetBrainMono Nerd Font can be found here -> [Nerd Fonts](https://www.nerdfonts.com/font-downloads).
-
 
 ### More apps I personally use for mac and have included scripts for
 

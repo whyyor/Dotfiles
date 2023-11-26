@@ -31,7 +31,7 @@ vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>")
 vim.cmd("autocmd BufHidden * :wa")
 
 -- Open the current file in the default program (on Mac this should just be just `open`).
-vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>")
+vim.keymap.set("n", "<Leader>x", ":!open %<CR><CR>")
 
 -- save file
 vim.keymap.set("n", "<Leader>s", ":w<CR>")
