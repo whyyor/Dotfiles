@@ -24,17 +24,25 @@ font:
   # add size for bed
   offset:
     x: 0 # For letter spacing.
-    y: 12 # For line spacing.
+    y: 14 # For line spacing.
+  glyph_offset:
+    x: 0
+    y: 5
+  AppleFontSmooth: true
   normal:
     family: JetBrainsMono Nerd Font
+    style: Light
   bold:
     family: JetBrainsMono Nerd Font Mono
+    style: Bold
   italic:
     family: JetBrainsMono Nerd Font
+    style: Light Italic
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
+    style: Bold Italic
 
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 save_to_clipboard: true
 window.dynamic_title: true
 
