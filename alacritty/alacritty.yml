@@ -18,7 +18,7 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 15.5
+  size: 15.9
   # size for table
   # size: 13.3
   # add size for bed
@@ -31,13 +31,13 @@ font:
   AppleFontSmooth: true
   normal:
     family: JetBrainsMono Nerd Font
-    style: Light
+    style: ExtraLight
   bold:
     family: JetBrainsMono Nerd Font Mono
     style: Bold
   italic:
     family: JetBrainsMono Nerd Font
-    style: Light Italic
+    style: ExtraLight Italic
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
