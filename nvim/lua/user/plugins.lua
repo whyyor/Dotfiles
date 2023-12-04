@@ -42,7 +42,7 @@ require("lazy").setup({
 	-- Allow plugins to enable repeating of commands.
 	{ "tpope/vim-repeat" },
 
-	-- DAP
+	-- DAP - Helps debug application
 	{ "mfussenegger/nvim-dap" },
 
 	-- Navigate seamlessly between Vim windows and Tmux panes.
@@ -56,6 +56,9 @@ require("lazy").setup({
 
 	-- Automatically create parent dirs when saving.
 	{ "jessarcher/vim-heritage" },
+
+	-- Highlight words selected
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 
 	-- Text objects for HTML
 	{
@@ -231,7 +234,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Diff view
+	-- Diff view - Cycle through different git changes leader-aj
 	{
 		"sindrets/diffview.nvim",
 	},
@@ -262,12 +265,29 @@ require("lazy").setup({
 		},
 	},
 
+	-- TODO Comments
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+
+	-- Trouble to toggle diagnostics at bottom
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("user/plugins/trouble")
+		end,
+	},
+
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error
 	-- Workaround - edit a dart file go to another buffer and come back to previous buffer
 	{
 		"akinsho/flutter-tools.nvim",
+		ft = "dart",
 		dependencies = { "nvim-lua/plenary.nvim", "reisub0/hot-reload.vim" },
 		config = function()
 			require("flutter-tools").setup({})
@@ -280,6 +300,7 @@ require("lazy").setup({
 	----------------------------- Vim Wiki ---------------------------------
 	{
 		"vimwiki/vimwiki",
+		ft = "md",
 		init = function()
 			require("user.plugins.vimwiki").setup()
 		end,
@@ -287,6 +308,7 @@ require("lazy").setup({
 
 	{
 		"iamcco/markdown-preview.nvim",
+		ft = "md",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install",
 		init = require("user/plugins/markdown-preview"), -- This line is changed
@@ -298,6 +320,7 @@ require("lazy").setup({
 		-- Not using original clipboard-image due to check-health bug
 		-- "ekickx/clipboard-image.nvim",
 		"dfendr/clipboard-image.nvim",
+		ft = "md",
 		config = function()
 			require("user/plugins/clipboard-image")
 		end,

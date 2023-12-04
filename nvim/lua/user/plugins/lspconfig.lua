@@ -8,7 +8,6 @@ require("user/plugins/lsp/null-ls")
 local lsp_zero = require("lsp-zero")
 lsp_zero.preset("recommended")
 
-
 require("mason-lspconfig").setup({
 	automatic_installation = true, -- Automatically install LSP servers.
 	ensure_installed = {
@@ -30,7 +29,6 @@ require("mason-lspconfig").setup({
 
 require("user/plugins/lsp/html")
 -- Use vpn if they don't install for some reason
-
 
 -- Keymaps
 vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
@@ -55,10 +53,10 @@ vim.diagnostic.config({
 })
 
 -- Sign configuration
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- setup lsp_zero
 lsp_zero.setup()

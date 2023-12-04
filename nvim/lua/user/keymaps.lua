@@ -30,8 +30,15 @@ vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>")
 -- autosave on buffer change
 vim.cmd("autocmd BufHidden * :wa")
 
+-- Exit
+vim.keymap.set("n", "<Leader>x", ":q<CR>")
+
+-- Exit all
+vim.keymap.set("n", "<Leader>x", ":qa<CR>")
+
 -- Open the current file in the default program (on Mac this should just be just `open`).
-vim.keymap.set("n", "<Leader>x", ":!open %<CR><CR>")
+-- TODO: Assign some key in future for default opening document
+-- vim.keymap.set("n", "<Leader>x", ":!open %<CR><CR>")
 
 -- save file
 vim.keymap.set("n", "<Leader>s", ":w<CR>")
@@ -75,3 +82,5 @@ vim.keymap.set("n", "<A-up>", ":resize +2<CR>")
 vim.keymap.set("n", "<A-down>", ":resize -2<CR>")
 vim.keymap.set("n", "<A-right>", ":vertical resize +2<CR>")
 vim.keymap.set("n", "<A-left>", ":vertical resize -2<CR>")
+
+-- Set up the key for trouble
