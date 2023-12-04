@@ -25,7 +25,7 @@ dashboard.setup({
 			},
 
 			{
-				icon = "                 ",
+				icon = "                 ",
 				shortcut = "SPC f",
 				desc = "Find file",
 				action = "Telescope find_files",
@@ -41,7 +41,7 @@ dashboard.setup({
 			{
 				icon = "               󰈞  ",
 				shortcut = "SPC g",
-				desc = "Find Word           ",
+				desc = "Grep Word",
 				action = "Telescope live_grep",
 			},
 		},

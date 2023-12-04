@@ -45,3 +45,4 @@ vim.opt.backup = true         -- automatically save a backup file
 vim.opt.backupdir:remove(".") -- keep backups out of the current directory
 
 
+vim.opt.showmode = false
