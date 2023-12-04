@@ -34,11 +34,10 @@ vim.cmd("autocmd BufHidden * :wa")
 vim.keymap.set("n", "<Leader>x", ":q<CR>")
 
 -- Exit all
-vim.keymap.set("n", "<Leader>x", ":qa<CR>")
+vim.keymap.set("n", "<Leader>X", ":qa<CR>")
 
 -- Open the current file in the default program (on Mac this should just be just `open`).
--- TODO: Assign some key in future for default opening document
--- vim.keymap.set("n", "<Leader>x", ":!open %<CR><CR>")
+vim.keymap.set("n", "<Leader>O", ":!open %<CR><CR>")
 
 -- save file
 vim.keymap.set("n", "<Leader>s", ":w<CR>")
