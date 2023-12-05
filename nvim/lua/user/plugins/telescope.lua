@@ -73,3 +73,8 @@ vim.keymap.set("n", "<leader>h", [[<cmd>lua require('telescope.builtin').oldfile
 vim.keymap.set("n", "<leader>ws", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
 -- lazygit
 vim.keymap.set("n", "<Leader>l", ":LazyGit<CR>")
+
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = "NONE", bg = "NONE" })
