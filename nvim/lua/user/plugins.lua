@@ -120,7 +120,7 @@ require("lazy").setup({
 	-- Fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
-event = "VeryLazy",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"kyazdani42/nvim-web-devicons",
@@ -301,7 +301,6 @@ event = "VeryLazy",
 	----------------------------- Vim Wiki ---------------------------------
 	{
 		"vimwiki/vimwiki",
-		ft = "md",
 		init = function()
 			require("user.plugins.vimwiki").setup()
 		end,
@@ -309,7 +308,6 @@ event = "VeryLazy",
 
 	{
 		"iamcco/markdown-preview.nvim",
-		ft = "md",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install",
 		init = require("user/plugins/markdown-preview"), -- This line is changed
@@ -321,7 +319,6 @@ event = "VeryLazy",
 		-- Not using original clipboard-image due to check-health bug
 		-- "ekickx/clipboard-image.nvim",
 		"dfendr/clipboard-image.nvim",
-		ft = "md",
 		config = function()
 			require("user/plugins/clipboard-image")
 		end,
