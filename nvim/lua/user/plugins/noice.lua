@@ -18,6 +18,11 @@ require("noice").setup({
 		},
 	},
 	views = {
+		mini = {
+			win_options = {
+				winblend = 0,
+			},
+		},
 		cmdline_popup = {
 			position = {
 				row = 5,
@@ -48,3 +53,8 @@ require("noice").setup({
 		},
 	},
 })
+
+ require('notify').setup ({
+    -- other stuff
+    background_colour = "#000000"
+  })
