@@ -80,6 +80,7 @@ require("lazy").setup({
 	{
 		"windwp/nvim-autopairs",
 		-- This was written in lua so we do this config thing
+		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup()
 		end,
@@ -88,6 +89,7 @@ require("lazy").setup({
 	-- Add smooth scrolling to avoid jumps
 	{
 		"karb94/neoscroll.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("neoscroll").setup()
 		end,
@@ -96,6 +98,7 @@ require("lazy").setup({
 	-- All closing buffers without closing the split
 	{
 		"famiu/bufdelete.nvim",
+		event = "VeryLazy",
 	},
 
 	-- Split arrays and methods onto multiple lines, or join them back up.
@@ -112,6 +115,7 @@ require("lazy").setup({
 	-- Automatically fix indentation when pasting code.
 	{
 		"sickill/vim-pasta",
+		event = "VeryLazy",
 		config = function()
 			vim.g.pasta_disabled_filetypes = { "fugitive" }
 		end,
@@ -163,6 +167,7 @@ require("lazy").setup({
 	-- Git integration.
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("gitsigns").setup({ current_line_blame = true })
 		end,
@@ -171,6 +176,7 @@ require("lazy").setup({
 	--- Floating terminal.
 	{
 		"voldikss/vim-floaterm",
+		event = "VeryLazy",
 		config = function()
 			require("user/plugins/floaterm")
 		end,
@@ -238,11 +244,13 @@ require("lazy").setup({
 	-- Diff view - Cycle through different git changes leader-aj
 	{
 		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 	},
 
 	-- UFO
 	{
 		"kevinhwang91/nvim-ufo",
+		event = "VeryLazy",
 		dependencies = {
 			"kevinhwang91/promise-async",
 			"luukvbaal/statuscol.nvim",
@@ -269,6 +277,7 @@ require("lazy").setup({
 	-- TODO Comments
 	{
 		"folke/todo-comments.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
@@ -276,11 +285,14 @@ require("lazy").setup({
 	-- Trouble to toggle diagnostics at bottom
 	{
 		"folke/trouble.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("user/plugins/trouble")
 		end,
 	},
+
+	{ "gelguy/wilder.nvim", event = "VeryLazy" },
 
 	----------------------------- Languages ---------------------------------
 
