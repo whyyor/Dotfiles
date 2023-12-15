@@ -25,10 +25,13 @@ yabai -m mouse_drop_action swap
 
 # Focus back when window closed
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=window_minimized action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_hidden action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 # Ignore tiling applications
 yabai -m rule --add app="Calculator" sticky=on layer=above manage=off
+yabai -m rule --add app="Intermission" sticky=on layer=above manage=off
 yabai -m rule --add app="Finder" sticky=on layer=above manage=off
 yabai -m rule --add app="Simulator" sticky=on layer=above manage=off
 yabai -m rule --add app="OBS Studio" sticky=on layer=above manage=off
