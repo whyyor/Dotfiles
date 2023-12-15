@@ -82,4 +82,26 @@ vim.keymap.set("n", "<A-down>", ":resize -2<CR>")
 vim.keymap.set("n", "<A-right>", ":vertical resize +2<CR>")
 vim.keymap.set("n", "<A-left>", ":vertical resize -2<CR>")
 
--- Set up the key for trouble
+-- Functions to goto proper diagnostics
+local diagnostic_goto = function(next, severity)
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
+end
+
+-- Keymaps
+vim.keymap.set("n", "<Leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>")
+vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+vim.keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+vim.keymap.set("n", "gi", ":Telescope lsp_implementations<CR>")
+vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+vim.keymap.set("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
