@@ -292,8 +292,18 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Wilder - better popup menu
 	{ "gelguy/wilder.nvim", event = "VeryLazy" },
 
+	-- Harpoon
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("user/plugins/harpoon")
+		end,
+	},
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error

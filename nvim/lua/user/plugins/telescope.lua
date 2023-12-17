@@ -51,6 +51,7 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("live_grep_args")
 require("telescope").load_extension("lazygit")
+require('telescope').load_extension('harpoon')
 
 ---- Flutter
 require("telescope").load_extension("flutter")
