@@ -25,31 +25,18 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
 	end,
 })
 
--- Open harpoon
-vim.keymap.set("n", "<Leader>j", ":Telescope harpoon marks<CR>")
-
--- Adding marks opening harpoon
-vim.keymap.set("n", "<leader>v", function()
-	harpoon:list():append()
-end)
-
--- Delete current mark
-vim.keymap.set("n", "<leader>z", function()
-	local Path = require("plenary.path")
-	local list = require("harpoon"):list()
-
-	for i, displayed in ipairs(list:display()) do
-		if Path:new(displayed):absolute() == vim.api.nvim_buf_get_name(0) then
-			list:removeAt(i)
-			return
-		end
-	end
-end)
-
--- clear all marks
-vim.keymap.set("n", "<leader>cc", function()
-	harpoon:list():clear()
-end)
+-- Harpoon Keymaps
+vim.keymap.set("n", "<Leader>j", ":Telescope harpoon marks<CR>", { desc = "Open harpoon via telescope" })
+vim.keymap.set("n", "<Leader>v", "<cmd>lua require('harpoon'):list():append()<cr>", { desc = "Mark file with harpoon" })
+vim.keymap.set(
+	"n",
+	"<Leader>z",
+	"<cmd>lua require('harpoon'):list():remove()<cr>",
+	{ desc = "Remove file from harpoon" }
+)
+vim.keymap.set("n", "[n", "<cmd>lua require('harpoon'):list():next()<cr>", { desc = "Go to next harpoon mark" })
+vim.keymap.set("n", "]n", "<cmd>lua require('harpoon'):list():prev()<cr>", { desc = "Go to prev harpoon mark" })
+vim.keymap.set("n", "<Leader>cc", "<cmd>lua require('harpoon'):list():clear()<cr>", { desc = "Clear all marks" })
 
 -- Cycle through files
 vim.keymap.set("n", "<leader>1", function()
