@@ -26,19 +26,30 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
 })
 
 -- Open harpoon
-vim.keymap.set("n", "<leader>j", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
+vim.keymap.set("n", "<Leader>j", ":Telescope harpoon marks<CR>")
 
 -- Adding marks opening harpoon
 vim.keymap.set("n", "<leader>v", function()
 	harpoon:list():append()
 end)
 
+-- Delete current mark
+vim.keymap.set("n", "<leader>z", function()
+	local Path = require("plenary.path")
+	local list = require("harpoon"):list()
+
+	for i, displayed in ipairs(list:display()) do
+		if Path:new(displayed):absolute() == vim.api.nvim_buf_get_name(0) then
+			list:removeAt(i)
+			return
+		end
+	end
+end)
+
 -- clear all marks
--- vim.keymap.set("n", "<leader>jc", function()
--- 	harpoon:list():clear()
--- end)
+vim.keymap.set("n", "<leader>cc", function()
+	harpoon:list():clear()
+end)
 
 -- Cycle through files
 vim.keymap.set("n", "<leader>1", function()
