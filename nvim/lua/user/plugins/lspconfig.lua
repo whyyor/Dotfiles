@@ -58,3 +58,12 @@ require("lspconfig").tsserver.setup({
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
 })
+
+
+-- setup ts-server for all sorts of languages
+require("lspconfig").jsonls.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingRangeProvider = false
+	end,
+})
