@@ -30,7 +30,6 @@ require("mason-lspconfig").setup({
 require("user/plugins/lsp/html")
 -- Use vpn if they don't install for some reason
 
-
 --commands
 vim.cmd("autocmd BufWritePost * lua vim.lsp.buf.format()")
 
@@ -51,6 +50,7 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 -- setup lsp_zero
 lsp_zero.setup()
 
+-- INFO: Configure language servers here
 -- setup ts-server for all sorts of languages
 require("lspconfig").tsserver.setup({
 	on_init = function(client)
@@ -59,8 +59,7 @@ require("lspconfig").tsserver.setup({
 	end,
 })
 
-
--- setup ts-server for all sorts of languages
+-- setup json for all sorts of languages
 require("lspconfig").jsonls.setup({
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false

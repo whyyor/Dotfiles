@@ -16,6 +16,7 @@ local lSsources = {
 	}),
 	null_ls.builtins.formatting.jq.with({
 		filetypes = {
+			"arb",
 			"json"
 		},
 	}),
