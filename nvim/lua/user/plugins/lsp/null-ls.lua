@@ -1,3 +1,10 @@
+-- INFO: Here we keep arb = json.
+vim.filetype.add({
+	extension = {
+		arb = "json",
+	},
+})
+
 local null_ls = require("null-ls")
 local lSsources = {
 	-- add language servers here
@@ -16,7 +23,6 @@ local lSsources = {
 	}),
 	null_ls.builtins.formatting.jq.with({
 		filetypes = {
-			"arb",
 			"json"
 		},
 	}),
