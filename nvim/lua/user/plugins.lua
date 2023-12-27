@@ -182,6 +182,16 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Display indentation lines. INFO: Disabled because not needed
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	config = function()
+	-- 		require("user/plugins/indent-blankline")
+	-- 	end,
+	-- 	opts = {},
+	-- },
+
 	-- Improved syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
