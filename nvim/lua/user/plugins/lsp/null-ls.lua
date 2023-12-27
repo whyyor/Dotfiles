@@ -21,11 +21,7 @@ local lSsources = {
 			"yaml",
 		},
 	}),
-	null_ls.builtins.formatting.jq.with({
-		filetypes = {
-			"json"
-		},
-	}),
+	null_ls.builtins.formatting.jq,
 	null_ls.builtins.formatting.black,
 	null_ls.builtins.formatting.stylua,
 }

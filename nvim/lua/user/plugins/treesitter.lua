@@ -1,5 +1,8 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "all",
+	-- ensure_installed = "all",
+	auto_install = true,
+	-- INFO: Automatically install parser for detected language on the go
+	-- WARNING: Set ensure_installed to all if you encounter treesitter issues
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = true,
