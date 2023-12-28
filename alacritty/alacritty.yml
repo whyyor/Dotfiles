@@ -2,9 +2,8 @@ env:
   TERM: xterm-256color
 
 # Background opacity
-
 window:
-  opacity: 0.90
+  opacity: 0.85
   padding:
     x: 17
     y: 12
@@ -60,8 +59,7 @@ mouse:
 colors:
   # Default colors
   primary:
-    # background: "0x26292c"
-    background: "0x262626"
+    background: "0x1d1f21"
     foreground: "0xdedede"
 
   # Cursor colors
