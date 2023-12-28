@@ -2,7 +2,7 @@ local trouble = require("trouble")
 
 trouble.setup({
 	opts = {
-		mode = "document_diagnostics",
+		mode = "workspace_diagnostics",
 	},
 })
 
