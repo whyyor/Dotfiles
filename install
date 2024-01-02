@@ -17,6 +17,7 @@ then
     brew install xclip
     brew install pngpaste
     brew install lazygit
+    brew install --cask sioyek
 else
     echo "Skipping Homebrew installations."
 fi
