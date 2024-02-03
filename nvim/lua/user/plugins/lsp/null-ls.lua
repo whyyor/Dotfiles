@@ -8,17 +8,10 @@ vim.filetype.add({
 local null_ls = require("null-ls")
 local lSsources = {
 	-- add language servers here
+	null_ls.builtins.formatting.prettier,
 	null_ls.builtins.formatting.prettier.with({
 		filetypes = {
-			"javascript",
-			"typescript",
-			"scss",
-			"css",
-			"tsx",
-			"jsx",
 			"vimwiki",
-			"md",
-			"yaml",
 		},
 	}),
 	null_ls.builtins.formatting.jq,
