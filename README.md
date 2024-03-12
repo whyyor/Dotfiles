@@ -14,6 +14,8 @@ If for some reason `./install` doesn't work, make sure you make it executable us
 - [oh my posh](https://ohmyposh.dev/)
   - Make sure to add `eval "$(oh-my-posh --init --shell zsh --config ~/poshthemes/monokai.omp.json)"` to your shell rc
   - Replace `"template": "Whyyor"` to `"template": "{{ .UserName }} "` if you want your username
+- lazy-git
+  - For using neovim as default external editor in lazygit make sure to add `export XDG_CONFIG_HOME="$HOME/.config"` to your shell rc
 
 ### Fixing errors
 

@@ -1,0 +1,4 @@
+os:
+  openCommand: nvim {{filename}}
+  editCommand: nvim {{filename}}
+  editCommandTemplate: nvim "{{filename}}" +{{line}}

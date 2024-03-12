@@ -36,6 +36,8 @@ ln -s $DOTFILES/sioyek $HOME/.config/
 rm -rf $HOME/.config/yabai
 ln -s $DOTFILES/yabai $HOME/.config/
 
+rm -rf $HOME/.config/lazygit
+ln -s $DOTFILES/lazygit $HOME/.config/
 
 rm -rf $HOME/.config/scripts
 ln -s $DOTFILES/scripts $HOME/.config/

@@ -315,6 +315,9 @@ require("lazy").setup({
 			require("user/plugins/harpoon")
 		end,
 	},
+
+	-- Copilot
+	{ "github/copilot.vim" },
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error
