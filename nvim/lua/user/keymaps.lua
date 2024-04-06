@@ -64,8 +64,11 @@ vim.keymap.set("n", "gS", ":Gitsigns undo_stage_hunk<CR>")
 vim.keymap.set("n", "gp", ":Gitsigns preview_hunk<CR>")
 vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
 
--- Markdown preview
+-- Wiki keybindings
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
+vim.keymap.set("n", "<leader>ml", ":VimwikiFollowLink<CR>")
+vim.keymap.set("n", "<leader>mt", ":VimwikiNextLink<CR>")
+vim.keymap.set("n", "<leader>mp", ":VimwikiPrevLink<CR>")
 
 -- Git diff
 vim.keymap.set("n", "<Leader>af", ":DiffviewOpen<CR>")

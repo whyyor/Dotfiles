@@ -2,6 +2,7 @@
 local M = {}
 
 M.setup = function()
+	vim.g.vimwiki_key_mappings = { table_mappings = 0 }
 	vim.g.vimwiki_list = {
 		{
 			path = "~/notes",
