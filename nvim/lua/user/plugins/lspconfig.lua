@@ -66,3 +66,10 @@ require("lspconfig").jsonls.setup({
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
 })
+
+require("lspconfig").lua_ls.setup({
+	on_init = function(client)
+				client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentFormattingRangeProvider = true
+	end,
+})

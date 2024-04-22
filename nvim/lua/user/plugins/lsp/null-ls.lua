@@ -16,7 +16,6 @@ local lSsources = {
 	}),
 	null_ls.builtins.formatting.jq,
 	null_ls.builtins.formatting.black,
-	null_ls.builtins.formatting.stylua,
 }
 null_ls.setup({
 	sources = lSsources,

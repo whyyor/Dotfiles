@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
 
 -- Harpoon Keymaps
 vim.keymap.set("n", "<Leader>j", ":Telescope harpoon marks<CR>", { desc = "Open harpoon via telescope" })
-vim.keymap.set("n", "<Leader>v", "<cmd>lua require('harpoon'):list():append()<cr>", { desc = "Mark file with harpoon" })
+vim.keymap.set("n", "<Leader>v", "<cmd>lua require('harpoon'):list():add()<cr>", { desc = "Mark file with harpoon" })
 vim.keymap.set(
 	"n",
 	"<Leader>z",
