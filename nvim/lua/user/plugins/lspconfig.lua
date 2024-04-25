@@ -69,7 +69,14 @@ require("lspconfig").jsonls.setup({
 
 require("lspconfig").lua_ls.setup({
 	on_init = function(client)
-				client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentFormattingRangeProvider = true
+	end,
+})
+
+require("lspconfig").pylsp.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = true
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
 })
