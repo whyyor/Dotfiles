@@ -80,3 +80,10 @@ require("lspconfig").pylsp.setup({
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
 })
+
+require("lspconfig").dockerls.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentFormattingRangeProvider = true
+	end,
+})
