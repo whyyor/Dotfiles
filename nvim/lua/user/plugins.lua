@@ -318,6 +318,10 @@ require("lazy").setup({
 
 	-- Copilot
 	{ "github/copilot.vim" },
+
+	-- Dressing - for code actions
+	{ "stevearc/dressing.nvim", event = "VeryLazy" },
+
 	----------------------------- Languages ---------------------------------
 
 	-- Flutter - for some reason savings gives error
