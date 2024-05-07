@@ -1,3 +1,3 @@
 require("mason-null-ls").setup({
-  ensure_installed = {  "jq", "prettier", "black" },
-}) 
+	ensure_installed = { "jq", "prettier", "black", "stylua" },
+})
