@@ -346,14 +346,6 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
-		init = require("user/plugins/markdown-preview"), -- This line is changed
-		ft = { "markdown" },
-	},
-
 	-- For pasting images
 	{
 		-- Not using original clipboard-image due to check-health bug
@@ -363,4 +355,14 @@ require("lazy").setup({
 			require("user/plugins/clipboard-image")
 		end,
 	},
+
+	-- Add this to your plugin configuration section
+	{
+	"MeanderingProgrammer/markdown.nvim",
+	name = "render-markdown",
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	config = function()
+		require("user/plugins/markdown")
+	end,
+}
 })

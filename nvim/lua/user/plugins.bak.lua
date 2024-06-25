@@ -234,7 +234,7 @@ use({
 	config = function()
 		require("user/plugins/lspconfig")
 	end,
-}),
+})
 
 -- Completion
 use({
