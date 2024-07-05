@@ -358,11 +358,13 @@ require("lazy").setup({
 
 	-- Add this to your plugin configuration section
 	{
-	"MeanderingProgrammer/markdown.nvim",
-	name = "render-markdown",
-	dependencies = { "nvim-treesitter/nvim-treesitter" },
-	config = function()
-		require("user/plugins/markdown")
-	end,
-}
+		"OXY2DEV/markview.nvim",
+		config = function()
+			require("user/plugins/markdown")
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 })
