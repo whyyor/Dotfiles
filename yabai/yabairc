@@ -30,12 +30,12 @@ yabai -m signal --add event=application_hidden action="yabai -m query --windows 
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 # Ignore tiling applications
-yabai -m rule --add app="Calculator" sticky=on layer=above manage=off
-yabai -m rule --add app="Intermission" sticky=on layer=above manage=off
-yabai -m rule --add app="Finder" sticky=on layer=above manage=off
-yabai -m rule --add app="Simulator" sticky=on layer=above manage=off
-yabai -m rule --add app="OBS Studio" sticky=on layer=above manage=off
-yabai -m rule --add app="System Settings" sticky=on layer=above manage=off
-yabai -m rule --add app="NeatDownloadManager" sticky=on layer=above manage=off
-yabai -m rule --add app="Chat" sticky=on layer=above manage=off
-yabai -m rule --add app="qemu-system-aarch64" sticky=on layer=above manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Intermission$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="Simulator" manage=off
+yabai -m rule --add app="^OBS Studio$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^NeatDownloadManager$" manage=off
+yabai -m rule --add app="^Chat$" manage=off
+yabai -m rule --add app="^qemu-system-aarch64$" manage=off
