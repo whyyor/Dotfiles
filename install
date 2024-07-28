@@ -18,6 +18,8 @@ then
     brew install pngpaste
     brew install lazygit
     brew install --cask sioyek
+    brew install --cask lookaway
+    brew install mpv
 else
     echo "Skipping Homebrew installations."
 fi
@@ -51,6 +53,8 @@ ln -s $DOTFILES/scripts/com.user.restartintermission.plist $HOME/Library/LaunchA
 rm -rf $HOME/.config/skhd
 ln -s $DOTFILES/skhd $HOME/.config/
 
+rm -rf $HOME/.config/mpv
+ln -s $DOTFILES/mpv $HOME/.config/
 
 rm -rf $HOME/poshthemes
 ln -s $DOTFILES/poshthemes $HOME/
