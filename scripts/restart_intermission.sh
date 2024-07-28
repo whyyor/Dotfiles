@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if Intermission is running
-if ! pgrep -f "Intermission" > /dev/null
+if ! pgrep -f "LookAway" > /dev/null
 then
     # Start Intermission if not running
-    open -a Intermission
+    open -a LookAway
 fi
