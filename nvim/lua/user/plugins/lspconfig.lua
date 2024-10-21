@@ -22,7 +22,7 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"pylsp",
 		-- You may need to install python3-venv to install pylsp
-		"tsserver",
+		"ts_ls",
 		"tailwindcss",
 	},
 })
@@ -52,7 +52,7 @@ lsp_zero.setup()
 
 -- INFO: Configure language servers here
 -- setup ts-server for all sorts of languages
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
@@ -68,7 +68,7 @@ require("lspconfig").jsonls.setup({
 })
 
 require("lspconfig").lua_ls.setup({
-		on_init = function(client)
+	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
