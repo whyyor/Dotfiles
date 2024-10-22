@@ -16,9 +16,6 @@ local lSsources = {
 		},
 	}),
 	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.diagnostics.ruff,
-	-- INFO: If we move jq up for some reason, everything below it breaks.
-	null_ls.builtins.formatting.jq,
 }
 null_ls.setup({
 	sources = lSsources,

@@ -271,19 +271,6 @@ require("lazy").setup({
 		-- fold toggle using 'za'
 	},
 
-	-- Noice
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("user/plugins/noice")
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	},
-
 	-- TODO Comments
 	{
 		"folke/todo-comments.nvim",

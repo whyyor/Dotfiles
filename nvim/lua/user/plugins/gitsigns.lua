@@ -41,9 +41,6 @@ require("gitsigns").setup({
 		row = 0,
 		col = 1,
 	},
-	yadm = {
-		enable = false,
-	},
 	on_attach = function()
 		-- Set highlight groups for GitSigns
 		vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = colors.add, bg = NONE })
