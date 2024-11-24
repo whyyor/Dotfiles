@@ -359,6 +359,13 @@ require("lazy").setup({
 		end,
 	},
 
+ {
+  "karb94/neoscroll.nvim",
+  config = function ()
+    require('neoscroll').setup({ })
+  end
+},
+
 	-- Add this to your plugin configuration section
 	{
 		"OXY2DEV/markview.nvim",
