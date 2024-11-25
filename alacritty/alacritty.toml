@@ -1,0 +1,105 @@
+save_to_clipboard = true
+"window.dynamic_title" = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "0x72696a"
+blue = "0xf38d70"
+cyan = "0x85dacc"
+green = "0xadda78"
+magenta = "0xa8a9eb"
+red = "0xfd6883"
+white = "0xfff1f3"
+yellow = "0xf9cc6c"
+
+[colors.cursor]
+cursor = "0xffa460"
+text = "0xffffff"
+
+# Set to false to disable completely
+smooth_motion = true
+# 0.0 = cursor is not moving, 1.0 = cursor moves instantly
+smooth_motion_factor = 0.7
+# 0.0 = broken, 1.0 = cursor shape is unaffected by movement
+smooth_motion_spring = 0.5
+# Limits how the cursor size may change
+smooth_motion_max_stretch_x = 3.0
+smooth_motion_max_stretch_y = 3.0
+# Override "block" cursor if you don't like how it looks in this fork
+# I prefer "underline"
+block_replace_shape = "underline"
+
+[colors.normal]
+black = "0x2c2525"
+blue = "0xf38d70"
+cyan = "0x85dacc"
+green = "0xadda78"
+magenta = "0xa8a9eb"
+red = "0xfd6883"
+white = "0xfff1f3"
+yellow = "0xf9cc6c"
+
+[colors.primary]
+background = "0x1d1f21"
+foreground = "0xdedede"
+
+[cursor]
+style = "block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+AppleFontSmooth = true
+size = 18
+
+[font.bold]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 5
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "ExtraLight Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "ExtraLight"
+
+[font.offset]
+x = 0
+y = 14
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+background_opacity = 0.8
+decorations = "none"
+dynamic_padding = true
+opacity = 0.7
+title = "Alacritty@Whyyor"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 17
+y = 12
+
+[general]
+live_config_reload = true
