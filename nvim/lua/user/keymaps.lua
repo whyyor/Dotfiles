@@ -28,7 +28,7 @@ vim.keymap.set("i", ",,", "<Esc>A,")
 vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>")
 
 -- autosave on buffer change
-vim.cmd("autocmd BufHidden * :wa")
+vim.cmd("autocmd BufHidden * silent! :wa")
 
 -- Exit
 vim.keymap.set("n", "<Leader>x", ":q<CR>")
