@@ -86,15 +86,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Add smooth scrolling to avoid jumps
-	-- {
-	-- 	"karb94/neoscroll.nvim",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require("neoscroll").setup()
-	-- 	end,
-	-- },
-
 	-- All closing buffers without closing the split
 	{
 		"famiu/bufdelete.nvim",
@@ -341,6 +332,19 @@ require("lazy").setup({
 	-- Prisma
 	{ "prisma/vim-prisma" },
 
+	-- Cinnamon
+	{
+		"declancm/cinnamon.nvim",
+		version = "*",
+		config = function()
+			require("user/plugins/cinnamon")
+		end,
+		keys = {
+			{ "<c-d>", '<cmd>lua require("cinnamon").scroll("<C-d>zz")<cr>', mode = "n" },
+			{ "<c-u>", '<cmd>lua require("cinnamon").scroll("<C-u>zz")<cr>', mode = "n" },
+		},
+	},
+
 	----------------------------- Vim Wiki ---------------------------------
 	{
 		"vimwiki/vimwiki",
@@ -358,13 +362,6 @@ require("lazy").setup({
 			require("user/plugins/clipboard-image")
 		end,
 	},
-
- {
-  "karb94/neoscroll.nvim",
-  config = function ()
-    require('neoscroll').setup({ })
-  end
-},
 
 	-- Add this to your plugin configuration section
 	{
