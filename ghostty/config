@@ -1,0 +1,19 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+background = 1d1f21
+foreground = dedede
+
+background-opacity = 0.75
+background-blur-radius = 10
+
+font-size = 18
+
+font-family = JetBrainsMono NFM Light
+window-decoration = false
+
+
+theme = Monokai Remastered
+adjust-cell-height = 20%
+
+window-padding-x = 17
+window-padding-y = 8
