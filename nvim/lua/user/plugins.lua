@@ -332,17 +332,10 @@ require("lazy").setup({
 	-- Prisma
 	{ "prisma/vim-prisma" },
 
-	-- Cinnamon
+	-- Smooth scrolling
 	{
-		"declancm/cinnamon.nvim",
-		version = "*",
-		config = function()
-			require("user/plugins/cinnamon")
-		end,
-		keys = {
-			{ "<c-d>", '<cmd>lua require("cinnamon").scroll("<C-d>zz")<cr>', mode = "n" },
-			{ "<c-u>", '<cmd>lua require("cinnamon").scroll("<C-u>zz")<cr>', mode = "n" },
-		},
+		"karb94/neoscroll.nvim",
+		opts = {},
 	},
 
 	----------------------------- Vim Wiki ---------------------------------
@@ -374,5 +367,4 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-
 })
