@@ -1,19 +1,47 @@
 # The syntax is "key = value". The whitespace around the
-# equals doesn't matter.
-background = 1d1f21
-foreground = dedede
-
 background-opacity = 0.75
 background-blur-radius = 10
 
+
+# Font
+font-family = JetBrainsMono NFM Light
 font-size = 18
 
-font-family = JetBrainsMono NFM Light
+# macos-titlebar-style = hidden # Gives rounded corners
+confirm-close-surface = false
 window-decoration = false
 
-
+# Theme
 theme = Monokai Remastered
 adjust-cell-height = 20%
 
-window-padding-x = 17
-window-padding-y = 8
+# Padding
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+# Theme
+background = 171819
+foreground = dedede
+palette = 0=#2c2525 
+palette = 1=#fd6883
+palette = 2=#adda78
+palette = 3=#f9cc6c
+palette = 4=#f38d70
+palette = 5=#a8a9eb
+palette = 6=#85dacc
+palette = 7=#fff1f3
+palette = 8=#72696a
+palette = 9=#fd6883
+palette = 10=#adda78
+palette = 11=#f9cc6c
+palette = 12=#f38d70
+palette = 13=#a8a9eb
+palette = 14=#85dacc
+palette = 15=#fff1f3
+cursor-color = ffa460
+
+auto-update = check
+
+# Keybinds
+keybind = super+r=reload_config
