@@ -63,6 +63,12 @@ Remember, when creating a symbolic link on macOS (or any Unix-like OS), the targ
 
 ## Theme: Monokai
 
+## Nix - WIP
+
+- I update my packages using - `darwin-rebuild switch --flake ~/Configration/nix#whyyormac`
+- Replace `keshavkhatri` with your username in nix config
+- Replace `whyyormac` with your username in nix config
+
 ## Fonts Used
 
 JetBrainMono Nerd Font can be found here -> [Nerd Fonts](https://www.nerdfonts.com/font-downloads).

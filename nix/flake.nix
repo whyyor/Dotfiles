@@ -51,6 +51,8 @@
           "appcleaner"
           "mac-mouse-fix"
           "sioyek"
+          "flux"
+          "keyboardcleantool"
         ];
         onActivation = {
         autoUpdate = true;
