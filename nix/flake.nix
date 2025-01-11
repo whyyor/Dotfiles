@@ -27,7 +27,6 @@
           pkgs.ripgrep
           pkgs.xclip
           pkgs.pngpaste
-          pkgs.mpv
           pkgs.cocoapods
           pkgs.spicetify-cli
         ];
@@ -39,12 +38,11 @@
           "koekeishiya/formulae/yabai"
           "koekeishiya/formulae/skhd"
           "yt-dlp"
-        ];
-        taps = [
-
+          "mpv"
         ];
         casks = [
           # "aldente"
+          "chatgpt"
           "lookaway"
           "zen-browser"
           "ghostty"
@@ -53,11 +51,13 @@
           "sioyek"
           "flux"
           "keyboardcleantool"
+          "automattic-texts"
+          "slack"
         ];
         onActivation = {
-        autoUpdate = true;
-        # 'zap': uninstalls all formulae(and related files) not listed here.
-        cleanup = "zap";
+          cleanup = "zap";
+          autoUpdate = true;
+          upgrade = true;
         };
       };
 
@@ -89,6 +89,34 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
+
+
+      system.activationScripts.customSettings = ''
+        # Show hidden files in Finder
+        defaults write com.apple.finder AppleShowAllFiles YES
+        killall Finder
+
+        # Make Dock faster
+        defaults write com.apple.dock autohide-delay -int 0
+        defaults write com.apple.dock autohide-time-modifier -float 0.4
+        killall Dock
+
+        # Disable accents when holding down a key
+        defaults write -g ApplePressAndHoldEnabled -bool false
+      '';
+
+      system.defaults = {
+        dock.autohide = true;
+        dock.persistent-apps = [
+          "/Applications/Zen Browser.app"
+          "/Applications/Ghostty.app"
+          "/Applications/ChatGPT.app"
+          "/Applications/Texts.app"
+        ];
+        loginwindow.GuestEnabled = false;
+        NSGlobalDomain.AppleInterfaceStyle = "Dark";
+        NSGlobalDomain.KeyRepeat = 2;
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
