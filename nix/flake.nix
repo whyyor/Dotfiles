@@ -29,6 +29,7 @@
           pkgs.pngpaste
           pkgs.cocoapods
           pkgs.spicetify-cli
+          pkgs.openjdk17
         ];
 
       homebrew = {
@@ -38,11 +39,20 @@
           "koekeishiya/formulae/yabai"
           "koekeishiya/formulae/skhd"
           "yt-dlp"
-          "mpv"
+          "node"
+          "python@3.11"
+          "pyenv"
+          "n"
+          "mas"
+          "dart"
+        ];
+        taps = [
+          "dart-lang/dart"
         ];
         casks = [
-          # "aldente"
+          "aldente"
           "chatgpt"
+          "caffeine"
           "lookaway"
           "zen-browser"
           "ghostty"
@@ -53,7 +63,15 @@
           "keyboardcleantool"
           "automattic-texts"
           "slack"
+          "hiddenbar"
+          "android-studio"
+          "postman"
+          "microsoft-teams"
+          "spotify"
         ];
+        masApps = {
+          "xcode" = 497799835;
+        };
         onActivation = {
           cleanup = "zap";
           autoUpdate = true;
@@ -90,21 +108,6 @@
         done
       '';
 
-
-      system.activationScripts.customSettings = ''
-        # Show hidden files in Finder
-        defaults write com.apple.finder AppleShowAllFiles YES
-        killall Finder
-
-        # Make Dock faster
-        defaults write com.apple.dock autohide-delay -int 0
-        defaults write com.apple.dock autohide-time-modifier -float 0.4
-        killall Dock
-
-        # Disable accents when holding down a key
-        defaults write -g ApplePressAndHoldEnabled -bool false
-      '';
-
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
@@ -113,6 +116,7 @@
           "/Applications/ChatGPT.app"
           "/Applications/Texts.app"
         ];
+        dock.show-recents = false;
         loginwindow.GuestEnabled = false;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
         NSGlobalDomain.KeyRepeat = 2;
