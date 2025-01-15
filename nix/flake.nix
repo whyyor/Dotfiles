@@ -68,9 +68,14 @@
           "postman"
           "microsoft-teams"
           "spotify"
+          "mongodb-compass"
+          "stremio"
+          "iina"
+          "obs"
         ];
         masApps = {
           "xcode" = 497799835;
+          "Davinci Resolve" = 571213070;
         };
         onActivation = {
           cleanup = "zap";
