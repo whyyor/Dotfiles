@@ -123,8 +123,22 @@
         ];
         dock.show-recents = false;
         loginwindow.GuestEnabled = false;
-        NSGlobalDomain.AppleInterfaceStyle = "Dark";
-        NSGlobalDomain.KeyRepeat = 2;
+        NSGlobalDomain = {
+          AppleShowAllExtensions = true;
+          ApplePressAndHoldEnabled = false;
+          AppleInterfaceStyle = "Dark";
+
+          KeyRepeat = 2;
+          InitialKeyRepeat = 15;
+
+          "com.apple.mouse.tapBehavior" = 1;
+          "com.apple.sound.beep.volume" = 0.0;
+          "com.apple.sound.beep.feedback" = 0;
+        };
+        trackpad = {
+          Clicking = true;
+          TrackpadThreeFingerDrag = true;
+        };
       };
 
       # Necessary for using flakes on this system.
