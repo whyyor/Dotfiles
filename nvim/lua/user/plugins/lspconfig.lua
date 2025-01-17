@@ -1,12 +1,27 @@
+-- LSP Zero - Don't know what's it's doing
+local lsp_zero = require("lsp-zero")
+
+lsp_zero.on_attach(function(client, bufnr)
+	lsp_zero.default_keymaps({ buffer = bufnr })
+	lsp_zero.highlight_symbol(client, bufnr)
+	lsp_zero.buffer_autoformat()
+end)
+
+lsp_zero.ui({
+	float_border = "rounded",
+	sign_text = {
+		error = "✘",
+		warn = "▲",
+		hint = "⚑",
+		info = "»",
+	},
+})
+
 -- Setup Mason to automatically install LSP servers
 require("mason").setup()
 
 -- Null-ls Setup
 require("user/plugins/lsp/null-ls")
-
--- Setup lsp-zero
-local lsp_zero = require("lsp-zero")
-lsp_zero.preset("recommended")
 
 require("mason-lspconfig").setup({
 	automatic_installation = true, -- Automatically install LSP servers.
@@ -47,9 +62,6 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
--- setup lsp_zero
-lsp_zero.setup()
-
 -- INFO: Configure language servers here
 -- setup ts-server for all sorts of languages
 require("lspconfig").ts_ls.setup({
@@ -87,7 +99,6 @@ require("lspconfig").dockerls.setup({
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
 })
-
 
 require("lspconfig").nil_ls.setup({
 	on_init = function(client)
