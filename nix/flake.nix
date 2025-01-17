@@ -47,6 +47,7 @@
           "mas"
           "dart"
           "taskell"
+          "mpv"
         ];
         taps = [
           "dart-lang/dart"
@@ -72,7 +73,6 @@
           "spotify"
           "mongodb-compass"
           "stremio"
-          "iina"
           "obs"
           "windscribe"
         ];
