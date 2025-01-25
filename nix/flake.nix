@@ -48,6 +48,7 @@
           "dart"
           "taskell"
           "mpv"
+          "imagemagick"
         ];
         taps = [
           "dart-lang/dart"
