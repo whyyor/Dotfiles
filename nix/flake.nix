@@ -28,9 +28,9 @@
           pkgs.xclip
           pkgs.pngpaste
           pkgs.cocoapods
-          pkgs.spicetify-cli
           pkgs.openjdk17
           pkgs.ffmpeg
+          pkgs.spotify
         ];
 
       homebrew = {
@@ -49,6 +49,8 @@
           "taskell"
           "mpv"
           "imagemagick"
+          "spicetify-cli"
+          "luarocks" # Only used for latex remove when not required
         ];
         taps = [
           "dart-lang/dart"
@@ -71,7 +73,6 @@
           "android-studio"
           "postman"
           "microsoft-teams"
-          "spotify"
           "mongodb-compass"
           "stremio"
           "obs"
