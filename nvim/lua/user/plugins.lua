@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Monokai theme
 	{
 		"tanvirtin/monokai.nvim",
 		config = function()
@@ -20,7 +19,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Commenting support using 'n'`gcc`
 	{ "tpope/vim-commentary" },
 
 	-- Add, change, and delete surrounding text.

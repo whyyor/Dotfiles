@@ -1,6 +1,6 @@
 # The syntax is "key = value". Press super + r to reload config
-background-opacity = 0.5
-background-blur-radius = 70
+background-opacity = 0.65
+background-blur-radius = 80
 
 # Font
 font-family = JetBrainsMono NFM Light
