@@ -44,33 +44,33 @@ local function config_lualine(colors)
 	local filename = {
 		"filename",
 		color = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local filetype = {
 		"filetype",
 		icons_enabled = false,
 		color = { bg = colors.gray2, fg = colors.blue, gui = "italic,bold" },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local branch = {
 		"branch",
 		icon = "",
 		color = { bg = colors.green, fg = colors.bg, gui = "bold" },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local location = {
 		"location",
 		color = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local diff = {
 		"diff",
 		color = { bg = colors.gray2, fg = colors.bg, gui = "bold" },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 		symbols = { added = " ", modified = " ", removed = " " },
 
 		diff_color = {
@@ -86,7 +86,7 @@ local function config_lualine(colors)
 			local mode_color = modecolor
 			return { bg = mode_color[vim.fn.mode()], fg = colors.bg_dark, gui = "bold" }
 		end,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local function getLspName()
@@ -162,14 +162,14 @@ local function config_lualine(colors)
 			hint = { fg = colors.cyan },
 		},
 		color = { bg = colors.gray2, fg = colors.blue, gui = "bold" },
-		separator = { left = "" },
+		separator = { left = "" },
 	}
 
 	local lsp = {
 		function()
 			return getLspName()
 		end,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 		color = { bg = colors.purple, fg = colors.bg, gui = "italic,bold" },
 	}
 
