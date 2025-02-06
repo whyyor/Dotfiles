@@ -30,7 +30,7 @@
           pkgs.cocoapods
           pkgs.openjdk17
           pkgs.ffmpeg
-          pkgs.spotify
+          pkgs.wget
         ];
 
       homebrew = {
@@ -50,7 +50,6 @@
           "mpv"
           "imagemagick"
           "spicetify-cli"
-          "luarocks" # Only used for latex remove when not required
         ];
         taps = [
           "dart-lang/dart"
@@ -76,6 +75,7 @@
           "mongodb-compass"
           "stremio"
           "obs"
+          "spotify"
           "windscribe"
         ];
         masApps = {

@@ -1,81 +1,78 @@
-local actions = require("telescope.actions")
+local telescope = require("telescope")
+local builtin = require("telescope.builtin")
+local map = vim.keymap.set
 
-vim.cmd([[
-  highlight link TelescopePromptTitle PMenuSel
-  highlight link TelescopePreviewTitle PMenuSel
-  highlight link TelescopePromptNormal NormalFloat
-  highlight link TelescopePromptBorder FloatBorder
-  highlight link TelescopeNormal CursorLine
-  highlight link TelescopeBorder CursorLineBg
-]])
-
-require("telescope").setup({
+-- Adjust Telescope setup
+telescope.setup({
 	defaults = {
-		path_display = { truncate = 1 },
 		prompt_prefix = "   ",
 		selection_caret = "  ",
-		layout_config = {
-			prompt_position = "top",
-		},
 		sorting_strategy = "ascending",
-		mappings = {
-			i = {
-				["<esc>"] = actions.close,
-				["<C-Down>"] = actions.cycle_history_next,
-				["<C-Up>"] = actions.cycle_history_prev,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.6,
+				width = 0.9,
+				height = 0.8,
+			},
+			vertical = {
+				width = 0.9,
+				height = 0.95,
+				preview_height = 0.5,
 			},
 		},
-		file_ignore_patterns = { ".git/" },
+		file_ignore_patterns = { ".git/", "node_modules" },
+		winblend = 10,
+		borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+		color_devicons = true,
+		mappings = {
+			i = {
+				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-k>"] = require("telescope.actions").move_selection_previous,
+				["<esc>"] = require("telescope.actions").close,
+			},
+		},
 	},
 	pickers = {
 		find_files = {
 			hidden = true,
 		},
 		buffers = {
-			previewer = false,
-			layout_config = {
-				width = 80,
-			},
-		},
-		oldfiles = {
-			prompt_title = "History",
-		},
-		lsp_references = {
+			sort_mru = true,
 			previewer = false,
 		},
 	},
 })
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("live_grep_args")
-require("telescope").load_extension("lazygit")
-require('telescope').load_extension('harpoon')
+-- Load extensions
+telescope.load_extension("fzf")
+telescope.load_extension("flutter")
+telescope.load_extension("lazygit")
 
----- Flutter
-require("telescope").load_extension("flutter")
-
--- calls find files picker
-vim.keymap.set("n", "<leader>f", [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
--- find files but also includes things that are gitignore
-vim.keymap.set(
+-- Custom key mappings
+map("n", "<leader>f", builtin.find_files, { desc = "Find files" })
+map("n", "<leader>b", builtin.buffers, { desc = "Show buffers" })
+map("n", "<leader>g", builtin.live_grep, { desc = "Live grep" })
+map("n", "<leader>h", builtin.oldfiles, { desc = "File history" })
+map("n", "<Leader>l", ":LazyGit<CR>", { desc = "Open LazyGit" })
+map(
 	"n",
 	"<leader>F",
 	[[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]]
 )
--- buffers
-vim.keymap.set("n", "<leader>b", [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
--- live grep - requires you to install
-vim.keymap.set("n", "<leader>g", [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]])
--- file history
-vim.keymap.set("n", "<leader>h", [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
--- grep variables in current file
-vim.keymap.set("n", "<leader>ws", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
--- lazygit
-vim.keymap.set("n", "<Leader>l", ":LazyGit<CR>")
+map("n", "<leader>ws", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
 
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = "NONE", bg = "NONE" })
+-- Highlight groups to match the background
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#444444", bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#444444", bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = "#ffffff", bg = "#d45573" })
+vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = "#111111", bg = "#a2d472" })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#444444", bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#444444", bg = "#111111" })
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#333333", fg = "#ffffff" })
