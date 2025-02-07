@@ -31,6 +31,7 @@
           pkgs.openjdk17
           pkgs.ffmpeg
           pkgs.wget
+          pkgs.spicetify-cli
         ];
 
       homebrew = {
@@ -49,7 +50,6 @@
           "taskell"
           "mpv"
           "imagemagick"
-          "spicetify-cli"
         ];
         taps = [
           "dart-lang/dart"
