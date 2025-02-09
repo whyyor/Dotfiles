@@ -1,6 +1,33 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
+
+local kind_icons = {
+	Text = "󱄽",
+	Method = "",
+	Function = "󰆧",
+	Constructor = "󰒓",
+	Field = "󰜢",
+	Variable = "󰫧",
+	Class = "󰏆",
+	Interface = "",
+	Module = "",
+	Property = "󰜢",
+	Unit = "󰑭",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "󰌆",
+	Snippet = "",
+	Color = "󰏘",
+	File = "󰈙",
+	Reference = "󰈇",
+	Folder = "󰉋",
+	EnumMember = "",
+	Constant = "󱊐",
+	Struct = "",
+	Event = "",
+	Operator = "󰆕",
+	TypeParameter = "",
+}
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -14,7 +41,19 @@ cmp.setup({
 		end,
 	},
 	formatting = {
-		format = lspkind.cmp_format(),
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind] or "", vim_item.kind)
+
+			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
+				luasnip = "[Snippet]",
+				buffer = "[Buffer]",
+				path = "[Path]",
+			})[entry.source.name] or ""
+
+			return vim_item
+		end,
 	},
 	mapping = {
 		["<C-j>"] = cmp.mapping(function(fallback)
@@ -41,12 +80,13 @@ cmp.setup({
 	},
 	window = {
 		completion = {
-			winhighlight = "Normal:CmpPmenu,Search:None",
+			border = "solid",
+			winhighlight = "Normal:None,FloatBorder:None,Search:None",
 			scrollbar = false,
 		},
 		documentation = {
-			border = "none",
-			winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenu,CursorLine:CmpPmenu,Search:None",
+			border = "solid",
+			winhighlight = "Normal:None,FloatBorder:None,CursorLine:None,Search:None",
 			scrollbar = false,
 		},
 	},
@@ -61,6 +101,3 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
-
--- INFO: Here we define cmp bg as null and keep everything else default
-vim.api.nvim_set_hl(0, "CmpPmenu", { bg = "NONE" })

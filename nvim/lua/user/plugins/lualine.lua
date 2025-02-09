@@ -84,7 +84,12 @@ local function config_lualine(colors)
 		"mode",
 		color = function()
 			local mode_color = modecolor
-			return { bg = mode_color[vim.fn.mode()], fg = colors.bg_dark, gui = "bold" }
+			local current_mode = vim.fn.mode()
+			if current_mode == "c" then
+				return { bg = mode_color[current_mode], fg = colors.bg, gui = "bold" } -- Command mode uses colors.bg
+			else
+				return { bg = mode_color[current_mode], fg = colors.bg_dark, gui = "bold" } -- Other modes use colors.bg_dark
+			end
 		end,
 		separator = { left = "", right = "" },
 	}
