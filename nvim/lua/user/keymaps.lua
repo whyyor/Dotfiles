@@ -56,28 +56,11 @@ vim.api.nvim_set_keymap("n", "<Leader>wd", ":r!date +\\%Y-\\%m-\\%d<CR>", { nore
 -- Plugin keybindings
 vim.keymap.set("n", "<Leader>q", ":Bdelete<CR>")
 
--- Git keybindings
-vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>")
-vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>")
-vim.keymap.set("n", "gs", ":Gitsigns stage_hunk<CR>")
-vim.keymap.set("n", "gS", ":Gitsigns undo_stage_hunk<CR>")
-vim.keymap.set("n", "gp", ":Gitsigns preview_hunk<CR>")
-vim.keymap.set("n", "gb", ":Gitsigns blame_line<CR>")
-
 -- Wiki keybindings
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>ml", ":VimwikiFollowLink<CR>")
 vim.keymap.set("n", "<leader>mt", ":VimwikiNextLink<CR>")
 vim.keymap.set("n", "<leader>mp", ":VimwikiPrevLink<CR>")
-
--- Git diff
-vim.keymap.set("n", "<Leader>af", ":DiffviewOpen<CR>")
-vim.keymap.set("n", "<Leader>ah", ":DiffviewFileHistory<CR>")
-vim.keymap.set("n", "<Leader>ax", ":DiffviewClose<CR>")
-vim.keymap.set("n", "<Leader>aj", ":DiffviewFileHistory %:p<CR>")
-
--- Noice
--- vim.keymap.set("n", "<Leader>;", ":NoiceDismiss<CR>")
 
 -- Set up the key mappings
 vim.keymap.set("n", "<A-up>", ":resize +2<CR>")
