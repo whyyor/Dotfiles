@@ -153,6 +153,18 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Lazygit
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("user/plugins/lazygit")
+		end,
+	},
+
 	-- Git integration.
 	{
 		"lewis6991/gitsigns.nvim",

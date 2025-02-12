@@ -56,7 +56,6 @@ map("n", "<leader>f", builtin.find_files, { desc = "Find files" })
 map("n", "<leader>b", builtin.buffers, { desc = "Show buffers" })
 map("n", "<leader>g", builtin.live_grep, { desc = "Live grep" })
 map("n", "<leader>h", builtin.oldfiles, { desc = "File history" })
-map("n", "<Leader>l", ":LazyGit<CR>", { desc = "Open LazyGit" })
 map(
 	"n",
 	"<leader>F",
