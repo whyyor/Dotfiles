@@ -1,6 +1,8 @@
 local colors = {
-	add = "#acd385",
-	delete = "#f65a81",
+	add = "#acd385", -- Greenish color for added lines
+	change = "#D7D7D7", -- Yellow/Orange for modified lines
+	delete = "#f65a81", -- Red for deleted lines
+	changedelete = "#ffd766", -- Purple for changed + deleted (distinctive)
 }
 
 require("gitsigns").setup({
@@ -9,7 +11,7 @@ require("gitsigns").setup({
 		change = { text = "│" },
 		delete = { text = "_" },
 		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
+		changedelete = { text = "│" },
 		untracked = { text = "┆" },
 	},
 	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
@@ -42,9 +44,9 @@ require("gitsigns").setup({
 		col = 1,
 	},
 	on_attach = function()
-		-- Set highlight groups for GitSigns
-		vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = colors.add, bg = NONE })
-		vim.api.nvim_set_hl(0, "GitSignsChange", { bg = NONE })
-		vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.delete, bg = NONE })
+		vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = colors.add, bg = "NONE" })
+		vim.api.nvim_set_hl(0, "GitSignsChange", { fg = colors.change, bg = "NONE" })
+		vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.delete, bg = "NONE" })
+		vim.api.nvim_set_hl(0, "GitSignsChangedelete", { fg = colors.changedelete, bg = "NONE" })
 	end,
 })
