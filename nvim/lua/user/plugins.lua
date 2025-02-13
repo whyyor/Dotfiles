@@ -333,12 +333,6 @@ require("lazy").setup({
 		opts = {},
 	},
 
-	-- Smooth cursor
-	{
-		"sphamba/smear-cursor.nvim",
-		opts = {},
-	},
-
 	----------------------------- Vim Wiki ---------------------------------
 	{
 		"vimwiki/vimwiki",
