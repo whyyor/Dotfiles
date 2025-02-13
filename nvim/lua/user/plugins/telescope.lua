@@ -50,6 +50,7 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("flutter")
 telescope.load_extension("lazygit")
+telescope.load_extension("frecency")
 
 -- Custom key mappings
 map("n", "<leader>f", builtin.find_files, { desc = "Find files" })

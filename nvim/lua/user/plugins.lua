@@ -120,6 +120,7 @@ require("lazy").setup({
 			"nvim-telescope/telescope-live-grep-args.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"kdheepak/lazygit.nvim",
+			"nvim-telescope/telescope-frecency.nvim",
 		},
 		config = function()
 			require("user/plugins/telescope")
