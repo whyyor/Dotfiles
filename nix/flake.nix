@@ -77,6 +77,7 @@
           "obs"
           "spotify"
           "windscribe"
+          "monitorcontrol"
         ];
         masApps = {
           "xcode" = 497799835;
