@@ -44,6 +44,19 @@ telescope.setup({
 			previewer = false,
 		},
 	},
+
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+				layout_config = {
+					width = 0.5,
+					height = 0.4,
+				},
+				winblend = 10,
+				borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+			}),
+		},
+	},
 })
 
 -- Load extensions
@@ -51,6 +64,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("flutter")
 telescope.load_extension("lazygit")
 telescope.load_extension("frecency")
+telescope.load_extension("ui-select")
 
 -- Custom key mappings
 map("n", "<leader>f", builtin.find_files, { desc = "Find files" })

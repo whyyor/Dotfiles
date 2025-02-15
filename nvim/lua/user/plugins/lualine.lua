@@ -43,27 +43,27 @@ local function config_lualine(colors)
 
 	local filename = {
 		"filename",
-		color = { bg = colors.blue, fg = colors.bg, gui = "bold" },
+		color = { bg = colors.blue, fg = colors.bg },
 		separator = { left = "", right = "" },
 	}
 
 	local filetype = {
 		"filetype",
 		icons_enabled = false,
-		color = { bg = colors.gray2, fg = colors.blue, gui = "italic,bold" },
+		color = { bg = colors.gray2, fg = colors.blue, gui = "nocombine" },
 		separator = { left = "", right = "" },
 	}
 
 	local branch = {
 		"branch",
 		icon = "",
-		color = { bg = colors.green, fg = colors.bg, gui = "bold" },
+		color = { bg = colors.green, fg = colors.bg },
 		separator = { left = "", right = "" },
 	}
 
 	local location = {
 		"location",
-		color = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
+		color = { bg = colors.yellow, fg = colors.bg },
 		separator = { left = "", right = "" },
 	}
 
@@ -86,9 +86,9 @@ local function config_lualine(colors)
 			local mode_color = modecolor
 			local current_mode = vim.fn.mode()
 			if current_mode == "c" then
-				return { bg = mode_color[current_mode], fg = colors.bg, gui = "bold" } -- Command mode uses colors.bg
+				return { bg = mode_color[current_mode], fg = colors.bg, gui = "nocombine" }
 			else
-				return { bg = mode_color[current_mode], fg = colors.bg_dark, gui = "bold" } -- Other modes use colors.bg_dark
+				return { bg = mode_color[current_mode], fg = colors.bg_dark, gui = "nocombine" }
 			end
 		end,
 		separator = { left = "", right = "" },

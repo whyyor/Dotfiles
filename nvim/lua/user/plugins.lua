@@ -121,6 +121,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"kdheepak/lazygit.nvim",
 			"nvim-telescope/telescope-frecency.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
 			require("user/plugins/telescope")
@@ -293,9 +294,6 @@ require("lazy").setup({
 
 	-- Copilot
 	{ "github/copilot.vim" },
-
-	-- Dressing - for code actions
-	{ "stevearc/dressing.nvim", event = "VeryLazy" },
 
 	--- Flash
 	{
