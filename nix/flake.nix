@@ -31,7 +31,6 @@
           pkgs.openjdk17
           pkgs.ffmpeg
           pkgs.wget
-          pkgs.spicetify-cli
         ];
 
       homebrew = {
