@@ -49,6 +49,7 @@
           "taskell"
           "mpv"
           "imagemagick"
+          "openai-whisper"
         ];
         taps = [
           "dart-lang/dart"

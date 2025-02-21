@@ -19,7 +19,7 @@ local function config_lualine(colors)
 		rm = colors.cyan,
 		["r?"] = colors.cyan,
 		["!"] = colors.red,
-		t = colors.bright_red,
+		t = colors.red,
 	}
 
 	local theme = {
@@ -34,23 +34,16 @@ local function config_lualine(colors)
 		replace = { a = { fg = colors.bg_dark, bg = colors.green } },
 	}
 
-	local space = {
-		function()
-			return " "
-		end,
-		color = { bg = colors.bg_dark, fg = colors.blue },
-	}
-
 	local filename = {
 		"filename",
 		color = { bg = colors.blue, fg = colors.bg },
-		separator = { left = "", right = "" },
+		separator = { left = "%#LualineSeparator# ", right = "" }, -- Use custom highlight
 	}
 
 	local filetype = {
 		"filetype",
 		icons_enabled = false,
-		color = { bg = colors.gray2, fg = colors.blue, gui = "nocombine" },
+		color = { bg = colors.bg, fg = colors.blue, gui = "nocombine" },
 		separator = { left = "", right = "" },
 	}
 
@@ -58,18 +51,19 @@ local function config_lualine(colors)
 		"branch",
 		icon = "",
 		color = { bg = colors.green, fg = colors.bg },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "%#LualineSeparator# " },
 	}
 
 	local location = {
 		"location",
+		icon = "",
 		color = { bg = colors.yellow, fg = colors.bg },
 		separator = { left = "", right = "" },
 	}
 
 	local diff = {
 		"diff",
-		color = { bg = colors.gray2, fg = colors.bg, gui = "bold" },
+		color = { bg = colors.bg, fg = colors.bg, gui = "bold" },
 		separator = { left = "", right = "" },
 		symbols = { added = " ", modified = " ", removed = " " },
 
@@ -99,7 +93,7 @@ local function config_lualine(colors)
 		local buf_clients = vim.lsp.get_clients({ bufnr = bufnr })
 		local buf_ft = vim.bo.filetype
 		if next(buf_clients) == nil then
-			return "  No servers"
+			return " 0"
 		end
 		local buf_client_names = {}
 
@@ -166,7 +160,7 @@ local function config_lualine(colors)
 			info = { fg = colors.purple },
 			hint = { fg = colors.cyan },
 		},
-		color = { bg = colors.gray2, fg = colors.blue, gui = "bold" },
+		color = { bg = colors.bg, fg = colors.blue, gui = "bold" },
 		separator = { left = "" },
 	}
 
@@ -175,7 +169,7 @@ local function config_lualine(colors)
 			return getLspName()
 		end,
 		separator = { left = "", right = "" },
-		color = { bg = colors.purple, fg = colors.bg, gui = "italic,bold" },
+		color = { bg = colors.bg, fg = colors.purple },
 	}
 
 	require("lualine").setup({
@@ -194,26 +188,19 @@ local function config_lualine(colors)
 			lualine_a = {
 				modes,
 			},
-			lualine_b = {
-				space,
-			},
+			lualine_b = {},
 			lualine_c = {
 				filename,
 				filetype,
-				space,
-				branch,
-				diff,
-				space,
-				location,
 			},
-			lualine_x = {
-				space,
-			},
-			-- lualine_y = { macro, space },
-			lualine_y = { space },
+			lualine_x = {},
+			lualine_y = {},
 			lualine_z = {
-				dia,
 				lsp,
+				dia,
+				diff,
+				branch,
+				location,
 			},
 		},
 		inactive_sections = {
@@ -264,3 +251,5 @@ local colors = {
 }
 config_lualine(colors)
 vim.o.laststatus = vim.g.lualine_laststatus
+
+vim.cmd("highlight LualineSeparator guibg=" .. "NONE" .. " guifg=" .. "NONE")
