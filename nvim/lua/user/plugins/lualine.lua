@@ -1,25 +1,25 @@
 local function config_lualine(colors)
-	local modecolor = {
-		n = colors.red,
-		i = colors.cyan,
-		v = colors.purple,
-		[""] = colors.purple,
-		V = colors.red,
-		c = colors.yellow,
-		no = colors.red,
-		s = colors.yellow,
-		S = colors.yellow,
-		[""] = colors.yellow,
-		ic = colors.yellow,
-		R = colors.green,
-		Rv = colors.purple,
-		cv = colors.red,
-		ce = colors.red,
-		r = colors.cyan,
-		rm = colors.cyan,
-		["r?"] = colors.cyan,
-		["!"] = colors.red,
-		t = colors.red,
+	local mode_colors = {
+		n = { fg = colors.bg_dark, bg = colors.red }, -- Normal mode
+		i = { fg = colors.bg, bg = colors.cyan }, -- Insert mode (bright)
+		v = { fg = colors.bg_dark, bg = colors.purple }, -- Visual mode
+		[""] = { fg = colors.bg_dark, bg = colors.purple }, -- Visual block
+		V = { fg = colors.bg_dark, bg = colors.red }, -- Visual line
+		c = { fg = colors.bg, bg = colors.yellow }, -- Command mode (bright)
+		no = { fg = colors.bg_dark, bg = colors.red },
+		s = { fg = colors.bg, bg = colors.yellow }, -- Select mode (bright)
+		S = { fg = colors.bg, bg = colors.yellow },
+		[""] = { fg = colors.bg, bg = colors.yellow },
+		ic = { fg = colors.bg, bg = colors.yellow },
+		R = { fg = colors.bg_dark, bg = colors.green }, -- Replace mode (non-bright)
+		Rv = { fg = colors.bg_dark, bg = colors.purple },
+		cv = { fg = colors.bg_dark, bg = colors.red },
+		ce = { fg = colors.bg_dark, bg = colors.red },
+		r = { fg = colors.bg, bg = colors.cyan }, -- Prompt mode (bright)
+		rm = { fg = colors.bg, bg = colors.cyan },
+		["r?"] = { fg = colors.bg, bg = colors.cyan },
+		["!"] = { fg = colors.bg_dark, bg = colors.red },
+		t = { fg = colors.bg_dark, bg = colors.red }, -- Terminal mode (non-bright)
 	}
 
 	local theme = {
@@ -77,13 +77,8 @@ local function config_lualine(colors)
 	local modes = {
 		"mode",
 		color = function()
-			local mode_color = modecolor
 			local current_mode = vim.fn.mode()
-			if current_mode == "c" then
-				return { bg = mode_color[current_mode], fg = colors.bg, gui = "nocombine" }
-			else
-				return { bg = mode_color[current_mode], fg = colors.bg_dark, gui = "nocombine" }
-			end
+			return { bg = mode_colors[current_mode].bg, fg = mode_colors[current_mode].fg, gui = "nocombine" }
 		end,
 		separator = { left = "", right = "" },
 	}
@@ -161,7 +156,7 @@ local function config_lualine(colors)
 			hint = { fg = colors.cyan },
 		},
 		color = { bg = colors.bg, fg = colors.blue, gui = "bold" },
-		separator = { left = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local lsp = {

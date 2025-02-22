@@ -10,6 +10,9 @@ font-size = 18
 confirm-close-surface = false
 window-decoration = false
 
+# Mouse settings
+mouse-hide-while-typing = true
+
 # Theme
 theme = Monokai Remastered
 adjust-cell-height = 20%

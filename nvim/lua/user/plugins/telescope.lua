@@ -9,6 +9,7 @@ telescope.setup({
 		selection_caret = "  ",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
+		path_display = { "shorten" },
 		layout_config = {
 			horizontal = {
 				prompt_position = "top",
