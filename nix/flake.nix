@@ -31,6 +31,7 @@
           pkgs.openjdk17
           pkgs.ffmpeg
           pkgs.wget
+          pkgs.mpv
         ];
 
       homebrew = {
@@ -47,7 +48,6 @@
           "mas"
           "dart"
           "taskell"
-          "mpv"
           "imagemagick"
           "openai-whisper"
         ];
