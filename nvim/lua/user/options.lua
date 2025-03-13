@@ -48,10 +48,13 @@ vim.opt.backupdir:remove(".") -- keep backups out of the current directory
 vim.opt.showmode = false
 
 -- INFO: Sets up transparency
+
 vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = function()
 		local highlights = {
 			"Normal",
+			"Pmenu",
+			"PmenuSbar",
 			"LineNr",
 			"Folded",
 			"NonText",
