@@ -18,9 +18,8 @@ theme = Monokai Remastered
 adjust-cell-height = 20%
 
 # Padding
-window-padding-x = 10
-window-padding-y = 10
-window-padding-balance = true
+window-padding-x = 0
+window-padding-y = 0
 
 # Theme
 background = 111111
