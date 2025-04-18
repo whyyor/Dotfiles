@@ -73,6 +73,7 @@
           "android-studio"
           "postman"
           "microsoft-teams"
+          "microsoft-auto-update"
           "mongodb-compass"
           "stremio"
           "obs"

@@ -34,36 +34,51 @@ local function config_lualine(colors)
 		replace = { a = { fg = colors.bg_dark, bg = colors.green } },
 	}
 
-	local filename = {
-		"filename",
-		color = { bg = colors.blue, fg = colors.bg },
-		separator = { left = "%#LualineSeparator# ", right = "" }, -- Use custom highlight
+	local filetype = {
+		function()
+			local ft = vim.bo.filetype
+			local icon = require("nvim-web-devicons").get_icon_by_filetype(ft) or ""
+			local filename = vim.fn.expand("%:t")
+			return string.format("%s | %s", icon, filename)
+		end,
+		icons_enabled = true,
+		color = { bg = colors.bg_dark, fg = colors.bg_dark, gui = "nocombine" },
+		separator = { left = "", right = "" },
 	}
 
-	local filetype = {
-		"filetype",
-		icons_enabled = false,
-		color = { bg = colors.bg, fg = colors.blue, gui = "nocombine" },
-		separator = { left = "", right = "" },
+	local folder = {
+		function()
+			local dir = vim.fn.expand("%:p:h")
+			local folder_name = vim.fn.fnamemodify(dir, ":t")
+			return folder_name ~= "" and folder_name or "no folder"
+		end,
+		icon = "",
+		color = { bg = colors.bg, fg = colors.bg_dark },
+		separator = { left = "", right = "" },
+		draw_empty = true,
 	}
 
 	local branch = {
 		"branch",
 		icon = "",
-		color = { bg = colors.green, fg = colors.bg },
-		separator = { left = "", right = "%#LualineSeparator# " },
+		color = { bg = colors.bg, fg = colors.bg_dark },
+		separator = { left = "", right = "" }, -- Use custom highlight
+		draw_empty = true,
 	}
 
 	local location = {
 		"location",
 		icon = "",
-		color = { bg = colors.yellow, fg = colors.bg },
+		color = function()
+			local current_mode = vim.fn.mode()
+			return { bg = mode_colors[current_mode].bg, fg = mode_colors[current_mode].fg, gui = "nocombine" }
+		end,
 		separator = { left = "", right = "" },
 	}
 
 	local diff = {
 		"diff",
-		color = { bg = colors.bg, fg = colors.bg, gui = "bold" },
+		color = { bg = colors.bg_dark, fg = colors.bg, gui = "bold" },
 		separator = { left = "", right = "" },
 		symbols = { added = " ", modified = " ", removed = " " },
 
@@ -76,11 +91,12 @@ local function config_lualine(colors)
 
 	local modes = {
 		"mode",
+		icon = "",
 		color = function()
 			local current_mode = vim.fn.mode()
 			return { bg = mode_colors[current_mode].bg, fg = mode_colors[current_mode].fg, gui = "nocombine" }
 		end,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local function getLspName()
@@ -139,11 +155,19 @@ local function config_lualine(colors)
 		return "  " .. language_servers
 	end
 
-	-- local macro = {
-	-- 	require("noice").api.status.mode.get,
-	-- 	cond = require("noice").api.status.mode.has,
-	-- 	color = { fg = colors.red, bg = colors.bg_dark, gui = "italic,bold" },
-	-- }
+	local function recording()
+		local reg = vim.fn.reg_recording()
+		if reg == "" then
+			return ""
+		end -- not recording
+		return "󰑊 REC"
+	end
+
+	local macro = {
+		recording,
+		separator = { left = "", right = "" },
+		color = { fg = "white", bg = "#FF746C" },
+	}
 
 	local dia = {
 		"diagnostics",
@@ -155,16 +179,8 @@ local function config_lualine(colors)
 			info = { fg = colors.purple },
 			hint = { fg = colors.cyan },
 		},
-		color = { bg = colors.bg, fg = colors.blue, gui = "bold" },
+		color = { bg = colors.bg_dark, fg = colors.blue, gui = "bold" },
 		separator = { left = "", right = "" },
-	}
-
-	local lsp = {
-		function()
-			return getLspName()
-		end,
-		separator = { left = "", right = "" },
-		color = { bg = colors.bg, fg = colors.purple },
 	}
 
 	require("lualine").setup({
@@ -183,18 +199,18 @@ local function config_lualine(colors)
 			lualine_a = {
 				modes,
 			},
-			lualine_b = {},
+			lualine_b = {
+				branch,
+				diff,
+			},
 			lualine_c = {
-				filename,
+				dia,
+			},
+			lualine_x = {
 				filetype,
 			},
-			lualine_x = {},
-			lualine_y = {},
+			lualine_y = { macro, folder },
 			lualine_z = {
-				lsp,
-				dia,
-				diff,
-				branch,
 				location,
 			},
 		},
