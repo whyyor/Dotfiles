@@ -1,68 +1,46 @@
-# change window focus within space
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+# Can't use meh as 3 keys somehow can't be pressed
+shift + ctrl - down: yabai -m window --focus south 
+shift + ctrl - up: yabai -m window --focus north
+shift + ctrl - left: yabai -m window --focus west
+shift + ctrl - right: yabai -m window --focus east
 
-# change focus between **external displays** (left and right)
-alt - s: yabai -m display --focus west
-alt - g: yabai -m display --focus east
+hyper - down: yabai -m window --swap south
+hyper - up: yabai -m window --swap north
+hyper - left: yabai -m window --swap west
+hyper - right: yabai -m window --swap east
 
-# rotate layout clockwise
-lshift + alt - r : yabai -m space --rotate 270
+meh - r: yabai -m space --rotate 270
+meh - x: yabai -m space --mirror y-axis
+meh - y: yabai -m space --mirror x-axis
 
-# flip along y-axis
-lshift + alt - y : yabai -m space --mirror y-axis
+meh - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
-# flip along x-axis
-lshift + alt - x : yabai -m space --mirror x-axis
+meh - 1  : yabai -m display --focus 1
+meh - 2  : yabai -m display --focus 2
+meh - 3  : yabai -m display --focus 3
 
-# toggle window float
-lshift + alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
-# maximize a window
-lshift + alt - m : yabai -m window --toggle zoom-fullscreen
-
-# balance out the tree of windows (resize to occupy the same area)
-lshift + alt - e : yabai -m space --balance
-
-# swap windows
-lshift + alt - j : yabai -m window --swap south
-lshift + alt - k : yabai -m window --swap north
-lshift + alt - h : yabai -m window --swap west
-lshift + alt - l : yabai -m window --swap east
-
-# move window and split
-ctrl + alt - j : yabai -m window --warp south
-ctrl + alt - k : yabai -m window --warp north
-ctrl + alt - h : yabai -m window --warp west
-ctrl + alt - l : yabai -m window --warp east
-
-# move window to display left and right for **external display**
-# lshift + alt - s : yabai -m window --display west; yabai -m display --focus west;
-# lshift + alt - g : yabai -m window --display east; yabai -m display --focus east;
-
-# move window to prev and next space
-lshift + alt - p : yabai -m window --space prev;
-lshift + alt - n : yabai -m window --space next;
+meh - 0: yabai --start-service
+hyper - 0: yabai --stop-service
 
 # move window to space #
-lshift + alt - 1 : yabai -m window --space 1;
-lshift + alt - 2 : yabai -m window --space 2;
-lshift + alt - 3 : yabai -m window --space 3;
-lshift + alt - 4 : yabai -m window --space 4;
-lshift + alt - 5 : yabai -m window --space 5;
-lshift + alt - 6 : yabai -m window --space 6;
-lshift + alt - 7 : yabai -m window --space 7;
+hyper - 1 : yabai -m window --space 1;
+hyper - 2 : yabai -m window --space 2;
+hyper - 3 : yabai -m window --space 3;
+hyper - 4 : yabai -m window --space 4;
+hyper - 5 : yabai -m window --space 5;
+hyper - 6 : yabai -m window --space 6;
+hyper - 7 : yabai -m window --space 7;
 
-alt - b : open -a "Zen Browser"
-alt - u : open -a "Ghostty"
-alt - m : open -a "Simulator"
-alt - t : open -a "Texts"
-alt - c : open -a "ChatGPT"
-alt - w : open -a "Slack"
-alt - f : open -a "Finder"
-alt - y : open -a "Spotify"
+meh - b : open -a "Zen Browser" 
+meh - u : open -a "Ghostty"
+meh - t : open -a "Texts"
+meh - c : open -a "ChatGPT"
+meh - s : open -a "Slack"
+meh - f : open -a "Finder"
+meh - m : open -a "Simulator"
+meh - y : open -a "Spotify"
+meh - y : open -a "qemu-system-aarch64"
 
 # stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service

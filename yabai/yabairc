@@ -1,35 +1,54 @@
-# bsp stack or float
-yabai -m config layout bsp
+# Function definitions
+adjust_spaces() {
+  local desired_spaces=("$@")
+  local display=1
+  for desired_space in "${desired_spaces[@]}"; do
+    local actual_space=$(yabai -m query --spaces | jq 'map(select(.display == '$display')) | length')
+    yabai -m display --focus $display
+    while (( actual_space != desired_space )); do
+      if (( actual_space < desired_space )); then
+        yabai -m space --create 
+        ((actual_space++))
+      else
+        local last_space_index=$(yabai -m query --spaces | jq '.[].index | select(. == '$spaces_on_display')')
+        yabai -m space --focus $last_space_index
+        yabai -m space --destroy
+        ((actual_space--))
+      fi
+    done
+    ((display++))
+  done
+}
 
+setup_space() {
+  local idx="$1"
+  local name="$2"
+  yabai -m space "$idx" --label "$name"
+}
+
+# Initial setup
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Configuration
+yabai -m config layout bsp
 yabai -m config window_placement second_child
 
-
-# Set the window gap to 0
-yabai -m config window_gap 0
-
-# Set all padding values to 0
+# Padding configuration
 yabai -m config top_padding 0
 yabai -m config bottom_padding 0
 yabai -m config left_padding 0
 yabai -m config right_padding 0
+yabai -m config window_gap 0
 
-
-# center mouse on window with focus
+# Mouse settings
 yabai -m config mouse_follows_focus on
-
-# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 move
 yabai -m config focus_follows_mouse autofocus
 
-# when window is dropped in center of another window, swap them (on edges it will split it)
-yabai -m mouse_drop_action swap
-
-# Focus back when window closed
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=window_minimized action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=application_hidden action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-
-# Ignore tiling applications
+# Disable configurations
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Intermission$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
@@ -39,3 +58,25 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^NeatDownloadManager$" manage=off
 yabai -m rule --add app="^Chat$" manage=off
 yabai -m rule --add app="^qemu-system-aarch64$" manage=off
+
+# Spaces adjustment
+num_displays=$(yabai -m query --displays | jq 'length')
+if [[ "$num_displays" -eq 3 ]]; then
+  adjust_spaces 3 3 4
+elif [[ "$num_displays" -eq 2 ]]; then
+  adjust_spaces 5 5
+elif [[ "$num_displays" -eq 1 ]]; then
+  adjust_spaces 10 
+fi
+
+# Spaces setup
+setup_space 1 browser
+setup_space 2 terminal
+setup_space 4 music
+setup_space 5 communication
+
+# Apps to spaces rules
+yabai -m rule --add app="^Zen Browser$" space=^1
+yabai -m rule --add app="^Ghostty$" space=^2
+yabai -m rule --add app="^Spotify$" space=^4
+yabai -m rule --add app="^Texts$" space=^5

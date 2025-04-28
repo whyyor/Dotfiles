@@ -51,6 +51,7 @@
           "taskell"
           "imagemagick"
           "openai-whisper"
+          "jq"
         ];
         taps = [
           "dart-lang/dart"
@@ -80,6 +81,7 @@
           "spotify"
           "windscribe"
           "monitorcontrol"
+          "karabiner-elements"
         ];
         masApps = {
           "xcode" = 497799835;
