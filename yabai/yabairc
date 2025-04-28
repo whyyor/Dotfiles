@@ -80,3 +80,10 @@ yabai -m rule --add app="^Zen Browser$" space=^1
 yabai -m rule --add app="^Ghostty$" space=^2
 yabai -m rule --add app="^Spotify$" space=^4
 yabai -m rule --add app="^Texts$" space=^5
+
+
+# Focus back when window closed
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=window_minimized action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_hidden action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"

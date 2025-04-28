@@ -40,7 +40,8 @@ meh - s : open -a "Slack"
 meh - f : open -a "Finder"
 meh - m : open -a "Simulator"
 meh - y : open -a "Spotify"
-meh - y : open -a "qemu-system-aarch64"
+meh - a : open -a "qemu-system-aarch64"
+meh - e : open -a "Microsoft Teams"
 
 # stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service
