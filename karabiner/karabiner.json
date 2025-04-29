@@ -6,6 +6,59 @@
           {
             "manipulators": [
               {
+                "description": "Fix tilda location (from next from Shift to above Tab)",
+                "type": "basic",
+                "from": {
+                  "key_code": "grave_accent_and_tilde",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "non_us_backslash"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "non_us_backslash",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "grave_accent_and_tilde"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "manipulators": [
+              {
+                "description": "Change alt + ; to enter",
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": ["left_alt"]
+                  },
+                  "key_code": "semicolon"
+                },
+                "to": [
+                  {
+                    "repeat": true,
+                    "key_code": "return_or_enter"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "manipulators": [
+              {
                 "description": "Change caps_lock to command+control+option+shift.",
                 "from": {
                   "key_code": "caps_lock",

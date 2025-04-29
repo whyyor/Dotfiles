@@ -37,13 +37,13 @@ meh - u : open -a "Ghostty"
 meh - t : open -a "Texts"
 meh - c : open -a "ChatGPT"
 meh - s : open -a "Slack"
-meh - f : open -a "Finder"
+meh - g : open -a "Finder"
 meh - m : open -a "Simulator"
-meh - y : open -a "Spotify"
+meh - i : open -a "Spotify"
 meh - a : open -a "qemu-system-aarch64"
-meh - e : open -a "Microsoft Teams"
-
-# stop/start/restart yabai
-ctrl + alt - q : yabai --stop-service
-ctrl + alt - s : yabai --start-service
-ctrl + alt - r : yabai --restart-service
+meh - n : open -a "Microsoft Teams"
+meh - p : open -a "Postman"
+meh - z : open -a "MongoDB Compass"
+meh - d : open -a "Davinci Resolve"
+meh - o : open -a "OBS"
+meh - e : open -a "Mail"

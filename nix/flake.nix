@@ -52,6 +52,7 @@
           "imagemagick"
           "openai-whisper"
           "jq"
+          "go-jira"
         ];
         taps = [
           "dart-lang/dart"
