@@ -1,5 +1,5 @@
 # The syntax is "key = value". Press super + r to reload config
-background-opacity = 0.8
+background-opacity = 0.7
 background-blur-radius = 40
 
 # Font
@@ -22,7 +22,7 @@ window-padding-x = 0
 window-padding-y = 0
 
 # Theme
-background = 111111
+background = 000000
 foreground = dedede
 palette = 0=#2c2525 
 palette = 1=#fd6883
