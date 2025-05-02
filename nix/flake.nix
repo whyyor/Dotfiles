@@ -33,6 +33,8 @@
           pkgs.ffmpeg
           pkgs.wget
           pkgs.mpv
+          pkgs.jira-cli-go
+          pkgs.typioca
         ];
 
       homebrew = {
@@ -52,7 +54,7 @@
           "imagemagick"
           "openai-whisper"
           "jq"
-          "go-jira"
+          "md2pdf"
         ];
         taps = [
           "dart-lang/dart"
