@@ -64,7 +64,7 @@
           "chatgpt"
           "caffeine"
           "lookaway"
-          "zen-browser"
+          "zen"
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"

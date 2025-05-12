@@ -10,6 +10,9 @@ vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.numberwidth = 1
+vim.opt.fillchars:append({ vert = " " })
+
 vim.opt.wildmode = "longest:full,full" -- complete the longest common match, and allow tabbing the results to fully complete them
 vim.opt.completeopt = "menuone,longest,preview"
 
@@ -63,6 +66,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 			"SignColumn",
 			"EndOfBuffer",
 			"TablineFill",
+			"WinSeperator",
 		}
 		for _, name in pairs(highlights) do
 			vim.cmd.highlight(name .. " guibg=none ctermbg=none")

@@ -21,6 +21,3 @@ vim.api.nvim_set_hl(0, "StatusLineNonText", {
 })
 
 vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#2F313C" })
-
--- Make WinSeparator transparent
-vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#1E1E1E", bg = "NONE" })
