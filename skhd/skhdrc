@@ -13,7 +13,7 @@ meh - r: yabai -m space --rotate 270
 meh - x: yabai -m space --mirror y-axis
 meh - y: yabai -m space --mirror x-axis
 
-meh - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
+meh - q: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 meh - 1  : yabai -m display --focus 1
 meh - 2  : yabai -m display --focus 2
@@ -37,13 +37,13 @@ meh - u : open -a "Ghostty"
 meh - t : open -a "Texts"
 meh - c : open -a "ChatGPT"
 meh - s : open -a "Slack"
-meh - g : open -a "Finder"
+meh - f : open -a "Finder"
 meh - m : open -a "Simulator"
 meh - i : open -a "Spotify"
-meh - a : open -a "qemu-system-aarch64"
 meh - n : open -a "Microsoft Teams"
 meh - p : open -a "Postman"
 meh - z : open -a "MongoDB Compass"
 meh - d : open -a "Davinci Resolve"
 meh - o : open -a "OBS"
 meh - e : open -a "Mail"
+meh - a : open -a "Activity Monitor"

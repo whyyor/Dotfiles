@@ -10,8 +10,17 @@ vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Remove all the separators and decrease length
 vim.opt.numberwidth = 1
-vim.opt.fillchars:append({ vert = " " })
+vim.opt.fillchars = {
+	horiz = " ",
+	horizup = " ",
+	horizdown = " ",
+	vert = " ",
+	vertleft = " ",
+	vertright = " ",
+	verthoriz = " ",
+}
 
 vim.opt.wildmode = "longest:full,full" -- complete the longest common match, and allow tabbing the results to fully complete them
 vim.opt.completeopt = "menuone,longest,preview"
