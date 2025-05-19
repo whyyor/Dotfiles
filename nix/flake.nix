@@ -85,6 +85,7 @@
           "windscribe"
           "monitorcontrol"
           "karabiner-elements"
+          "betterdisplay"
         ];
         masApps = {
           "xcode" = 497799835;
