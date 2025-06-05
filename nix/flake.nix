@@ -81,11 +81,11 @@
           "mongodb-compass"
           "stremio"
           "obs"
-          "spotify"
           "windscribe"
           "monitorcontrol"
           "karabiner-elements"
           "betterdisplay"
+          "yt-music"
         ];
         masApps = {
           "xcode" = 497799835;

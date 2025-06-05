@@ -130,10 +130,16 @@ require("lazy").setup({
 
 	-- File tree sidebar
 	{
-		"kyazdani42/nvim-tree.lua",
-		dependencies = "kyazdani42/nvim-web-devicons",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		lazy = false,
 		config = function()
-			require("user/plugins/nvim-tree")
+			require("user/plugins/neo-tree")
 		end,
 	},
 
