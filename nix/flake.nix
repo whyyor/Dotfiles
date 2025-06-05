@@ -86,6 +86,7 @@
           "monitorcontrol"
           "karabiner-elements"
           "betterdisplay"
+          "mouseless"
         ];
         masApps = {
           "xcode" = 497799835;

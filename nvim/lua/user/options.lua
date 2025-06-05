@@ -65,6 +65,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = function()
 		local highlights = {
 			"Normal",
+			"NormalFloat",
 			"Pmenu",
 			"PmenuSbar",
 			"LineNr",

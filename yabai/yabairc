@@ -74,6 +74,8 @@ setup_space 1 browser
 setup_space 2 terminal
 setup_space 4 music
 setup_space 5 communication
+setup_space 6 api
+setup_space 7 office_alt
 
 # Apps to spaces rules
 yabai -m rule --add app="^Zen Browser$" space=^1
@@ -83,17 +85,11 @@ yabai -m rule --add app="^ChatGPT$" space=^3
 yabai -m rule --add app="^Spotify$" space=^4
 yabai -m rule --add app="^Texts$" space=^5
 yabai -m rule --add app="^Postman$" space=^6
-yabai -m rule --add app="^Slack$" space=^6
+yabai -m rule --add app="^MongoDB Compass$" space=^6
+yabai -m rule --add app="^Slack$" space=^7
 yabai -m rule --add app="^Microsoft Teams$" space=^7
-yabai -m rule --add app="^MongoDB Compass$" space=^7
 yabai -m rule --add app="^Xcode$" space=^8
 yabai -m rule --add app="^Davinci Resolve$" space=^8
 yabai -m rule --add app="^Mail$" space=^9
 yabai -m rule --add app="^Activity Monitor$" space=^9
-
-
-# Focus back when window closed
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=window_minimized action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=application_hidden action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m rule --add app="^mpv$" space=^9
