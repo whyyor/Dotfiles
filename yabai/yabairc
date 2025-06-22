@@ -78,11 +78,11 @@ setup_space 6 api
 setup_space 7 office_alt
 
 # Apps to spaces rules
-yabai -m rule --add app="^Zen Browser$" space=^1
+yabai -m rule --add app="^Zen$" space=^1
 yabai -m rule --add app="^Ghostty$" space=^2
 yabai -m rule --add app="^Simulator$" space=^2
 yabai -m rule --add app="^ChatGPT$" space=^3
-yabai -m rule --add app="^Spotify$" space=^4
+yabai -m rule --add app="^YT Music$" space=^4
 yabai -m rule --add app="^Texts$" space=^5
 yabai -m rule --add app="^Postman$" space=^6
 yabai -m rule --add app="^MongoDB Compass$" space=^6

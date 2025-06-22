@@ -85,6 +85,7 @@
           "monitorcontrol"
           "karabiner-elements"
           "betterdisplay"
+          "scoot"
           "yt-music"
         ];
         masApps = {
