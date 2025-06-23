@@ -55,9 +55,11 @@
           "openai-whisper"
           "jq"
           "md2pdf"
+          "opencode"
         ];
         taps = [
           "dart-lang/dart"
+          "sst/tap"
         ];
         casks = [
           "aldente"
