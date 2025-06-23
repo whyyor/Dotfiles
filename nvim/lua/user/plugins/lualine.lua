@@ -1,25 +1,25 @@
 local function config_lualine(colors)
 	local mode_colors = {
 		n = { fg = colors.bg_dark, bg = colors.red }, -- Normal mode
-		i = { fg = colors.bg, bg = colors.cyan }, -- Insert mode (bright)
+		i = { fg = colors.bg, bg = colors.cyan }, -- Insert mode
 		v = { fg = colors.bg_dark, bg = colors.purple }, -- Visual mode
 		[""] = { fg = colors.bg_dark, bg = colors.purple }, -- Visual block
 		V = { fg = colors.bg_dark, bg = colors.red }, -- Visual line
-		c = { fg = colors.bg, bg = colors.yellow }, -- Command mode (bright)
+		c = { fg = colors.bg, bg = colors.yellow },
 		no = { fg = colors.bg_dark, bg = colors.red },
-		s = { fg = colors.bg, bg = colors.yellow }, -- Select mode (bright)
+		s = { fg = colors.bg, bg = colors.yellow },
 		S = { fg = colors.bg, bg = colors.yellow },
 		[""] = { fg = colors.bg, bg = colors.yellow },
 		ic = { fg = colors.bg, bg = colors.yellow },
-		R = { fg = colors.bg_dark, bg = colors.green }, -- Replace mode (non-bright)
+		R = { fg = colors.bg, bg = colors.green },
 		Rv = { fg = colors.bg_dark, bg = colors.purple },
 		cv = { fg = colors.bg_dark, bg = colors.red },
 		ce = { fg = colors.bg_dark, bg = colors.red },
-		r = { fg = colors.bg, bg = colors.cyan }, -- Prompt mode (bright)
+		r = { fg = colors.bg, bg = colors.cyan }, -- Prompt mode
 		rm = { fg = colors.bg, bg = colors.cyan },
 		["r?"] = { fg = colors.bg, bg = colors.cyan },
 		["!"] = { fg = colors.bg_dark, bg = colors.red },
-		t = { fg = colors.bg_dark, bg = colors.red }, -- Terminal mode (non-bright)
+		t = { fg = colors.bg_dark, bg = colors.red }, -- Terminal mode
 	}
 
 	local theme = {
@@ -30,8 +30,8 @@ local function config_lualine(colors)
 			z = { fg = colors.white, bg = colors.bg_dark },
 		},
 		insert = { a = { fg = colors.bg_dark, bg = colors.yellow } },
-		visual = { a = { fg = colors.bg_dark, bg = colors.green } },
-		replace = { a = { fg = colors.bg_dark, bg = colors.green } },
+		visual = { a = { fg = colors.bg, bg = colors.green } },
+		replace = { a = { fg = colors.bg, bg = colors.green } },
 	}
 
 	local filetype = {
@@ -228,37 +228,20 @@ end
 local colors = {
 	bg = "#161617",
 	fg = "#c9c7cd",
-	subtext1 = "#b4b1ba",
-	subtext2 = "#9f9ca6",
-	subtext3 = "#8b8693",
-	subtext4 = "#6c6874",
+	darkBackground = "#0B0E14",
+	currentLine = "#0F131A",
+	selection = "#5b595c",
+	fg_dark = "#fcfcfa",
+	comment = "#727072",
+	red = "#ff6188",
+	orange = "#fc9867",
+	yellow = "#ffd866",
+	green = "#a9dc76",
+	cyan = "#78dce8",
+	blue = "#ab9df2",
+	purple = "#ab9df2",
+	border = "#403e41",
 	bg_dark = "none",
-	black = "#27272a",
-	red = "#d45573",
-	green = "#a2d472",
-	yellow = "#ffd766",
-	purple = "#aca1cf",
-	magenta = "#e29eca",
-	orange = "#f5a191",
-	blue = "#6ec7d1",
-	cyan = "#85b5ba",
-	bright_black = "#353539",
-	bright_red = "#ed96b3",
-	bright_green = "#a7c8b3",
-	bright_yellow = "#eac5ae",
-	bright_purple = "#b7aed5",
-	bright_magenta = "#e8b0d4",
-	bright_orange = "#f6b0a2",
-	bright_blue = "#a7b3dd",
-	bright_cyan = "#97c0c4",
-	dark_green = "#38464e",
-	dark_orange = "#514151",
-	dark_blue = "#3e3f4f",
-	gray0 = "#18181a",
-	gray1 = "#1b1b1c",
-	gray2 = "#2a2a2c",
-	gray3 = "#313134",
-	gray4 = "#3b3b3e",
 }
 config_lualine(colors)
 vim.o.laststatus = vim.g.lualine_laststatus

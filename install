@@ -70,6 +70,10 @@ rm -rf $HOME/.config/ghostty
 ln -s $DOTFILES/ghostty $HOME/.config/ghostty
 
 
+rm -rf $HOME/.config/opencode
+ln -s $DOTFILES/opencode $HOME/.config/opencode
+
+
 rm -rf $HOME/.config/nix
 ln -s $DOTFILES/nix $HOME/.config/nix
 
