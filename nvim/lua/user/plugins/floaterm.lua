@@ -8,8 +8,8 @@ local function setup_floaterm()
 	vim.keymap.set("n", "<C-t>", ":FloatermToggle<CR>")
 	vim.keymap.set("t", "<C-t>", "<C-\\><C-n>:FloatermToggle<CR>")
 	vim.cmd([[
-	highlight Floaterm guibg=#1e1e1e guifg=NONE
-	highlight FloatermBorder guibg=#1e1e1e guifg=NONE
+	highlight Floaterm guibg=#0f1319 guifg=NONE
+	highlight FloatermBorder guibg=#0f1319 guifg=NONE
     ]])
 end
 

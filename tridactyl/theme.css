@@ -1,6 +1,7 @@
 :root {
   /* Monokai Pro Colors */
-  --bg: #2d2a2e;
+  --bg: #0f1319;
+  --transparent: transparent;
   --currentline: #403e41;
   --fg: #fcfcfa;
   --comment: #727072;
@@ -40,8 +41,8 @@
 
 #command-line-holder {
   order: 1;
-  border: 2px solid var(--green) !important;
-  border-top: 2px solid var(--green) !important;
+  border: 2px solid var(--cyan) !important;
+  border-top: 2px solid var(--cyan) !important;
   background: var(--tridactyl-bg);
   margin-top: 0 !important;
   box-shadow: none;
@@ -166,17 +167,17 @@
 }
 
 #completions .focused {
-  background: var(--yellow);
+  background: var(--cyan);
   color: var(--bg);
 }
 
 #completions .focused .url {
-  background: var(--yellow);
+  background: var(--cyan);
   color: var(--bg);
 }
 
 :root.TridactylOwnNamespace,
 :root.TridactylOwnNamespace body,
 :root.TridactylOwnNamespace html {
-  background-color: var(--bg) !important;
+  background-color: var(--transparent) !important;
 }
