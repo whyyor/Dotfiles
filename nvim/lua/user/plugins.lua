@@ -271,7 +271,9 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = {},
+		config = function()
+			require("user/plugins/todo-comments")
+		end,
 	},
 
 	-- Trouble to toggle diagnostics at bottom
