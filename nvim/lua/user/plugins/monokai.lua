@@ -21,3 +21,7 @@ vim.api.nvim_set_hl(0, "StatusLineNonText", {
 })
 
 vim.api.nvim_set_hl(0, "IndentBlanklineChar", { fg = "#2F313C" })
+
+-- INFO: fixes color of bad spell
+vim.cmd("hi clear SpellBad")
+vim.cmd("hi SpellBad gui=undercurl")
