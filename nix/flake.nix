@@ -35,6 +35,7 @@
           pkgs.mpv
           pkgs.jira-cli-go
           pkgs.typioca
+          pkgs.leetcode-cli
         ];
 
       homebrew = {
@@ -133,7 +134,7 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Zen Browser.app"
+          "/Applications/Zen.app"
           "/Applications/Ghostty.app"
           "/Applications/ChatGPT.app"
           "/Applications/Texts.app"
