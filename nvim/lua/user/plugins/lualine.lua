@@ -1,31 +1,31 @@
 local function config_lualine(colors)
 	local mode_colors = {
-		n = { fg = colors.bg_dark, bg = colors.red }, -- Normal mode
-		i = { fg = colors.bg, bg = colors.cyan }, -- Insert mode
-		v = { fg = colors.bg_dark, bg = colors.purple }, -- Visual mode
-		[""] = { fg = colors.bg_dark, bg = colors.purple }, -- Visual block
-		V = { fg = colors.bg_dark, bg = colors.red }, -- Visual line
+		n = { fg = colors.white, bg = colors.red },  -- Normal mode
+		i = { fg = colors.bg, bg = colors.cyan },    -- Insert mode
+		v = { fg = colors.white, bg = colors.purple }, -- Visual mode
+		[""] = { fg = colors.white, bg = colors.purple }, -- Visual block
+		V = { fg = colors.white, bg = colors.red },  -- Visual line
 		c = { fg = colors.bg, bg = colors.yellow },
-		no = { fg = colors.bg_dark, bg = colors.red },
+		no = { fg = colors.white, bg = colors.red },
 		s = { fg = colors.bg, bg = colors.yellow },
 		S = { fg = colors.bg, bg = colors.yellow },
 		[""] = { fg = colors.bg, bg = colors.yellow },
 		ic = { fg = colors.bg, bg = colors.yellow },
 		R = { fg = colors.bg, bg = colors.green },
-		Rv = { fg = colors.bg_dark, bg = colors.purple },
-		cv = { fg = colors.bg_dark, bg = colors.red },
-		ce = { fg = colors.bg_dark, bg = colors.red },
+		Rv = { fg = colors.white, bg = colors.purple },
+		cv = { fg = colors.white, bg = colors.red },
+		ce = { fg = colors.white, bg = colors.red },
 		r = { fg = colors.bg, bg = colors.cyan }, -- Prompt mode
 		rm = { fg = colors.bg, bg = colors.cyan },
 		["r?"] = { fg = colors.bg, bg = colors.cyan },
-		["!"] = { fg = colors.bg_dark, bg = colors.red },
-		t = { fg = colors.bg_dark, bg = colors.red }, -- Terminal mode
+		["!"] = { fg = colors.white, bg = colors.red },
+		t = { fg = colors.white, bg = colors.red }, -- Terminal mode
 	}
 
 	local theme = {
 		normal = {
-			a = { fg = colors.bg_dark, bg = colors.blue },
-			b = { fg = colors.blue, bg = colors.white },
+			a = { fg = colors.white, bg = colors.blue },
+			b = { fg = colors.blue, bg = colors.bg_dark },
 			c = { fg = colors.white, bg = colors.bg_dark },
 			z = { fg = colors.white, bg = colors.bg_dark },
 		},
@@ -42,7 +42,7 @@ local function config_lualine(colors)
 			return string.format("%s | %s", icon, filename)
 		end,
 		icons_enabled = true,
-		color = { bg = colors.bg_dark, fg = colors.bg_dark, gui = "nocombine" },
+		color = { bg = colors.bg_dark, fg = colors.white, gui = "nocombine" },
 		separator = { left = "", right = "" },
 	}
 
@@ -53,7 +53,7 @@ local function config_lualine(colors)
 			return folder_name ~= "" and folder_name or "no folder"
 		end,
 		icon = "",
-		color = { bg = colors.bg, fg = colors.bg_dark },
+		color = { bg = colors.bg, fg = colors.white },
 		separator = { left = "", right = "" },
 		draw_empty = true,
 	}
@@ -61,7 +61,7 @@ local function config_lualine(colors)
 	local branch = {
 		"branch",
 		icon = "",
-		color = { bg = colors.bg, fg = colors.bg_dark },
+		color = { bg = colors.bg, fg = colors.white },
 		separator = { left = "", right = "" }, -- Use custom highlight
 		draw_empty = true,
 	}
@@ -233,7 +233,7 @@ local colors = {
 	selection = "#5b595c",
 	fg_dark = "#fcfcfa",
 	comment = "#727072",
-	red = "#f92672",
+	red = "#f92572",
 	orange = "#fc9867",
 	yellow = "#ffd866",
 	green = "#a9dc76",
@@ -242,6 +242,7 @@ local colors = {
 	purple = "#ab9df2",
 	border = "#403e41",
 	bg_dark = "none",
+	white = "#ffffff",
 }
 config_lualine(colors)
 vim.o.laststatus = vim.g.lualine_laststatus

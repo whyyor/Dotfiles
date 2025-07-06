@@ -35,7 +35,6 @@
           pkgs.mpv
           pkgs.jira-cli-go
           pkgs.typioca
-          pkgs.leetcode-cli
         ];
 
       homebrew = {
@@ -57,6 +56,7 @@
           "jq"
           "md2pdf"
           "opencode"
+          "go"
         ];
         taps = [
           "dart-lang/dart"

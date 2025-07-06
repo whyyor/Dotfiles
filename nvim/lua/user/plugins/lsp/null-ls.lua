@@ -10,6 +10,7 @@ local lSsources = {
 	-- add language servers here
 	null_ls.builtins.formatting.prettier,
 	null_ls.builtins.formatting.black,
+	null_ls.builtins.formatting.gofmt,
 	null_ls.builtins.formatting.prettier.with({
 		filetypes = {
 			"vimwiki",
