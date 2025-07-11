@@ -172,6 +172,9 @@
       # $ darwin-rebuild changelog
       system.stateVersion = 5;
 
+      # Set primary user for nix-darwin
+      system.primaryUser = "keshavkhatri";
+
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
