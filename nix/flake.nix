@@ -35,6 +35,8 @@
           pkgs.mpv
           pkgs.jira-cli-go
           pkgs.typioca
+          pkgs.termusic
+          pkgs.firefox
         ];
 
       homebrew = {
@@ -57,6 +59,7 @@
           "md2pdf"
           "opencode"
           "go"
+          "yarn"
         ];
         taps = [
           "dart-lang/dart"
@@ -67,7 +70,6 @@
           "chatgpt"
           "caffeine"
           "lookaway"
-          "zen"
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"
@@ -90,6 +92,7 @@
           "betterdisplay"
           "scoot"
           "yt-music"
+          "beeper"
         ];
         masApps = {
           "xcode" = 497799835;
@@ -134,10 +137,10 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Zen.app"
+          "/Applications/Firefox.app"
           "/Applications/Ghostty.app"
           "/Applications/ChatGPT.app"
-          "/Applications/Texts.app"
+          "/Applications/Beeper Desktop.app"
         ];
         dock.show-recents = false;
         loginwindow.GuestEnabled = false;
