@@ -71,7 +71,7 @@
   padding-bottom: 1rem;
 }
 
-#completions > div {
+#completions>div {
   max-height: calc(20 * var(--option-height));
   min-height: calc(10 * var(--option-height));
 }
@@ -179,5 +179,33 @@
 :root.TridactylOwnNamespace,
 :root.TridactylOwnNamespace body,
 :root.TridactylOwnNamespace html {
-  background-color: var(--transparent) !important;
+  /* set trasparent for making firefox transparent */
+  background-color: var(--bg) !important;
+}
+
+/* Hint elements styling */
+.TridactylHint {
+  background-color: var(--green) !important;
+  color: var(--bg) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hint overlay background */
+.TridactylHintHost {
+  background-color: transparent !important;
+}
+
+/* Any remaining white backgrounds */
+.TridactylHint,
+.TridactylHint * {
+  background: var(--green) !important;
+  color: var(--bg) !important;
+}
+
+/* Override any default hint styling */
+span[data-tridactyl-hint] {
+  background-color: var(--green) !important;
+  color: var(--bg) !important;
+  border: 1px solid var(--cyan) !important;
 }

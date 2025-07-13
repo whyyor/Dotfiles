@@ -35,6 +35,8 @@
           pkgs.mpv
           pkgs.jira-cli-go
           pkgs.typioca
+          pkgs.termusic
+          pkgs.firefox
         ];
 
       homebrew = {
@@ -67,7 +69,6 @@
           "chatgpt"
           "caffeine"
           "lookaway"
-          "zen"
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"
@@ -134,7 +135,7 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Zen.app"
+          "/Applications/Firefox.app"
           "/Applications/Ghostty.app"
           "/Applications/ChatGPT.app"
           "/Applications/Texts.app"

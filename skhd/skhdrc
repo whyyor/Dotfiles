@@ -34,7 +34,7 @@ hyper - 7 : yabai -m window --space 7;
 hyper - 8 : yabai -m window --space 8;
 hyper - 9 : yabai -m window --space 9;
 
-meh - b : open -a "Zen" 
+meh - b : open -a "Firefox" 
 meh - u : open -a "Ghostty"
 meh - t : open -a "Texts"
 meh - c : open -a "ChatGPT"
