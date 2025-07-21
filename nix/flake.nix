@@ -6,10 +6,11 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
     # nix-homebrew.url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, darwin-custom-icons }:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -114,6 +115,27 @@
         yabai.enable = true;
       };
 
+      environment.customIcons = {
+        enable = true;
+          icons = [
+            {
+              path = "/Applications/Ghostty.app";
+              icon = "/Users/keshavkhatri/Configration/icons/ghostty.webp";
+            }
+            {
+              path = "/Applications/Nix Apps/mpv.app";
+              icon = "/Users/keshavkhatri/Configration/icons/mpv.icns";
+            }
+            {
+              path = "/Applications/Stremio.app";
+              icon = "/Users/keshavkhatri/Configration/icons/stremio.icns";
+            }
+            {
+              path = "/Applications/Beeper Desktop.app";
+              icon = "/Users/keshavkhatri/Configration/icons/beeper.icns";
+            }];
+      };
+
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
           name = "system-applications";
@@ -137,9 +159,7 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Firefox.app"
           "/Applications/Ghostty.app"
-          "/Applications/ChatGPT.app"
           "/Applications/Beeper Desktop.app"
         ];
         dock.show-recents = false;
@@ -189,6 +209,7 @@
       modules = [ 
         configuration 
         nix-homebrew.darwinModules.nix-homebrew
+        darwin-custom-icons.darwinModules.default
            {
             nix-homebrew = {
             # Install Homebrew under the default prefix
