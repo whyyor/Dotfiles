@@ -152,13 +152,14 @@
         while read -r src; do
           app_name=$(basename "$src")
           echo "copying $src" >&2
-          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+          ln -sf "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
 
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
+          "/Applications/Nix Apps/Firefox.app"
           "/Applications/Ghostty.app"
           "/Applications/Beeper Desktop.app"
         ];
