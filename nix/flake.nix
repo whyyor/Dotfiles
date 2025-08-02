@@ -61,6 +61,8 @@
           "opencode"
           "go"
           "yarn"
+          "maven"
+          "tailscale"
         ];
         taps = [
           "dart-lang/dart"
@@ -94,6 +96,7 @@
           "scoot"
           "yt-music"
           "beeper"
+          "raspberry-pi-imager"
         ];
         masApps = {
           "xcode" = 497799835;

@@ -16,7 +16,7 @@
     "input_clear": "ctrl+c",
     "input_paste": "ctrl+v",
     "input_submit": "enter",
-    "input_newline": "alt+enter",
+    "input_newline": "shift+enter",
     "messages_page_up": "alt+k",
     "messages_page_down": "alt+j",
     "messages_half_page_up": "ctrl+u",
