@@ -79,7 +79,6 @@
           "sioyek"
           "flux"
           "keyboardcleantool"
-          "automattic-texts"
           "slack"
           "hiddenbar"
           "android-studio"
@@ -99,6 +98,7 @@
           "raspberry-pi-imager"
         ];
         masApps = {
+          "Discrete" = 6746067740;
           "xcode" = 497799835;
           "Davinci Resolve" = 571213070;
         };
@@ -132,6 +132,10 @@
             {
               path = "/Applications/Stremio.app";
               icon = "/Users/keshavkhatri/Configration/icons/stremio.icns";
+            }
+            {
+              path = "/Applications/Xcode.app";
+              icon = "/Users/keshavkhatri/Configration/icons/xcode.icns.icns";
             }
             {
               path = "/Applications/Beeper Desktop.app";

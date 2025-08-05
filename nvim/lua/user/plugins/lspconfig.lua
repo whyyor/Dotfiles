@@ -106,3 +106,10 @@ require("lspconfig").nil_ls.setup({
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
 })
+
+require("lspconfig").clangd.setup({
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = true
+		client.server_capabilities.documentFormattingRangeProvider = true
+	end,
+})
