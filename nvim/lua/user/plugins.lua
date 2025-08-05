@@ -340,6 +340,20 @@ require("lazy").setup({
 		opts = {},
 	},
 
+	-- Leetcode
+
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			lang = "cpp",
+		},
+	},
+
 	----------------------------- Vim Wiki ---------------------------------
 	{
 		"vimwiki/vimwiki",

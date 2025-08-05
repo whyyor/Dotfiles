@@ -134,6 +134,10 @@
               icon = "/Users/keshavkhatri/Configration/icons/stremio.icns";
             }
             {
+              path = "/Applications/Xcode.app";
+              icon = "/Users/keshavkhatri/Configration/icons/xcode.icns.icns";
+            }
+            {
               path = "/Applications/Beeper Desktop.app";
               icon = "/Users/keshavkhatri/Configration/icons/beeper.icns";
             }];
