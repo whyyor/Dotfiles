@@ -24,6 +24,10 @@ else
     echo "Skipping Homebrew installations."
 fi
 
+
+rm -rf $HOME/.config/aerospace
+ln -s $DOTFILES/aerospace $HOME/.config/
+
 rm -rf $HOME/.config/alacritty
 ln -s $DOTFILES/alacritty $HOME/.config/
 

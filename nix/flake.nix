@@ -44,8 +44,6 @@
         enable = true;
         brews = [
           "oh-my-posh"
-          "koekeishiya/formulae/yabai"
-          "koekeishiya/formulae/skhd"
           "yt-dlp"
           "node"
           "python@3.11"
@@ -67,8 +65,10 @@
         taps = [
           "dart-lang/dart"
           "sst/tap"
+          "nikitabobko/tap"
         ];
         casks = [
+          "aerospace"
           "aldente"
           "chatgpt"
           "caffeine"
@@ -114,8 +114,6 @@
       ];
 
       services = {
-        skhd.enable = true;
-        yabai.enable = true;
       };
 
       environment.customIcons = {
@@ -171,6 +169,7 @@
           "/Applications/Beeper Desktop.app"
         ];
         dock.show-recents = false;
+        dock.mru-spaces = false;
         loginwindow.GuestEnabled = false;
         NSGlobalDomain = {
           AppleShowAllExtensions = true;
