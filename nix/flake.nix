@@ -33,7 +33,6 @@
           pkgs.openjdk17
           pkgs.ffmpeg
           pkgs.wget
-          pkgs.mpv
           pkgs.jira-cli-go
           pkgs.typioca
           pkgs.termusic
@@ -80,6 +79,7 @@
           "flux"
           "keyboardcleantool"
           "slack"
+          "iina"
           "hiddenbar"
           "android-studio"
           "postman"
@@ -92,7 +92,6 @@
           "monitorcontrol"
           "karabiner-elements"
           "betterdisplay"
-          "scoot"
           "yt-music"
           "beeper"
           "raspberry-pi-imager"
