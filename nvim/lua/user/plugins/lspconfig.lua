@@ -64,52 +64,52 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 
 -- INFO: Configure language servers here
 -- setup ts-server for all sorts of languages
-require("lspconfig").ts_ls.setup({
+vim.lsp.config.ts_ls = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
-})
+}
 
 -- setup json for all sorts of languages
-require("lspconfig").jsonls.setup({
+vim.lsp.config.jsonls = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
-})
+}
 
-require("lspconfig").lua_ls.setup({
+vim.lsp.config.lua_ls = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
-})
+}
 
-require("lspconfig").pylsp.setup({
+vim.lsp.config.pylsp = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end,
-})
+}
 
-require("lspconfig").dockerls.setup({
+vim.lsp.config.dockerls = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = true
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
-})
+}
 
-require("lspconfig").nil_ls.setup({
+vim.lsp.config.nil_ls = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = true
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
-})
+}
 
-require("lspconfig").clangd.setup({
+vim.lsp.config.clangd = {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = true
 		client.server_capabilities.documentFormattingRangeProvider = true
 	end,
-})
+}

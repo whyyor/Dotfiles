@@ -128,19 +128,14 @@ require("lazy").setup({
 		end,
 	},
 
-	-- File tree sidebar
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		lazy = false,
+		"stevearc/oil.nvim",
 		config = function()
-			require("user/plugins/neo-tree")
+			require("user/plugins/oil")
 		end,
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		opts = {},
+		lazy = false,
 	},
 
 	-- A Status line.
@@ -383,5 +378,17 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
+	},
+
+	----------------------------- MCPHub ---------------------------------
+	{
+		"ravitemer/mcphub.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+		config = function()
+			require("mcphub").setup()
+		end,
 	},
 })

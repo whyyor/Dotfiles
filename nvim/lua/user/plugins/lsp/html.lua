@@ -1,8 +1,6 @@
-local lspconfig = require("lspconfig")
-
-lspconfig.html.setup({
+vim.lsp.config.html = {
   filetypes = {
     "html",
     "htmldjango",
   },
-})
+}

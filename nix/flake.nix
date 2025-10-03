@@ -60,6 +60,8 @@
           "yarn"
           "maven"
           "tailscale"
+          "colima"
+          "docker"
         ];
         taps = [
           "dart-lang/dart"
@@ -68,6 +70,7 @@
         ];
         casks = [
           "aerospace"
+          "android-platform-tools"
           "aldente"
           "chatgpt"
           "caffeine"

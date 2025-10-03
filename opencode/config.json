@@ -26,5 +26,5 @@
     "messages_first": "ctrl+g",
     "messages_last": "ctrl+alt+g",
     "app_exit": "ctrl+c,<leader>q"
-  }
+  },
 }
