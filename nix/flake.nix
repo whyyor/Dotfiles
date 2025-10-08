@@ -62,6 +62,10 @@
           "tailscale"
           "colima"
           "docker"
+          "pango"
+          "pkgconf"
+          "scipy"
+          "py3cairo"
         ];
         taps = [
           "dart-lang/dart"
@@ -79,7 +83,8 @@
           "appcleaner"
           "mac-mouse-fix"
           "sioyek"
-          "flux"
+          "mactex-no-gui"
+          "flux-app"
           "keyboardcleantool"
           "slack"
           "iina"

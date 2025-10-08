@@ -1,4 +1,8 @@
-require("oil").setup()
+require("oil").setup({
+	view_options = {
+		show_hidden = true,
+	},
+})
 
 local function toggle_oil()
 	-- Check if current buffer is Oil
