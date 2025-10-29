@@ -81,6 +81,9 @@ ln -s $DOTFILES/opencode $HOME/.config/opencode
 rm -rf $HOME/.config/nix
 ln -s $DOTFILES/nix $HOME/.config/nix
 
+rm -rf $HOME/.w3m
+ln -s $DOTFILES/w3m $HOME/.w3m
+
 # Ask the user what they want to do with the launch agent
 echo "What would you like to do with the Intermission launch agent?"
 echo "1. Load"

@@ -66,6 +66,7 @@
           "pkgconf"
           "scipy"
           "py3cairo"
+          "w3m"
         ];
         taps = [
           "dart-lang/dart"
@@ -103,6 +104,7 @@
           "yt-music"
           "beeper"
           "raspberry-pi-imager"
+          "onyx"
         ];
         masApps = {
           "Discrete" = 6746067740;
@@ -121,6 +123,19 @@
       ];
 
       services = {
+        postgresql = {
+          enable = true;
+          package = pkgs.postgresql_16;  # Stable version
+          dataDir = "/Users/keshavkhatri/.postgresql/data";
+          authentication = pkgs.lib.mkOverride 10 ''
+            local all all trust
+            host all all 127.0.0.1/32 trust
+            host all all ::1/128 trust
+          '';
+          extraPlugins = with pkgs.postgresql_16.pkgs; [
+            pgvector
+          ];
+        };
       };
 
       environment.customIcons = {
