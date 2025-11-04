@@ -32,72 +32,72 @@
   },
   "theme": {
     "primary": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "secondary": {
-      "dark": "darkPurple",
-      "light": "lightPurple"
+      "dark": "#ab9df2",
+      "light": "#ae81ff"
     },
     "accent": {
-      "dark": "darkOrange",
-      "light": "lightOrange"
+      "dark": "#fc9867",
+      "light": "#fd971f"
     },
     "error": {
-      "dark": "darkRed",
-      "light": "lightRed"
+      "dark": "#ff6188",
+      "light": "#f92672"
     },
     "warning": {
-      "dark": "darkOrange",
-      "light": "lightOrange"
+      "dark": "#fc9867",
+      "light": "#fd971f"
     },
     "success": {
-      "dark": "darkGreen",
-      "light": "lightGreen"
+      "dark": "#a9dc76",
+      "light": "#9bca65"
     },
     "info": {
-      "dark": "darkBlue",
-      "light": "lightBlue"
+      "dark": "#ab9df2",
+      "light": "#7e75db"
     },
     "text": {
-      "dark": "darkForeground",
-      "light": "lightForeground"
+      "dark": "#fcfcfa",
+      "light": "#2d2a2e"
     },
     "textMuted": {
-      "dark": "darkComment",
-      "light": "lightComment"
+      "dark": "#727072",
+      "light": "#939293"
     },
     "background": {
-      "dark": "darkBackground",
-      "light": "lightBackground"
+      "dark": "#0B0E14",
+      "light": "#fafafa"
     },
     "backgroundPanel": {
-      "dark": "darkCurrentLine",
-      "light": "lightCurrentLine"
+      "dark": "#0F131A",
+      "light": "#f0f0f0"
     },
     "backgroundElement": {
-      "dark": "darkCurrentLine",
-      "light": "lightCurrentLine"
+      "dark": "#0F131A",
+      "light": "#f0f0f0"
     },
     "border": {
-      "dark": "darkBorder",
-      "light": "lightBorder"
+      "dark": "#403e41",
+      "light": "#d3d3d3"
     },
     "borderActive": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "borderSubtle": {
-      "dark": "darkSelection",
-      "light": "lightSelection"
+      "dark": "#5b595c",
+      "light": "#e5e5e6"
     },
     "diffAdded": {
-      "dark": "darkGreen",
-      "light": "lightGreen"
+      "dark": "#a9dc76",
+      "light": "#9bca65"
     },
     "diffRemoved": {
-      "dark": "darkRed",
-      "light": "lightRed"
+      "dark": "#ff6188",
+      "light": "#f92672"
     },
     "diffContext": {
       "dark": "#a0a0a0",
@@ -124,8 +124,8 @@
       "light": "#ffebee"
     },
     "diffContextBg": {
-      "dark": "darkBackground",
-      "light": "lightBackground"
+      "dark": "#0B0E14",
+      "light": "#fafafa"
     },
     "diffLineNumber": {
       "dark": "#888888",
@@ -140,96 +140,96 @@
       "light": "#ffcdd2"
     },
     "markdownText": {
-      "dark": "darkForeground",
-      "light": "lightForeground"
+      "dark": "#fcfcfa",
+      "light": "#2d2a2e"
     },
     "markdownHeading": {
-      "dark": "darkPurple",
-      "light": "lightPurple"
+      "dark": "#ab9df2",
+      "light": "#ae81ff"
     },
     "markdownLink": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "markdownLinkText": {
-      "dark": "darkBlue",
-      "light": "lightBlue"
+      "dark": "#ab9df2",
+      "light": "#7e75db"
     },
     "markdownCode": {
-      "dark": "darkGreen",
-      "light": "lightGreen"
+      "dark": "#a9dc76",
+      "light": "#9bca65"
     },
     "markdownBlockQuote": {
-      "dark": "darkYellow",
-      "light": "lightYellow"
+      "dark": "#ffd866",
+      "light": "#e6db74"
     },
     "markdownEmph": {
-      "dark": "darkYellow",
-      "light": "lightYellow"
+      "dark": "#ffd866",
+      "light": "#e6db74"
     },
     "markdownStrong": {
-      "dark": "darkOrange",
-      "light": "lightOrange"
+      "dark": "#fc9867",
+      "light": "#fd971f"
     },
     "markdownHorizontalRule": {
-      "dark": "darkComment",
-      "light": "lightComment"
+      "dark": "#727072",
+      "light": "#939293"
     },
     "markdownListItem": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "markdownListEnumeration": {
-      "dark": "darkBlue",
-      "light": "lightBlue"
+      "dark": "#ab9df2",
+      "light": "#7e75db"
     },
     "markdownImage": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "markdownImageText": {
-      "dark": "darkBlue",
-      "light": "lightBlue"
+      "dark": "#ab9df2",
+      "light": "#7e75db"
     },
     "markdownCodeBlock": {
-      "dark": "darkForeground",
-      "light": "lightForeground"
+      "dark": "#fcfcfa",
+      "light": "#2d2a2e"
     },
     "syntaxComment": {
-      "dark": "darkComment",
-      "light": "lightComment"
+      "dark": "#727072",
+      "light": "#939293"
     },
     "syntaxKeyword": {
-      "dark": "darkRed",
-      "light": "lightRed"
+      "dark": "#ff6188",
+      "light": "#f92672"
     },
     "syntaxFunction": {
-      "dark": "darkGreen",
-      "light": "lightGreen"
+      "dark": "#a9dc76",
+      "light": "#9bca65"
     },
     "syntaxVariable": {
-      "dark": "darkForeground",
-      "light": "lightForeground"
+      "dark": "#fcfcfa",
+      "light": "#2d2a2e"
     },
     "syntaxString": {
-      "dark": "darkYellow",
-      "light": "lightYellow"
+      "dark": "#ffd866",
+      "light": "#e6db74"
     },
     "syntaxNumber": {
-      "dark": "darkPurple",
-      "light": "lightPurple"
+      "dark": "#ab9df2",
+      "light": "#ae81ff"
     },
     "syntaxType": {
-      "dark": "darkBlue",
-      "light": "lightBlue"
+      "dark": "#ab9df2",
+      "light": "#7e75db"
     },
     "syntaxOperator": {
-      "dark": "darkCyan",
-      "light": "lightCyan"
+      "dark": "#78dce8",
+      "light": "#66d9ef"
     },
     "syntaxPunctuation": {
-      "dark": "darkForeground",
-      "light": "lightForeground"
+      "dark": "#fcfcfa",
+      "light": "#2d2a2e"
     }
   }
 }

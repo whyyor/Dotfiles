@@ -141,9 +141,8 @@ automatically-unhide-macos-hidden-apps = false
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-
     # App launching with workspace switching (based on your SKHD lines 37-54)
-    ctrl-alt-shift-b = ['workspace 1', 'exec-and-forget open -a "Firefox"']
+    ctrl-alt-shift-b = ['workspace 1', 'exec-and-forget open -a "Zen"']
     ctrl-alt-shift-m = ['workspace 2', 'exec-and-forget open -a "Simulator"']
     ctrl-alt-shift-u = ['workspace 2', 'exec-and-forget open -a "Ghostty"']
     ctrl-alt-shift-g = ['workspace 3', 'exec-and-forget open -a "sioyek"']

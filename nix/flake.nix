@@ -36,7 +36,6 @@
           pkgs.jira-cli-go
           pkgs.typioca
           pkgs.termusic
-          pkgs.firefox
         ];
 
       homebrew = {
@@ -67,6 +66,9 @@
           "scipy"
           "py3cairo"
           "w3m"
+          "pandoc"
+          "poppler"
+          "azure-cli"
         ];
         taps = [
           "dart-lang/dart"
@@ -89,6 +91,8 @@
           "keyboardcleantool"
           "slack"
           "iina"
+          "zen"
+          "figma"
           "hiddenbar"
           "android-studio"
           "postman"
@@ -158,6 +162,10 @@
               icon = "/Users/keshavkhatri/Configration/icons/xcode.icns.icns";
             }
             {
+              path = "/Applications/Zen.app";
+              icon = "/Users/keshavkhatri/Configration/icons/zen.icns";
+            }
+            {
               path = "/Applications/Beeper Desktop.app";
               icon = "/Users/keshavkhatri/Configration/icons/beeper.icns";
             }];
@@ -186,7 +194,6 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Nix Apps/Firefox.app"
           "/Applications/Ghostty.app"
           "/Applications/Beeper Desktop.app"
         ];
