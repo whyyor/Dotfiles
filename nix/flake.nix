@@ -146,6 +146,10 @@
         enable = true;
           icons = [
             {
+              path = "/Applications/Zen.app";
+              icon = "/Users/keshavkhatri/Configration/icons/zen.icns";
+            }
+            {
               path = "/Applications/Ghostty.app";
               icon = "/Users/keshavkhatri/Configration/icons/ghostty.webp";
             }
@@ -160,10 +164,6 @@
             {
               path = "/Applications/Xcode.app";
               icon = "/Users/keshavkhatri/Configration/icons/xcode.icns.icns";
-            }
-            {
-              path = "/Applications/Zen.app";
-              icon = "/Users/keshavkhatri/Configration/icons/zen.icns";
             }
             {
               path = "/Applications/Beeper Desktop.app";
