@@ -2,7 +2,8 @@ local presets = require("markview.presets").headings
 
 require("markview").setup({
 	markdown = {
-		headings = presets.glow,
+		headings = presets.marker,
+		tables = presets.sin,
 		list_items = {
 			enable = true,
 			indent_size = 2,
@@ -35,13 +36,8 @@ require("markview").setup({
 		filetypes = { "markdown", "quarto", "rmd", "vimwiki" },
 		modes = { "n" },
 	},
-	code_blocks = {
-		style = "language",
-		border_hl = "dark",
-	},
 	checkboxes = presets.nerd,
 	latex = {
 		enable = true,
 	},
 })
-

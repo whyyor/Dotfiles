@@ -1,5 +1,5 @@
 # The syntax is "key = value". Press super + r to reload config
-background-opacity = 0.65
+background-opacity = 0.85
 background-blur-radius = 30
 
 # Font
@@ -46,3 +46,4 @@ auto-update = check
 
 # Keybinds
 keybind = super+r=reload_config
+auto-update = off

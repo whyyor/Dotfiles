@@ -155,7 +155,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-alt-shift-s = ['workspace 7', 'exec-and-forget open -a "Slack"']
     ctrl-alt-shift-d = ['workspace 8', 'exec-and-forget open -a "Davinci Resolve"']
     ctrl-alt-shift-x = ['workspace 8', 'exec-and-forget open -a "xcode"']
-    ctrl-alt-shift-v = ['workspace 9', 'exec-and-forget open -a "mpv"']
+    ctrl-alt-shift-v = ['workspace 9', 'exec-and-forget open -a "iina"']
     ctrl-alt-shift-e = ['workspace 9', 'exec-and-forget open -a "Mail"']
 
     ctrl-alt-shift-f = 'exec-and-forget open -a "Finder"'

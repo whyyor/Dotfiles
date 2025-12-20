@@ -42,5 +42,6 @@
     "input_newline": "shift+enter",
     "history_previous": "up",
     "history_next": "down"
-  }
+  },
+  "plugin": ["opencode-anthropic-auth@0.0.9"]
 }
