@@ -48,7 +48,7 @@
           "pyenv"
           "n"
           "mas"
-          "dart"
+          "dart-sdk"
           "taskell"
           "imagemagick"
           "openai-whisper"
@@ -79,7 +79,6 @@
           "aerospace"
           "android-platform-tools"
           "aldente"
-          "chatgpt"
           "caffeine"
           "lookaway"
           "ghostty"
@@ -93,7 +92,6 @@
           "iina"
           "zen"
           "figma"
-          "hiddenbar"
           "android-studio"
           "postman"
           "microsoft-teams"
@@ -130,7 +128,7 @@
         postgresql = {
           enable = true;
           package = pkgs.postgresql_16;  # Stable version
-          dataDir = "/Users/keshavkhatri/.postgresql/data";
+          dataDir = "/Users/whyyor/.postgresql/data";
           authentication = pkgs.lib.mkOverride 10 ''
             local all all trust
             host all all 127.0.0.1/32 trust
@@ -147,27 +145,27 @@
           icons = [
             {
               path = "/Applications/Zen.app";
-              icon = "/Users/keshavkhatri/Configration/icons/zen.icns";
+              icon = "/Users/whyyor/Configration/icons/zen.icns";
             }
             {
               path = "/Applications/Ghostty.app";
-              icon = "/Users/keshavkhatri/Configration/icons/ghostty.webp";
+              icon = "/Users/whyyor/Configration/icons/ghostty.webp";
             }
             {
               path = "/Applications/Nix Apps/mpv.app";
-              icon = "/Users/keshavkhatri/Configration/icons/mpv.icns";
+              icon = "/Users/whyyor/Configration/icons/mpv.icns";
             }
             {
               path = "/Applications/Stremio.app";
-              icon = "/Users/keshavkhatri/Configration/icons/stremio.icns";
+              icon = "/Users/whyyor/Configration/icons/stremio.icns";
             }
             {
               path = "/Applications/Xcode.app";
-              icon = "/Users/keshavkhatri/Configration/icons/xcode.icns.icns";
+              icon = "/Users/whyyor/Configration/icons/xcode.icns.icns";
             }
             {
               path = "/Applications/Beeper Desktop.app";
-              icon = "/Users/keshavkhatri/Configration/icons/beeper.icns";
+              icon = "/Users/whyyor/Configration/icons/beeper.icns";
             }];
       };
 
@@ -232,7 +230,7 @@
       system.stateVersion = 5;
 
       # Set primary user for nix-darwin
-      system.primaryUser = "keshavkhatri";
+      system.primaryUser = "whyyor";
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
@@ -241,7 +239,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."whyyormac" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."whyyor" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
         nix-homebrew.darwinModules.nix-homebrew
@@ -253,7 +251,7 @@
             # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
             enableRosetta = true;
             # User owning the Homebrew prefix
-            user = "keshavkhatri";
+            user = "whyyor";
             # Automatically migrate existing Homebrew installations, remove when installing fresh(maybe idk)
             autoMigrate = true;
           };
