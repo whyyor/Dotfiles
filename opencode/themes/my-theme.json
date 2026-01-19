@@ -1,35 +1,5 @@
 {
   "$schema": "https://opencode.ai/theme.json",
-  "defs": {
-    "darkBackground": "#0B0E14",
-    "darkCurrentLine": "#0F131A",
-    "darkSelection": "#5b595c",
-    "darkForeground": "#fcfcfa",
-    "darkComment": "#727072",
-    "darkRed": "#ff6188",
-    "darkOrange": "#fc9867",
-    "darkYellow": "#ffd866",
-    "darkGreen": "#a9dc76",
-    "darkCyan": "#78dce8",
-    "darkBlue": "#ab9df2",
-    "darkPurple": "#ab9df2",
-    "darkBorder": "#403e41",
-    "darkBackgroundDarker": "#221f22",
-    "lightBackground": "#fafafa",
-    "lightCurrentLine": "#f0f0f0",
-    "lightSelection": "#e5e5e6",
-    "lightForeground": "#2d2a2e",
-    "lightComment": "#939293",
-    "lightRed": "#f92672",
-    "lightOrange": "#fd971f",
-    "lightYellow": "#e6db74",
-    "lightGreen": "#9bca65",
-    "lightCyan": "#66d9ef",
-    "lightBlue": "#7e75db",
-    "lightPurple": "#ae81ff",
-    "lightBorder": "#d3d3d3",
-    "lightBackgroundLighter": "#ffffff"
-  },
   "theme": {
     "primary": {
       "dark": "#78dce8",
@@ -68,15 +38,15 @@
       "light": "#939293"
     },
     "background": {
-      "dark": "#0B0E14",
+      "dark": "transparent",
       "light": "#fafafa"
     },
     "backgroundPanel": {
-      "dark": "#0F131A",
+      "dark": "transparent",
       "light": "#f0f0f0"
     },
     "backgroundElement": {
-      "dark": "#0F131A",
+      "dark": "transparent",
       "light": "#f0f0f0"
     },
     "border": {
