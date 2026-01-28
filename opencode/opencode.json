@@ -43,5 +43,10 @@
     "history_previous": "up",
     "history_next": "down"
   },
-  "plugin": ["opencode-anthropic-auth@0.0.9"]
+  "mode": {
+    "build": {
+      "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
+    }
+  },
+  "plugin": ["opencode-anthropic-auth@0.0.13"]
 }

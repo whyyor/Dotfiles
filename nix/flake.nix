@@ -43,8 +43,6 @@
         brews = [
           "oh-my-posh"
           "yt-dlp"
-          "node"
-          "nvm"
           "python@3.11"
           "pyenv"
           "n"
