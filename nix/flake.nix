@@ -68,13 +68,18 @@
           "pandoc"
           "poppler"
           "azure-cli"
+          "bun"
         ];
         taps = [
           "dart-lang/dart"
           "sst/tap"
           "nikitabobko/tap"
+          "oven-sh/bun"
         ];
         casks = [
+          "claude"
+          "claude-code"
+          "chatgpt"
           "aerospace"
           "android-platform-tools"
           "aldente"
