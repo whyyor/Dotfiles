@@ -36,6 +36,8 @@
           pkgs.jira-cli-go
           pkgs.typioca
           pkgs.termusic
+          pkgs.jellyfin-tui
+          pkgs.htop
         ];
 
       homebrew = {
@@ -69,6 +71,8 @@
           "poppler"
           "azure-cli"
           "bun"
+          "typtea"
+          "redis"
         ];
         taps = [
           "dart-lang/dart"
@@ -89,7 +93,6 @@
           "appcleaner"
           "mac-mouse-fix"
           "sioyek"
-          "mactex-no-gui"
           "flux-app"
           "keyboardcleantool"
           "slack"
@@ -111,6 +114,8 @@
           "beeper"
           "raspberry-pi-imager"
           "onyx"
+          "mactex-no-gui"
+          "scoot"
         ];
         masApps = {
           "Discrete" = 6746067740;
