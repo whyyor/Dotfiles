@@ -3,8 +3,8 @@
   "model": "anthropic/claude-opus-4-5",
   "mode": {
     "build": {
-      "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
+      "prompt": "You are opencode"
     }
   },
-  "plugin": ["opencode-anthropic-oauth@latest"]
+  "plugin": ["@ex-machina/opencode-anthropic-auth@latest"]
 }

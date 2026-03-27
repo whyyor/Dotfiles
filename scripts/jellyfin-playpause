@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "$(date): triggered" >> /tmp/jellyfin-debug.log
+tmux send-keys -t Configration:jellyfin-tui " "

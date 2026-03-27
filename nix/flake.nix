@@ -73,6 +73,7 @@
           "bun"
           "typtea"
           "redis"
+          "resterm"
         ];
         taps = [
           "dart-lang/dart"
@@ -118,7 +119,6 @@
           "scoot"
         ];
         masApps = {
-          "Discrete" = 6746067740;
           "xcode" = 497799835;
           "Davinci Resolve" = 571213070;
           "Tailscale" = 1475387142;
