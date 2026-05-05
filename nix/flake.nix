@@ -31,7 +31,6 @@
           pkgs.pngpaste
           pkgs.cocoapods
           pkgs.openjdk17
-          pkgs.ffmpeg
           pkgs.wget
           pkgs.jira-cli-go
           pkgs.typioca
@@ -74,12 +73,14 @@
           "typtea"
           "redis"
           "resterm"
+          "homebrew-ffmpeg/ffmpeg/ffmpeg"
         ];
         taps = [
           "dart-lang/dart"
           "sst/tap"
           "nikitabobko/tap"
           "oven-sh/bun"
+          "homebrew-ffmpeg/ffmpeg"
         ];
         casks = [
           "claude"
@@ -117,6 +118,7 @@
           "onyx"
           "mactex-no-gui"
           "scoot"
+          "brave-browser"
         ];
         masApps = {
           "xcode" = 497799835;
@@ -183,7 +185,7 @@
         env = pkgs.buildEnv {
           name = "system-applications";
           paths = config.environment.systemPackages;
-          pathsToLink = "/Applications";
+          pathsToLink = [ "/Applications" ];
         };
       in
         pkgs.lib.mkForce ''
