@@ -1,0 +1,50 @@
+{
+  "description": "Jellyfin-tui global controls",
+  "manipulators": [
+    {
+      "description": "Hyper+Space -> play/pause",
+      "type": "basic",
+      "from": {
+        "key_code": "spacebar",
+        "modifiers": {
+          "mandatory": ["left_shift", "left_control", "left_option"]
+        }
+      },
+      "to": [
+        {
+          "shell_command": "/run/current-system/sw/bin/tmux send-keys -t Music:jellyfin-tui ' '"
+        }
+      ]
+    },
+    {
+      "description": "Hyper+] -> next track",
+      "type": "basic",
+      "from": {
+        "key_code": "close_bracket",
+        "modifiers": {
+          "mandatory": ["left_shift", "left_control", "left_option"]
+        }
+      },
+      "to": [
+        {
+          "shell_command": "/run/current-system/sw/bin/tmux send-keys -t Music:jellyfin-tui 'n'"
+        }
+      ]
+    },
+    {
+      "description": "Hyper+[ -> previous track",
+      "type": "basic",
+      "from": {
+        "key_code": "open_bracket",
+        "modifiers": {
+          "mandatory": ["left_shift", "left_control", "left_option"]
+        }
+      },
+      "to": [
+        {
+          "shell_command": "/run/current-system/sw/bin/tmux send-keys -t Music:jellyfin-tui 'N'"
+        }
+      ]
+    }
+  ]
+}
