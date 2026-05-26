@@ -74,6 +74,7 @@
           "redis"
           "resterm"
           "homebrew-ffmpeg/ffmpeg/ffmpeg"
+          "tree-sitter-cli"
         ];
         taps = [
           "dart-lang/dart"

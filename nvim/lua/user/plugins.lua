@@ -178,23 +178,22 @@ require("lazy").setup({
 	},
 
 	-- Improved syntax highlighting
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })
-        end,
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            {
-                "nvim-treesitter/nvim-treesitter-textobjects",
-                branch = "master",
-            },
-        },
-        config = function()
-            require("user/plugins/treesitter")
-        end,
-    },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				branch = "main",
+			},
+		},
+		config = function()
+			require("user/plugins/treesitter")
+		end,
+	},
 
 	-- Language Server Protocol.
 	{
