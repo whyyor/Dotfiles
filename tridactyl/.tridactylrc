@@ -1,0 +1,5 @@
+" set custom newtab page
+set newtab file:///Users/whyyor/Configration/tridactyl/newtab.html
+
+" load monokai pro theme
+colourscheme --url file:///Users/whyyor/Configration/tridactyl/theme.css customtheme

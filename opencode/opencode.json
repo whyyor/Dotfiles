@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-opus-4-7",
+  "model": "anthropic/claude-opus-5",
   "mode": {
     "build": {
       "prompt": "You are opencode"
@@ -39,6 +39,11 @@
         "Authorization": "Bearer {env:GIT_TOKEN}"
       },
       "enabled": false
+    },
+    "figma": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3845/mcp",
+      "enabled": true
     }
   }
 }

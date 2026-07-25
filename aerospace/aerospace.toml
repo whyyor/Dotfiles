@@ -1,6 +1,13 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
+# Config version for compatibility and deprecations
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
+# Workspaces that stay alive even when empty (in v1 this was inferred from bindings)
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = ['flatten-workspace-tree']
@@ -147,6 +154,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-alt-shift-u = ['workspace 2', 'exec-and-forget open -a "Ghostty"']
     ctrl-alt-shift-g = ['workspace 3', 'exec-and-forget open -a "sioyek"']
     ctrl-alt-shift-c = ['workspace 3', 'exec-and-forget open -a "ChatGPT"']
+    ctrl-alt-shift-w = ['workspace 3', 'exec-and-forget open -a "ExcalidrawZ"']
     ctrl-alt-shift-i = ['workspace 4', 'exec-and-forget open -a "Discrete"']
     ctrl-alt-shift-t = ['workspace 5', 'exec-and-forget open -a "Beeper Desktop"']
     ctrl-alt-shift-p = ['workspace 6', 'exec-and-forget open -a "Postman"']

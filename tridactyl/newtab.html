@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>new tab</title>
+<style>
+  :root {
+    --bg: #0f1319; --fg: #fcfcfa; --comment: #727072; --currentline: #403e41;
+    --cyan: #78dce8; --green: #a9dc76; --orange: #f59762;
+    --pink: #ff6188; --purple: #ab9df2; --yellow: #ffd866;
+    --font: "FiraCode Nerd Font Mono", "FiraCode Nerd Font", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    height: 100%; background: var(--bg); color: var(--fg);
+    font-family: var(--font); overflow: hidden;
+  }
+  body {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2.5rem;
+  }
+  #clock {
+    font-size: 7rem; font-weight: 300; letter-spacing: 0.4rem;
+    color: var(--fg); line-height: 1;
+  }
+  #clock .sep { color: var(--comment); margin: 0 0.3rem; }
+  #date { font-size: 1.1rem; color: var(--comment); letter-spacing: 0.15rem; }
+  #greeting { font-size: 0.9rem; color: var(--purple); letter-spacing: 0.2rem; }
+
+  #weather {
+    display: flex; align-items: center; gap: 2.5rem;
+    margin-top: 1rem; opacity: 0; transition: opacity 0.4s;
+  }
+  #weather.show { opacity: 1; }
+  #now {
+    display: flex; align-items: center; gap: 1rem;
+    padding-right: 2.5rem; border-right: 1px solid var(--currentline);
+  }
+  #now .icon { font-size: 2.8rem; }
+  #now .temp { font-size: 2.4rem; }
+  #now .label { font-size: 0.8rem; color: var(--comment); }
+  #forecast { display: flex; gap: 1.8rem; }
+  .day {
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    font-size: 0.8rem; color: var(--comment);
+  }
+  .day .ic { font-size: 1.4rem; }
+  .day .hi { color: var(--fg); }
+  .day .lo { color: var(--comment); }
+</style>
+</head>
+<body>
+  <div id="greeting"></div>
+  <div id="clock"></div>
+  <div id="date"></div>
+
+  <div id="weather">
+    <div id="now">
+      <span class="icon" id="nowIcon"></span>
+      <div>
+        <div class="temp" id="nowTemp"></div>
+        <div class="label">Bangalore</div>
+      </div>
+    </div>
+    <div id="forecast"></div>
+  </div>
+
+<script>
+  // clock + date
+  const pad = n => String(n).padStart(2, "0");
+  function tick() {
+    const d = new Date();
+    document.getElementById("clock").innerHTML =
+      pad(d.getHours()) + '<span class="sep">:</span>' +
+      pad(d.getMinutes()) + '<span class="sep">:</span>' + pad(d.getSeconds());
+    document.getElementById("date").textContent =
+      d.toLocaleDateString(undefined, { weekday:"long", month:"long", day:"numeric" });
+    const h = d.getHours();
+    const g = h < 12 ? "good morning" : h < 18 ? "good afternoon" : "good evening";
+    document.getElementById("greeting").textContent = g + ", whyyor";
+  }
+  tick(); setInterval(tick, 1000);
+
+  // weather via Open-Meteo (no API key)
+  const LAT = 12.9716, LON = 77.5946;
+  const icons = { 0:"\u2600", 1:"\uD83C\uDF24", 2:"\u26C5", 3:"\u2601", 45:"\uD83C\uDF2B", 48:"\uD83C\uDF2B",
+    51:"\uD83C\uDF26", 53:"\uD83C\uDF26", 55:"\uD83C\uDF27", 61:"\uD83C\uDF27", 63:"\uD83C\uDF27", 65:"\uD83C\uDF27",
+    71:"\uD83C\uDF28", 80:"\uD83C\uDF26", 81:"\uD83C\uDF27", 82:"\u26C8", 95:"\u26C8", 96:"\u26C8", 99:"\u26C8" };
+  const ic = c => icons[c] ?? "\u00B7";
+  const dayName = s => new Date(s).toLocaleDateString(undefined,{weekday:"short"});
+
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}`
+    + `&current=temperature_2m,weather_code`
+    + `&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+
+  fetch(url).then(r => r.json()).then(w => {
+    document.getElementById("nowIcon").textContent = ic(w.current.weather_code);
+    document.getElementById("nowTemp").textContent = Math.round(w.current.temperature_2m) + "\u00B0";
+    const fc = document.getElementById("forecast");
+    for (let i = 1; i <= 4; i++) {
+      const el = document.createElement("div");
+      el.className = "day";
+      el.innerHTML = `<span>${dayName(w.daily.time[i])}</span>`
+        + `<span class="ic">${ic(w.daily.weather_code[i])}</span>`
+        + `<span class="hi">${Math.round(w.daily.temperature_2m_max[i])}\u00B0</span>`
+        + `<span class="lo">${Math.round(w.daily.temperature_2m_min[i])}\u00B0</span>`;
+      fc.appendChild(el);
+    }
+    document.getElementById("weather").classList.add("show");
+  }).catch(() => {});
+</script>
+</body>
+</html>
