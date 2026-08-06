@@ -75,16 +75,17 @@
           "resterm"
           "homebrew-ffmpeg/ffmpeg/ffmpeg"
           "tree-sitter-cli"
+          "superfile"
+          "bitwarden-cli"
         ];
         taps = [
-          "dart-lang/dart"
-          "sst/tap"
-          "nikitabobko/tap"
-          "oven-sh/bun"
-          "homebrew-ffmpeg/ffmpeg"
+          { name = "dart-lang/dart"; trusted = true; }
+          { name = "sst/tap"; trusted = true; }
+          { name = "nikitabobko/tap"; trusted = true; }
+          { name = "oven-sh/bun"; trusted = true; }
+          { name = "homebrew-ffmpeg/ffmpeg"; trusted = true; }
         ];
         casks = [
-          "claude"
           "claude-code"
           "chatgpt"
           "aerospace"
@@ -95,7 +96,6 @@
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"
-          "sioyek"
           "flux-app"
           "keyboardcleantool"
           "slack"
@@ -119,13 +119,8 @@
           "onyx"
           "mactex-no-gui"
           "scoot"
-          "brave-browser"
+          "helium-browser"
         ];
-        masApps = {
-          "xcode" = 497799835;
-          "Davinci Resolve" = 571213070;
-          "Tailscale" = 1475387142;
-        };
         onActivation = {
           cleanup = "zap";
           autoUpdate = true;
@@ -138,6 +133,8 @@
       ];
 
       services = {
+        tailscale.enable = true;
+
         postgresql = {
           enable = true;
           package = pkgs.postgresql_16;  # Stable version
@@ -152,6 +149,8 @@
           ];
         };
       };
+
+      launchd.daemons.tailscaled.serviceConfig.KeepAlive = true;
 
       environment.customIcons = {
         enable = true;
@@ -205,7 +204,7 @@
       system.defaults = {
         dock.autohide = true;
         dock.persistent-apps = [
-          "/Applications/Zen.app"
+          "/Applications/Helium.app"
           "/Applications/Ghostty.app"
           "/Applications/Beeper Desktop.app"
         ];
