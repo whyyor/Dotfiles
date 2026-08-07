@@ -36,7 +36,7 @@
           pkgs.typioca
           pkgs.termusic
           pkgs.jellyfin-tui
-          pkgs.htop
+          pkgs.btop
         ];
 
       homebrew = {
@@ -160,12 +160,8 @@
               icon = "/Users/whyyor/Configration/icons/zen.icns";
             }
             {
-              path = "/Applications/Ghostty.app";
-              icon = "/Users/whyyor/Configration/icons/ghostty.webp";
-            }
-            {
-              path = "/Applications/Nix Apps/mpv.app";
-              icon = "/Users/whyyor/Configration/icons/mpv.icns";
+              path = "/Applications/Helium.app";
+              icon = "/Users/whyyor/Configration/icons/helium.icns";
             }
             {
               path = "/Applications/Stremio.app";
@@ -173,7 +169,7 @@
             }
             {
               path = "/Applications/Xcode.app";
-              icon = "/Users/whyyor/Configration/icons/xcode.icns.icns";
+              icon = "/Users/whyyor/Configration/icons/xcode.icns";
             }
             {
               path = "/Applications/Beeper Desktop.app";

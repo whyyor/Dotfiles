@@ -44,6 +44,10 @@ cursor-color = ffa460
 
 auto-update = check
 
+# Icon: applied by Ghostty itself, so it survives Dock restarts
+macos-icon = custom
+macos-custom-icon = /Users/whyyor/Configration/icons/ghostty.icns
+
 # Keybinds
 keybind = super+r=reload_config
 auto-update = off
