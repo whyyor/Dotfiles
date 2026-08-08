@@ -37,6 +37,7 @@
           pkgs.termusic
           pkgs.jellyfin-tui
           pkgs.btop
+          pkgs.herdr
         ];
 
       homebrew = {
@@ -162,6 +163,10 @@
             {
               path = "/Applications/Helium.app";
               icon = "/Users/whyyor/Configration/icons/helium.icns";
+            }
+            {
+              path = "/Applications/Slack.app";
+              icon = "/Users/whyyor/Configration/icons/slack.icns";
             }
             {
               path = "/Applications/Stremio.app";
