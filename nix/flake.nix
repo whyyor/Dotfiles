@@ -93,7 +93,6 @@
           "android-platform-tools"
           "aldente"
           "caffeine"
-          "lookaway"
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"

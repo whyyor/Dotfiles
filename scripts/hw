@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# fuzzy-switch between open herdr workspaces, search-first
+
+set -uo pipefail
+
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+
+ws_json=$("$herdr_bin" workspace list 2>/dev/null) || {
+    echo "hw: cannot reach the herdr server — is herdr running?" >&2
+    exit 1
+}
+
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+
+# fzf must NOT run inside $() — herdr issue #2199 hangs the pane
+jq -r '.result.workspaces[]
+       | [.workspace_id,
+          .label + (if .agent_status == "unknown" then "" else "  (" + .agent_status + ")" end)]
+       | @tsv' <<<"$ws_json" |
+    fzf --delimiter='\t' --with-nth=2.. --no-sort --prompt='workspace> ' >"$tmpfile"
+
+id=$(cut -f1 "$tmpfile")
+
+[[ -z $id ]] && exit 0
+
+exec "$herdr_bin" workspace focus "$id"

@@ -1,0 +1,42 @@
+onboarding = false
+
+[theme]
+name = "vesper"
+auto_switch = false
+
+[theme.custom]
+accent = "reset"
+panel_bg = "reset"
+surface0 = "reset"
+surface1 = "reset"
+surface_dim = "reset"
+
+[keys]
+prefix = "ctrl+space"
+goto = ""
+settings = "prefix+g"
+
+[[keys.command]]
+key = ["prefix+t", "prefix+shift+f"]
+type = "popup"
+command = "$HOME/.local/bin/h"
+description = "find folder -> workspace"
+width = "80%"
+height = "60%"
+
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "$HOME/.local/bin/hw"
+description = "switch workspace"
+width = "60%"
+height = "50%"
+
+[ui]
+pane_borders = false
+
+[ui.toast]
+delivery = "terminal"
+
+[experimental]
+kitty_graphics = true

@@ -20,6 +20,7 @@ then
     brew install --cask sioyek
     brew install --cask lookaway
     brew install mpv
+    brew install superfile
 else
     echo "Skipping Homebrew installations."
 fi
@@ -66,6 +67,16 @@ ln -s $DOTFILES/poshthemes $HOME/
 rm -rf $HOME/.local/bin/t
 ln -s $DOTFILES/scripts/t $HOME/.local/bin/t
 
+rm -rf $HOME/.local/bin/h
+ln -s $DOTFILES/scripts/h $HOME/.local/bin/h
+
+rm -rf $HOME/.local/bin/hw
+ln -s $DOTFILES/scripts/hw $HOME/.local/bin/hw
+
+mkdir -p $HOME/.config/herdr
+rm -f $HOME/.config/herdr/config.toml
+ln -s $DOTFILES/herdr/config.toml $HOME/.config/herdr/config.toml
+
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
 
@@ -80,6 +91,9 @@ ln -s $DOTFILES/opencode $HOME/.config/opencode
 
 rm -rf $HOME/.config/nix
 ln -s $DOTFILES/nix $HOME/.config/nix
+
+rm -rf "$HOME/Library/Application Support/superfile"
+ln -s $DOTFILES/superfile "$HOME/Library/Application Support/"
 
 rm -rf $HOME/.w3m
 ln -s $DOTFILES/w3m $HOME/.w3m

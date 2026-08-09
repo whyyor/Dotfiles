@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# t, ported to herdr. Original credit: ThePrimeagen.
+
+set -uo pipefail
+
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # fzf must NOT run inside $() — herdr issue #2199 hangs the pane
+    tmpfile=$(mktemp)
+    trap 'rm -f "$tmpfile"' EXIT
+    { find ~/ -maxdepth 2 -mindepth 1 -type d; echo /tmp; } | fzf >"$tmpfile"
+    selected=$(<"$tmpfile")
+fi
+
+[[ -z $selected ]] && exit 0
+
+[[ -d $selected ]] || { echo "h: not a directory: $selected" >&2; exit 1; }
+
+dirname=$(basename "$selected" | tr '.' '_')
+
+ws_json=$("$herdr_bin" workspace list 2>/dev/null) || {
+    nohup "$herdr_bin" server >/dev/null 2>&1 </dev/null &
+    for _ in {1..50}; do
+        ws_json=$("$herdr_bin" workspace list 2>/dev/null) && break
+        sleep 0.1
+    done
+    [[ -n ${ws_json:-} ]] || { echo "h: could not start the herdr server" >&2; exit 1; }
+    attach=1
+}
+
+id=$(jq -r --arg l "$dirname" \
+    'first(.result.workspaces[] | select(.label == $l) | .workspace_id) // empty' <<<"$ws_json")
+
+if [[ -n $id ]]; then
+    "$herdr_bin" workspace focus "$id" >/dev/null
+else
+    "$herdr_bin" workspace create --cwd "$selected" --label "$dirname" --focus >/dev/null
+fi
+
+if [[ -n ${attach:-} ]]; then
+    exec "$herdr_bin"
+fi
