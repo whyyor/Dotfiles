@@ -32,8 +32,18 @@ description = "switch workspace"
 width = "60%"
 height = "50%"
 
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "$HOME/.local/bin/ha"
+description = "jump to agent"
+width = "70%"
+height = "50%"
+
 [ui]
 pane_borders = false
+pane_gaps = false
+sidebar_collapsed_mode = "hidden"
 
 [ui.toast]
 delivery = "terminal"

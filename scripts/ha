@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# fuzzy-find a running agent pane and focus it, most urgent first
+
+set -uo pipefail
+
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+
+agents_json=$("$herdr_bin" agent list 2>/dev/null) || {
+    echo "ha: cannot reach the herdr server — is herdr running?" >&2
+    exit 1
+}
+
+if [[ $(jq '.result.agents | length' <<<"$agents_json") -eq 0 ]]; then
+    echo "ha: no agents running" >&2
+    exit 0
+fi
+
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+
+# fzf must NOT run inside $() — herdr issue #2199 hangs the pane
+jq -r '
+  def rank: {"blocked":0,"done":1,"working":2,"idle":3}[.agent_status] // 4;
+  .result.agents
+  | sort_by(rank, .pane_id)
+  | .[]
+  | [ .pane_id, "\(.agent)  [\(.agent_status)]  \(.terminal_title_stripped // .cwd)" ]
+  | @tsv' <<<"$agents_json" |
+    fzf --delimiter='\t' --with-nth=2.. --no-sort --prompt='agent> ' >"$tmpfile"
+
+id=$(cut -f1 "$tmpfile")
+
+[[ -z $id ]] && exit 0
+
+exec "$herdr_bin" agent focus "$id"
