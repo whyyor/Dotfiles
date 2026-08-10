@@ -5,7 +5,7 @@ name = "vesper"
 auto_switch = false
 
 [theme.custom]
-accent = "reset"
+accent = "#585858"
 panel_bg = "reset"
 surface0 = "reset"
 surface1 = "reset"

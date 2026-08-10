@@ -6,3 +6,7 @@ superfile/superfile.log
 superfile/pinned.json
 superfile/lastCheckVersion
 superfile/theme
+superfile/firstUseCheck
+superfile/themeFileVersion
+superfile/toggleDotFile
+superfile/toggleFooter

@@ -78,6 +78,7 @@
           "tree-sitter-cli"
           "superfile"
           "bitwarden-cli"
+          "terminal-notifier"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
@@ -151,6 +152,22 @@
       };
 
       launchd.daemons.tailscaled.serviceConfig.KeepAlive = true;
+
+      # gomuks matrix backend; frontends (web/tui) attach to it over RPC
+      launchd.user.agents.gomuks = {
+        serviceConfig = {
+          ProgramArguments = [ "/Users/whyyor/.local/opt/gomuks/gomuks" ];
+          RunAtLoad = true;
+          KeepAlive = true;
+          StandardOutPath = "/Users/whyyor/Library/Logs/gomuks.out.log";
+          StandardErrorPath = "/Users/whyyor/Library/Logs/gomuks.err.log";
+          EnvironmentVariables = {
+            HOME = "/Users/whyyor";
+            # terminal-notifier + ffmpeg live here; launchd agents get a minimal PATH
+            PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+          };
+        };
+      };
 
       environment.customIcons = {
         enable = true;
