@@ -20,7 +20,7 @@ then
     brew install --cask sioyek
     brew install --cask lookaway
     brew install mpv
-    brew install superfile
+    brew install yazi
 else
     echo "Skipping Homebrew installations."
 fi
@@ -95,8 +95,11 @@ ln -s $DOTFILES/opencode $HOME/.config/opencode
 rm -rf $HOME/.config/nix
 ln -s $DOTFILES/nix $HOME/.config/nix
 
-rm -rf "$HOME/Library/Application Support/superfile"
-ln -s $DOTFILES/superfile "$HOME/Library/Application Support/"
+rm -rf $HOME/.config/yazi
+ln -s $DOTFILES/yazi $HOME/.config/yazi
+
+# restore flavors/plugins listed in yazi/package.toml
+ya pkg install
 
 rm -rf $HOME/.w3m
 ln -s $DOTFILES/w3m $HOME/.w3m

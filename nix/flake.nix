@@ -76,7 +76,7 @@
           "resterm"
           "homebrew-ffmpeg/ffmpeg/ffmpeg"
           "tree-sitter-cli"
-          "superfile"
+          "yazi"
           "bitwarden-cli"
           "terminal-notifier"
         ];

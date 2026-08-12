@@ -2,11 +2,5 @@ lazygit/state.yml
 lazygit/state.yml
 .DS_Store
 jellyfin-tui
-superfile/superfile.log
-superfile/pinned.json
-superfile/lastCheckVersion
-superfile/theme
-superfile/firstUseCheck
-superfile/themeFileVersion
-superfile/toggleDotFile
-superfile/toggleFooter
+yazi/flavors/
+yazi/plugins/
