@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# hyper+t -> focus Ghostty, then jump to the herdr pane running gomuks
+
+set -uo pipefail
+
+# aerospace/karabiner spawn us with a bare PATH, so rebuild it
+export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+proc_re='^gomuks'
+ws_label='Messages'
+ws_cwd="$HOME/Library/Messages"
+launch_cmd='gomuks-tui'
+
+focus_ghostty() {
+    local wid
+    wid=$(aerospace list-windows --monitor all \
+        --app-bundle-id com.mitchellh.ghostty \
+        --format '%{window-id}' 2>/dev/null | head -n1)
+
+    if [[ -n $wid ]]; then
+        aerospace focus --window-id "$wid"
+    else
+        open -a Ghostty
+    fi
+}
+
+# echo "<pane> <tab> <workspace>" for the pane whose foreground process is gomuks
+find_gomuks() {
+    local pane tab ws
+    while read -r pane tab ws; do
+        if "$herdr_bin" pane process-info --pane "$pane" 2>/dev/null |
+            jq -e --arg re "$proc_re" '.result.process_info.foreground_processes[]?
+                | select((.argv0 | test($re)) or (.name | test($re)))' >/dev/null; then
+            printf '%s %s %s\n' "$pane" "$tab" "$ws"
+            return 0
+        fi
+    done < <("$herdr_bin" pane list 2>/dev/null |
+        jq -r '.result.panes[] | [.pane_id, .tab_id, .workspace_id] | @tsv')
+    return 1
+}
+
+# gomuks is dead: reuse the Messages workspace (or create it) and start gomuks in a fresh tab
+start_gomuks() {
+    local ws out pane tab
+    ws=$("$herdr_bin" workspace list 2>/dev/null |
+        jq -r --arg l "$ws_label" '.result.workspaces[]
+            | select(.label | test($l)) | .workspace_id' | head -n1)
+
+    if [[ -z $ws ]]; then
+        ws=$("$herdr_bin" workspace create --cwd "$ws_cwd" --label "$ws_label" --focus |
+            jq -r '.result.workspace.workspace_id // .result.workspace_id // empty')
+        [[ -z $ws ]] && return 1
+    fi
+
+    out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$ws_cwd" --focus) || return 1
+    pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
+    tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
+    [[ -z $pane || $pane == null ]] && return 1
+
+    sleep 0.3 # let the shell draw its prompt before we type into it
+    "$herdr_bin" pane run "$pane" "$launch_cmd" >/dev/null || return 1
+    printf '%s %s %s\n' "$pane" "$tab" "$ws"
+}
+
+focus_ghostty
+
+target=$(find_gomuks) || target=$(start_gomuks) || exit 1
+read -r pane tab ws <<<"$target"
+[[ -z ${ws:-} ]] && exit 1
+
+"$herdr_bin" workspace focus "$ws" >/dev/null
+"$herdr_bin" tab focus "$tab" >/dev/null

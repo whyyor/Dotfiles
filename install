@@ -76,6 +76,9 @@ ln -s $DOTFILES/scripts/hw $HOME/.local/bin/hw
 rm -rf $HOME/.local/bin/ha
 ln -s $DOTFILES/scripts/ha $HOME/.local/bin/ha
 
+rm -rf $HOME/.local/bin/msg
+ln -s $DOTFILES/scripts/msg $HOME/.local/bin/msg
+
 mkdir -p $HOME/.config/herdr
 rm -f $HOME/.config/herdr/config.toml
 ln -s $DOTFILES/herdr/config.toml $HOME/.config/herdr/config.toml

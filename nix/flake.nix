@@ -15,6 +15,9 @@
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
 
+      # nix-darwin defaults EDITOR to nano; yazi/git/crontab all follow $EDITOR
+      environment.variables.EDITOR = "nvim";
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -223,7 +226,6 @@
         dock.persistent-apps = [
           "/Applications/Helium.app"
           "/Applications/Ghostty.app"
-          "/Applications/Beeper Desktop.app"
         ];
         dock.show-recents = false;
         dock.mru-spaces = false;
