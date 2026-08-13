@@ -1,2 +1,0 @@
-#!/bin/bash
-tmux send-keys -t Configration:jellyfin-tui "N"

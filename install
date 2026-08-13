@@ -76,6 +76,9 @@ ln -s $DOTFILES/scripts/hw $HOME/.local/bin/hw
 rm -rf $HOME/.local/bin/ha
 ln -s $DOTFILES/scripts/ha $HOME/.local/bin/ha
 
+rm -rf $HOME/.local/bin/hgo
+ln -s $DOTFILES/scripts/hgo $HOME/.local/bin/hgo
+
 rm -rf $HOME/.local/bin/msg
 ln -s $DOTFILES/scripts/msg $HOME/.local/bin/msg
 

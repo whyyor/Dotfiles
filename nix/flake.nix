@@ -81,6 +81,7 @@
           "tree-sitter-cli"
           "yazi"
           "bitwarden-cli"
+          "mole"
           "terminal-notifier"
         ];
         taps = [
