@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# open a new herdr tab in the focused workspace, at the focused pane's cwd
+# usage: hnew yazi | hnew lazygit
+
+set -uo pipefail
+
+# aerospace/karabiner spawn us with a bare PATH, so rebuild it
+export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+source "$HOME/.config/scripts/herdr-lib.sh"
+
+[[ $# -eq 0 ]] && {
+    echo "usage: ${0##*/} <command> [args...]" >&2
+    exit 2
+}
+
+proc_re="^$(basename -- "$1")\$"
+
+# with a bare env, pane current resolves to the globally focused pane
+cur=$("$herdr_bin" pane current 2>/dev/null) || exit 1
+ws=$(jq -r '.result.pane.workspace_id' <<<"$cur")
+cwd=$(jq -r '.result.pane.foreground_cwd // .result.pane.cwd' <<<"$cur")
+[[ -z $ws || $ws == null ]] && exit 1
+
+# already open in this workspace at this cwd? jump instead of stacking duplicates
+find_here() {
+    local pane tab pws pcwd
+    while IFS=$'\t' read -r pane tab pws pcwd; do
+        [[ $pws == "$ws" && $pcwd == "$cwd" ]] || continue
+        pane_matches "$pane" "$proc_re" && {
+            printf '%s\n' "$tab"
+            return 0
+        }
+    done < <("$herdr_bin" pane list 2>/dev/null |
+        jq -r '.result.panes[]
+            | [.pane_id, .tab_id, .workspace_id, (.foreground_cwd // .cwd)] | @tsv')
+    return 1
+}
+
+focus_ghostty
+
+tab=$(find_here)
+if [[ -z $tab ]]; then
+    out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$cwd" --focus) || exit 1
+    pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
+    tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
+    [[ -z $pane || $pane == null ]] && exit 1
+
+    pane_launch "$pane" "$proc_re" "$@" || exit 1
+fi
+
+"$herdr_bin" workspace focus "$ws" >/dev/null
+"$herdr_bin" tab focus "$tab" >/dev/null
