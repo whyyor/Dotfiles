@@ -23,8 +23,14 @@ case "${1:-}" in
         ws_cwd="$HOME/Music"
         launch_cmd='jellyfin-tui'
         ;;
+    api | noodle | ndl)
+        proc_re='^noodle$'
+        ws_label='API'
+        ws_cwd="$HOME/Projects/wishtales.ai"
+        launch_cmd='noodle'
+        ;;
     *)
-        echo "usage: ${0##*/} msg|music" >&2
+        echo "usage: ${0##*/} msg|music|api" >&2
         exit 2
         ;;
 esac
@@ -57,26 +63,48 @@ find_target() {
     return 1
 }
 
-# app is dead: reuse its workspace (or create it) and start it in a fresh tab
-start_target() {
-    local ws out pane tab
-    ws=$("$herdr_bin" workspace list 2>/dev/null |
+workspace_by_label() {
+    "$herdr_bin" workspace list 2>/dev/null |
         jq -r --arg l "$ws_label" '.result.workspaces[]
-            | select(.label | test($l)) | .workspace_id' | head -n1)
+            | select(.label | test($l)) | .workspace_id' | head -n1
+}
 
+# app is dead: reuse its workspace (or create it) and start it there
+start_target() {
+    local ws pane tab out fresh=0 i
+
+    ws=$(workspace_by_label)
     if [[ -z $ws ]]; then
-        ws=$("$herdr_bin" workspace create --cwd "$ws_cwd" --label "$ws_label" --focus |
-            jq -r '.result.workspace.workspace_id // .result.workspace_id // empty')
+        "$herdr_bin" workspace create --cwd "$ws_cwd" --label "$ws_label" --focus >/dev/null || return 1
+        ws=$(workspace_by_label)
         [[ -z $ws ]] && return 1
+        fresh=1
     fi
 
-    out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$ws_cwd" --focus) || return 1
-    pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
-    tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
-    [[ -z $pane || $pane == null ]] && return 1
+    if ((fresh)); then
+        # a new workspace already ships with one shell, use it instead of stranding it
+        read -r pane tab < <("$herdr_bin" pane list |
+            jq -r --arg w "$ws" '.result.panes[] | select(.workspace_id == $w)
+                | [.pane_id, .tab_id] | @tsv' | head -n1)
+    else
+        out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$ws_cwd" --focus) || return 1
+        pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
+        tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
+    fi
+    [[ -z ${pane:-} || $pane == null ]] && return 1
 
-    sleep 0.3 # let the shell draw its prompt before we type into it
+    # typing before the prompt paints gets swallowed, so wait for any output first
+    "$herdr_bin" pane wait-output "$pane" --regex '\S' --timeout 5000 >/dev/null 2>&1
     "$herdr_bin" pane run "$pane" "$launch_cmd" >/dev/null || return 1
+
+    # confirm it really came up rather than reporting a silent success
+    for ((i = 0; i < 20; i++)); do
+        "$herdr_bin" pane process-info --pane "$pane" 2>/dev/null |
+            jq -e --arg re "$proc_re" '.result.process_info.foreground_processes[]?
+                | select((.argv0 | test($re)) or (.name | test($re)))' >/dev/null && break
+        sleep 0.15
+    done
+
     printf '%s %s %s\n' "$pane" "$tab" "$ws"
 }
 

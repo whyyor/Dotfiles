@@ -1,0 +1,28 @@
+{
+  "description": "Right Command tap -> Ctrl+Space (herdr prefix)",
+  "manipulators": [
+    {
+      "description": "Tap right_command sends the herdr prefix; hold still acts as Command",
+      "type": "basic",
+      "from": {
+        "key_code": "right_command",
+        "modifiers": { "optional": ["any"] }
+      },
+      "to": [
+        {
+          "key_code": "right_command",
+          "lazy": true
+        }
+      ],
+      "to_if_alone": [
+        {
+          "key_code": "spacebar",
+          "modifiers": ["left_control"]
+        }
+      ],
+      "parameters": {
+        "basic.to_if_alone_timeout_milliseconds": 300
+      }
+    }
+  ]
+}

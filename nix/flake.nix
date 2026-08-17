@@ -83,6 +83,8 @@
           "bitwarden-cli"
           "mole"
           "terminal-notifier"
+          "tlrc"
+          "noodle"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
@@ -90,6 +92,7 @@
           { name = "nikitabobko/tap"; trusted = true; }
           { name = "oven-sh/bun"; trusted = true; }
           { name = "homebrew-ffmpeg/ffmpeg"; trusted = true; }
+          { name = "wilfredinni/noodle"; trusted = true; }
         ];
         casks = [
           "claude-code"

@@ -1,0 +1,4 @@
+theme: vesper
+layout: stacked
+confirm_undo_all: true
+collections: []

@@ -82,6 +82,10 @@ ln -s $DOTFILES/scripts/hgo $HOME/.local/bin/hgo
 rm -rf $HOME/.local/bin/msg
 ln -s $DOTFILES/scripts/msg $HOME/.local/bin/msg
 
+# compiled binary, so build instead of symlink
+rm -f $HOME/.local/bin/fileclip
+swiftc -O $DOTFILES/scripts/fileclip.swift -o $HOME/.local/bin/fileclip
+
 mkdir -p $HOME/.config/herdr
 rm -f $HOME/.config/herdr/config.toml
 ln -s $DOTFILES/herdr/config.toml $HOME/.config/herdr/config.toml
@@ -96,6 +100,11 @@ ln -s $DOTFILES/ghostty $HOME/.config/ghostty
 
 rm -rf $HOME/.config/opencode
 ln -s $DOTFILES/opencode $HOME/.config/opencode
+
+# noodle rewrites this file at runtime (collections list is machine-local),
+# so seed it once instead of symlinking
+mkdir -p $HOME/.config/noodle
+[ -f $HOME/.config/noodle/config.yml ] || cp $DOTFILES/noodle/config.yml $HOME/.config/noodle/config.yml
 
 
 rm -rf $HOME/.config/nix
