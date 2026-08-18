@@ -50,7 +50,7 @@ workspace_by_label() {
 
 # app is dead: reuse its workspace (or create it) and start it there
 start_target() {
-    local ws pane tab out
+    local ws pane tab out reuse
 
     # both create calls answer with the same root_pane shape
     ws=$(workspace_by_label)
@@ -58,13 +58,21 @@ start_target() {
         # a new workspace already ships with one shell, use it instead of stranding a tab
         out=$("$herdr_bin" workspace create --cwd "$ws_cwd" --label "$ws_label" --focus) || return 1
     else
-        out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$ws_cwd" --focus) || return 1
+        # an idle shell already in the workspace beats opening yet another tab
+        reuse=$(idle_pane_in "$ws")
+        if [[ -n $reuse ]]; then
+            read -r pane tab <<<"$reuse"
+        else
+            out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$ws_cwd" --focus) || return 1
+        fi
     fi
 
-    pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
-    tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
-    ws=$(jq -r '.result.root_pane.workspace_id' <<<"$out")
-    [[ -z $pane || $pane == null ]] && return 1
+    if [[ -n ${out:-} ]]; then
+        pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
+        tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
+        ws=$(jq -r '.result.root_pane.workspace_id' <<<"$out")
+    fi
+    [[ -z ${pane:-} || $pane == null ]] && return 1
 
     pane_launch "$pane" "$proc_re" "$launch_cmd" || return 1
     printf '%s %s %s\n' "$pane" "$tab" "$ws"

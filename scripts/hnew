@@ -41,10 +41,16 @@ focus_ghostty
 
 tab=$(find_here)
 if [[ -z $tab ]]; then
-    out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$cwd" --focus) || exit 1
-    pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
-    tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
-    [[ -z $pane || $pane == null ]] && exit 1
+    # an idle shell at this cwd beats opening yet another tab
+    reuse=$(idle_pane_in "$ws" "$cwd")
+    if [[ -n $reuse ]]; then
+        read -r pane tab <<<"$reuse"
+    else
+        out=$("$herdr_bin" tab create --workspace "$ws" --cwd "$cwd" --focus) || exit 1
+        pane=$(jq -r '.result.root_pane.pane_id' <<<"$out")
+        tab=$(jq -r '.result.root_pane.tab_id' <<<"$out")
+    fi
+    [[ -z ${pane:-} || $pane == null ]] && exit 1
 
     pane_launch "$pane" "$proc_re" "$@" || exit 1
 fi

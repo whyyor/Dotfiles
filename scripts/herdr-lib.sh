@@ -31,6 +31,29 @@ pane_ready() {
             | .shell_pid as $s | any(.foreground_processes[]?; .pid == $s)' >/dev/null
 }
 
+# first pane in a workspace sitting idle at a prompt, optionally filtered by cwd
+# the workspace's active tab wins so the takeover never feels arbitrary
+# echoes "<pane_id> <tab_id>"
+idle_pane_in() {
+    local ws=$1 want_cwd=${2:-} active pane tab pcwd
+
+    active=$("$herdr_bin" workspace get "$ws" 2>/dev/null |
+        jq -r '.result.workspace.active_tab_id // empty')
+
+    while IFS=$'\t' read -r pane tab pcwd; do
+        [[ -n $want_cwd && $pcwd != "$want_cwd" ]] && continue
+        pane_ready "$pane" && {
+            printf '%s %s\n' "$pane" "$tab"
+            return 0
+        }
+    done < <("$herdr_bin" pane list 2>/dev/null |
+        jq -r --arg w "$ws" --arg a "$active" '
+            [.result.panes[] | select(.workspace_id == $w)]
+            | sort_by(.tab_id != $a)
+            | .[] | [.pane_id, .tab_id, (.foreground_cwd // .cwd)] | @tsv')
+    return 1
+}
+
 # type a command into a pane once its shell is actually at a prompt
 # usage: pane_launch <pane_id> <proc_regex> <command> [args...]
 pane_launch() {
