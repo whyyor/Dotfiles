@@ -53,7 +53,6 @@
           "n"
           "mas"
           "dart-sdk"
-          "taskell"
           "imagemagick"
           "openai-whisper"
           "jq"
@@ -93,6 +92,7 @@
           { name = "oven-sh/bun"; trusted = true; }
           { name = "homebrew-ffmpeg/ffmpeg"; trusted = true; }
           { name = "wilfredinni/noodle"; trusted = true; }
+          { name = "floatpane/matcha"; trusted = true; }
         ];
         casks = [
           "claude-code"
@@ -128,6 +128,7 @@
           "mactex-no-gui"
           "scoot"
           "helium-browser"
+          "floatpane/matcha/matcha"
         ];
         onActivation = {
           cleanup = "zap";
