@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# launch tuiboard on the Wiki board dir
+# exec -a sets argv0 to `tuiboard` (it would otherwise be `bun`), so hgo/herdr
+# can identify the pane by process name
+set -uo pipefail
+
+export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.bun/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+cd "$HOME/Wiki/tuiboard" || exit 1
+exec -a tuiboard bun "$HOME/.bun/bin/tuiboard" "$@"

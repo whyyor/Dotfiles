@@ -23,8 +23,14 @@ case "${1:-}" in
         ws_cwd="$HOME/Music"
         launch_cmd='jellyfin-tui'
         ;;
+    tasks | board | todo)
+        proc_re='^tuiboard$'
+        ws_label='Tasks'
+        ws_cwd="$HOME/Wiki/tuiboard"
+        launch_cmd='tasks'
+        ;;
     *)
-        echo "usage: ${0##*/} msg|music" >&2
+        echo "usage: ${0##*/} msg|music|tasks" >&2
         exit 2
         ;;
 esac

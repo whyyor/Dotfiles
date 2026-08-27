@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Re-apply Monokai Remastered theme + borderless look to the globally installed
+# tuiboard. bun runs its TypeScript straight from node_modules, so patching the
+# source takes effect immediately -- but a reinstall/update wipes it. Re-run this
+# after any `bun install -g` / `bun update -g`.
+set -euo pipefail
+
+P="${TUIBOARD_PATH:-$HOME/.bun/install/global/node_modules/tuiboard}"
+G="$P/src/ui/glyphs.ts"
+
+[ -f "$G" ] || { echo "tuiboard not found at $P" >&2; exit 1; }
+
+# Borders stay enabled -- OpenTUI paints panel titles INTO the top border line,
+# so border:false would delete every column heading. Square style instead.
+for f in ui/BoardView.tsx ui/PlannerPanel.tsx ui/AgentsBar.tsx \
+         ui/TimelineView.tsx ui/Modal.tsx views/AgentsOnly.tsx; do
+  [ -f "$P/src/$f" ] && sed -i '' 's/borderStyle: "rounded"/borderStyle: "single"/g' "$P/src/$f"
+done
+
+# Monokai Remastered palette, lifted from the Ghostty theme of the same name.
+# border is palette-8 grey (quiet but visible); borderActive is cyan so the
+# focused panel stands out. Backgrounds stay unset to keep terminal opacity.
+while read -r key hex; do
+  [ -z "$key" ] && continue
+  sed -i '' -E "s|^([[:space:]]*${key}: )\"#[0-9a-fA-F]{6}\"|\1\"${hex}\"|" "$G"
+done <<'PALETTE'
+cardBgCursor #343434
+cardBlockBg #1a1a1a
+cardBlockBgDone #1c2418
+textDim #625e4c
+textDone #625e4c
+done #98e024
+accent #58d1eb
+border #625e4c
+borderActive #58d1eb
+warm #fd971f
+warmActive #e0d561
+warmDim #8a6a2f
+highest #f4005f
+high #fd971f
+medium #e0d561
+low #98e024
+overdue #f4005f
+today #fd971f
+todayPale #e0d561
+todayPaleDim #8a8340
+scheduled #c4854a
+future #625e4c
+assignee #98e024
+tag #58d1eb
+time #9d65ff
+bannerInfo #58d1eb
+bannerWarn #fd971f
+bannerError #f4005f
+PALETTE
+
+echo "tuiboard themed: monokai remastered, square + borderless-inactive"
