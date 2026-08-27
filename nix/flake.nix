@@ -18,6 +18,9 @@
       # nix-darwin defaults EDITOR to nano; yazi/git/crontab all follow $EDITOR
       environment.variables.EDITOR = "nvim";
 
+      # bun global installs land in ~/.bun/bin, absent from PATH by default
+      environment.systemPath = pkgs.lib.mkOrder 1100 [ "$HOME/.bun/bin" ];
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
