@@ -1,0 +1,11 @@
+#:schema https://yazi-rs.github.io/schemas/yazi.json
+
+[opener]
+browser = [
+  { run = 'open %s', orphan = true, desc = "Browser (system default)" },
+]
+
+[open]
+prepend_rules = [
+  { url = "*.{html,htm,xhtml}", use = [ "browser", "edit", "reveal" ] },
+]
