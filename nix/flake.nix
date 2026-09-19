@@ -39,7 +39,6 @@
           pkgs.openjdk17
           pkgs.wget
           pkgs.jira-cli-go
-          pkgs.typioca
           pkgs.termusic
           pkgs.jellyfin-tui
           pkgs.btop
@@ -76,7 +75,6 @@
           "poppler"
           "azure-cli"
           "bun"
-          "typtea"
           "redis"
           "resterm"
           "homebrew-ffmpeg/ffmpeg/ffmpeg"
@@ -97,7 +95,7 @@
           { name = "floatpane/matcha"; trusted = true; }
         ];
         casks = [
-          "claude-code"
+          "claude-code@latest"
           "chatgpt"
           "aerospace"
           "android-platform-tools"
@@ -130,6 +128,7 @@
           "mactex-no-gui"
           "scoot"
           "helium-browser"
+          "steam"
           "floatpane/matcha/matcha"
         ];
         onActivation = {

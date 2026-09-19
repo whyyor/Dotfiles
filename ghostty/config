@@ -40,7 +40,13 @@ palette = 12=#f38d70
 palette = 13=#a8a9eb
 palette = 14=#85dacc
 palette = 15=#fff1f3
-cursor-color = ffa460
+cursor-color = f38d70
+
+# Cursor glide shader (requires ghostty's own cursor hidden)
+cursor-opacity = 0
+cursor-text = cell-foreground
+custom-shader = shaders/cursor_glide.glsl
+custom-shader-animation = true
 
 auto-update = check
 
