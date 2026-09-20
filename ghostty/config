@@ -48,12 +48,16 @@ cursor-text = cell-foreground
 custom-shader = shaders/cursor_glide.glsl
 custom-shader-animation = true
 
-auto-update = check
-
 # Icon: applied by Ghostty itself, so it survives Dock restarts
 macos-icon = custom
 macos-custom-icon = /Users/whyyor/Configration/icons/ghostty.icns
 
 # Keybinds
 keybind = super+r=reload_config
+keybind = ctrl+backspace=text:\x1b\x7f
+keybind = alt+backspace=text:\x1b\x7f
+
+# Left Option acts as Alt (word motions); right Option still composes é/ñ/—
+macos-option-as-alt = left
+
 auto-update = off

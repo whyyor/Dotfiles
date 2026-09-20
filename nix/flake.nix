@@ -84,6 +84,7 @@
           "mole"
           "tlrc"
           "noodle"
+          "bluekeys"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
@@ -93,6 +94,7 @@
           { name = "homebrew-ffmpeg/ffmpeg"; trusted = true; }
           { name = "wilfredinni/noodle"; trusted = true; }
           { name = "floatpane/matcha"; trusted = true; }
+          { name = "anirban12d/bluekeys"; trusted = true; }
         ];
         casks = [
           "claude-code@latest"
@@ -188,6 +190,10 @@
             {
               path = "/Applications/Helium.app";
               icon = "/Users/whyyor/Configration/icons/helium.icns";
+            }
+            {
+              path = "/Applications/IINA.app";
+              icon = "/Users/whyyor/Configration/icons/iina.icns";
             }
             {
               path = "/Applications/Slack.app";

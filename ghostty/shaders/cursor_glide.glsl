@@ -6,12 +6,11 @@
 //     custom-shader  = "./shaders/cursor_glide.glsl"
 
 // --- CONFIGURATION ---
-const float DURATION   = 0.10;  // seconds for one glide
+const float DURATION   = 0.13;  // seconds for one glide
 const float AA         = 1.0;   // edge antialiasing in pixels
 const float HOLLOW_T   = 2.0;   // unfocused border thickness in pixels
 const float GLYPH_DARKEN = 0.22;  // how far to darken the glyph under a light cursor
-const float GLYPH_EDGE0  = 0.06;  // colour distance from cell bg that starts counting as glyph
-const float GLYPH_EDGE1  = 0.22;  // ...and where it counts fully
+const float GLYPH_SHARPEN = 1.0;  // >1 thins strokes, <1 fattens them
 const bool  DEBUG_MASK   = false; // true = render the glyph mask instead of the cursor
 
 // NOTE: macOS defaults to `alpha-blending = native`, so ghostty hands this
@@ -95,8 +94,21 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         texAt(cur.xy + vec2(cur.z - in2.x, -cur.w - in2.y)));
     float diff = distance(tex.rgb, cellBg);
 
+    // How far this cell's glyph departs from its background. Without this the
+    // mask saturates: a pixel 18% covered by high-contrast text already passed
+    // a fixed threshold and rendered solid, dilating every stroke into bold.
+    float maxDiff = 0.0;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            vec2 sp = cur.xy + vec2((float(i) + 0.5) * 0.100 * cur.z,
+                                   -(float(j) + 0.5) * 0.100 * cur.w);
+            maxDiff = max(maxDiff, distance(texAt(sp), cellBg));
+        }
+    }
+    float alpha = maxDiff > 0.02 ? clamp(diff / maxDiff, 0.0, 1.0) : 0.0;
+
     if (DEBUG_MASK) {
-        fragColor = mix(tex, vec4(vec3(diff), 1.0), coverage);
+        fragColor = mix(tex, vec4(vec3(alpha), 1.0), coverage);
         return;
     }
 
@@ -106,7 +118,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float luma  = dot(cursor.rgb, vec3(0.299, 0.587, 0.114));
     vec4  glyph = luma > 0.45 ? vec4(tex.rgb * GLYPH_DARKEN, 1.0) : tex;
     float inTarget = 1.0 - step(0.0, sdfRect(fragCoord, rectCenter(cur), cur.zw * 0.5));
-    float text     = smoothstep(GLYPH_EDGE0, GLYPH_EDGE1, diff) * inTarget;
+    float text     = pow(alpha, GLYPH_SHARPEN) * inTarget;
     vec4 cursorPixel = mix(cursor, glyph, text);
 
     fragColor = mix(tex, cursorPixel, coverage);
