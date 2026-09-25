@@ -85,6 +85,7 @@
           "tlrc"
           "noodle"
           "bluekeys"
+          "terminal-notifier"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
