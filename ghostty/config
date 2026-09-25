@@ -56,6 +56,8 @@ macos-custom-icon = /Users/whyyor/Configration/icons/ghostty.icns
 keybind = super+r=reload_config
 keybind = ctrl+backspace=text:\x1b\x7f
 keybind = alt+backspace=text:\x1b\x7f
+# tcell has no CSI-u parser; send a plain LF for shift+enter
+keybind = shift+enter=text:\n
 
 # Left Option acts as Alt (word motions); right Option still composes é/ñ/—
 macos-option-as-alt = left
