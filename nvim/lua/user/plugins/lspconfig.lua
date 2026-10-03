@@ -35,13 +35,25 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"lua_ls",
 		"prismals",
-		"pyright",
-		"pylsp",
-		-- You may need to install python3-venv to install pylsp
+		"basedpyright",
+		"ruff",
 		"ts_ls",
 		"tailwindcss",
 	},
+	-- Prevent duplicate Python servers if these are ever reinstalled
+	automatic_enable = { exclude = { "pyright", "pylsp" } },
 })
+
+-- Non-LSP Mason tools (mason-lspconfig only handles servers)
+local registry = require("mason-registry")
+registry.refresh(function()
+	for _, name in ipairs({ "debugpy" }) do
+		local ok, pkg = pcall(registry.get_package, name)
+		if ok and not pkg:is_installed() then
+			pkg:install()
+		end
+	end
+end)
 
 require("user/plugins/lsp/html")
 -- Use vpn if they don't install for some reason
@@ -88,12 +100,67 @@ vim.lsp.config.lua_ls = {
 	end,
 }
 
-vim.lsp.config.pylsp = {
+-- Python: basedpyright owns types/completion/hover, ruff owns lint/format/imports
+vim.lsp.config.basedpyright = {
+	before_init = function(_, config)
+		local root = config.root_dir or vim.fn.getcwd()
+		config.settings.python = vim.tbl_extend("force", config.settings.python or {}, {
+			pythonPath = require("user.python").path(root),
+		})
+	end,
+	settings = {
+		basedpyright = {
+			disableOrganizeImports = true,
+			analysis = {
+				typeCheckingMode = "standard",
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "openFilesOnly",
+				autoImportCompletions = true,
+				inlayHints = {
+					variableTypes = true,
+					callArgumentNames = true,
+					functionReturnTypes = true,
+				},
+			},
+		},
+	},
+}
+
+vim.lsp.config.ruff = {
+	init_options = {
+		settings = {
+			lint = { extendSelect = { "I" } },
+		},
+	},
 	on_init = function(client)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
+		client.server_capabilities.hoverProvider = false
 	end,
 }
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.py",
+	group = vim.api.nvim_create_augroup("user.python.imports", { clear = true }),
+	callback = function(args)
+		local client = vim.lsp.get_clients({ bufnr = args.buf, name = "ruff" })[1]
+		if not client then
+			return
+		end
+		local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+		params.context = { only = { "source.organizeImports.ruff" }, diagnostics = {} }
+		local res = client:request_sync("textDocument/codeAction", params, 1000, args.buf)
+		for _, action in ipairs(res and res.result or {}) do
+			-- ruff returns lazy actions; fetch the edit via codeAction/resolve
+			if not action.edit and action.data then
+				local resolved = client:request_sync("codeAction/resolve", action, 1000, args.buf)
+				action = resolved and resolved.result or action
+			end
+			if action.edit then
+				vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+			end
+		end
+	end,
+})
 
 vim.lsp.config.dockerls = {
 	on_init = function(client)

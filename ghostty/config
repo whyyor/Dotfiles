@@ -44,7 +44,6 @@ cursor-color = f38d70
 
 # Cursor glide shader (requires ghostty's own cursor hidden)
 cursor-opacity = 0
-cursor-text = cell-foreground
 custom-shader = shaders/cursor_glide.glsl
 custom-shader-animation = true
 
