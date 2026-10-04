@@ -6,7 +6,7 @@
       "prompt": "You are opencode"
     }
   },
-  "plugin": ["@ex-machina/opencode-anthropic-auth@latest"],
+  "plugins": ["@ex-machina/opencode-anthropic-auth@2.0.0-next.5"],
   "mcp": {
     "outlook": {
       "type": "local",
@@ -21,14 +21,6 @@
         "MS_CLIENT_SECRET": "{env:MS_CLIENT_SECRET}",
         "OUTLOOK_CLIENT_ID": "{env:OUTLOOK_CLIENT_ID}",
         "OUTLOOK_CLIENT_SECRET": "{env:OUTLOOK_CLIENT_SECRET}"
-      },
-      "enabled": false
-    },
-    "beeper": {
-      "type": "remote",
-      "url": "http://localhost:23373/v0/mcp",
-      "headers": {
-        "Authorization": "Bearer {env:BEEPER_TOKEN}"
       },
       "enabled": false
     },

@@ -31,7 +31,15 @@ vim.opt.mouse = "a" -- enable mouse for all modes
 
 vim.opt.termguicolors = true
 
-vim.opt.spell = true
+vim.opt.spell = false
+
+-- Spell check only for prose filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "text", "gitcommit", "vimwiki" },
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+})
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true                -- it becomes cases sensitive if we put in capital letters
