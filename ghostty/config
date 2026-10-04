@@ -44,7 +44,8 @@ cursor-color = f38d70
 
 # Cursor glide shader (requires ghostty's own cursor hidden)
 cursor-opacity = 0
-custom-shader = shaders/cursor_glide.glsl
+cursor-text = cell-foreground
+custom-shader = shaders/cursor_smear.glsl
 custom-shader-animation = true
 
 # Icon: applied by Ghostty itself, so it survives Dock restarts
