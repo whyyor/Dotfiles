@@ -65,6 +65,7 @@ require("user/plugins/lsp/html")
 -- Diagnostic configuration
 vim.diagnostic.config({
 	virtual_text = true,
+	underline = false,
 	float = {
 		source = true,
 	},

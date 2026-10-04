@@ -133,6 +133,7 @@
           "helium-browser"
           "steam"
           "floatpane/matcha/matcha"
+          "terminal-browser"
         ];
         onActivation = {
           cleanup = "zap";
