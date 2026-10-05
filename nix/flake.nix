@@ -86,6 +86,7 @@
           "noodle"
           "bluekeys"
           "terminal-notifier"
+          "sevenzip"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
@@ -103,7 +104,6 @@
           "aerospace"
           "android-platform-tools"
           "aldente"
-          "caffeine"
           "ghostty"
           "appcleaner"
           "mac-mouse-fix"
@@ -112,7 +112,6 @@
           "slack"
           "iina"
           "zen"
-          "figma"
           "android-studio"
           "postman"
           "microsoft-teams"
@@ -123,7 +122,6 @@
           "windscribe"
           "monitorcontrol"
           "karabiner-elements"
-          "betterdisplay"
           "yt-music"
           "beeper"
           "raspberry-pi-imager"
@@ -134,6 +132,7 @@
           "steam"
           "floatpane/matcha/matcha"
           "terminal-browser"
+          "vorssaint"
         ];
         onActivation = {
           cleanup = "zap";
