@@ -87,7 +87,6 @@
           "bluekeys"
           "terminal-notifier"
           "sevenzip"
-          "mpv"
         ];
         taps = [
           { name = "dart-lang/dart"; trusted = true; }
