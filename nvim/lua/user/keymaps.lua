@@ -42,6 +42,12 @@ vim.keymap.set("n", "<Leader>O", ":!open %<CR><CR>")
 -- save file
 vim.keymap.set("n", "<Leader>s", ":w<CR>")
 
+-- Toggle spell check for the current window
+vim.keymap.set("n", "<Leader>ts", function()
+	vim.wo.spell = not vim.wo.spell
+	vim.notify("Spell " .. (vim.wo.spell and "on" or "off"))
+end, { desc = "Toggle spell" })
+
 -- Move lines up and down.
 vim.keymap.set("i", "<fn-C-j>", "<Esc>:move .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")

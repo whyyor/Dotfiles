@@ -123,7 +123,6 @@
           "monitorcontrol"
           "karabiner-elements"
           "yt-music"
-          "beeper"
           "raspberry-pi-imager"
           "onyx"
           "mactex-no-gui"
@@ -137,7 +136,7 @@
         onActivation = {
           cleanup = "zap";
           autoUpdate = true;
-          upgrade = true;
+          upgrade = false;
         };
       };
 
@@ -207,10 +206,6 @@
             {
               path = "/Applications/Xcode.app";
               icon = "/Users/whyyor/Configration/icons/xcode.icns";
-            }
-            {
-              path = "/Applications/Beeper Desktop.app";
-              icon = "/Users/whyyor/Configration/icons/beeper.icns";
             }];
       };
 
