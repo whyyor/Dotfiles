@@ -44,6 +44,20 @@
         "Authorization": "Bearer {env:FIREFLIES_TOKEN}"
       },
       "enabled": false
+    },
+    "rea": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "rea-agents@6.4.0",
+        "mcp"
+      ],
+      "environment": {
+        "GHIDRA_INSTALL_DIR": "/etc/rea/ghidra",
+        "JAVA_HOME": "/etc/rea/jdk21"
+      },
+      "enabled": true
     }
   }
 }
