@@ -63,15 +63,6 @@ keybind = shift+enter=text:\n
 keybind = ctrl+semicolon=text:\x1f
 # ctrl+m is indistinguishable from Enter in legacy encoding; send RS (0x1e)
 keybind = ctrl+m=text:\x1e
-# ctrl+digits collide with Esc/Backspace/0x1e/0x1f in legacy encoding; send Alt+N for gomuks unread jump
-keybind = ctrl+1=text:\x1b1
-keybind = ctrl+2=text:\x1b2
-keybind = ctrl+3=text:\x1b3
-keybind = ctrl+4=text:\x1b4
-keybind = ctrl+5=text:\x1b5
-keybind = ctrl+6=text:\x1b6
-keybind = ctrl+7=text:\x1b7
-keybind = ctrl+8=text:\x1b8
 
 # Left Option acts as Alt (word motions); right Option still composes é/ñ/—
 macos-option-as-alt = left
