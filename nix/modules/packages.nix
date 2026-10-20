@@ -7,6 +7,7 @@
     pkgs.git
     pkgs.neovim
     pkgs.lazygit
+    pkgs.delta
     pkgs.mkalias
     pkgs.tmux
     pkgs.localsend
