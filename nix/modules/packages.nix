@@ -12,6 +12,7 @@
     pkgs.tmux
     pkgs.localsend
     pkgs.fzf
+    pkgs.less # newer than macOS's 581: gomuks' Ctrl+L wrap-around search
     pkgs.ripgrep
     pkgs.xclip
     pkgs.pngpaste
