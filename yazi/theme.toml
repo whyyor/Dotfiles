@@ -1,2 +1,8 @@
 [flavor]
 dark = "monokai"
+
+[indicator]
+current = { reversed = true }
+parent  = { reversed = true }
+preview = { underline = true }
+padding = { open = " ", close = " " }

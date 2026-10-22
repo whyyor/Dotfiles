@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
 	pattern = "harpoon",
 	callback = function()
 		vim.opt.cursorline = true
-		vim.opt.winblend = 20
+		vim.opt.winblend = 0
 		vim.api.nvim_set_hl(0, "HarpoonWindow", { link = "Normal" })
 		vim.api.nvim_set_hl(0, "HarpoonBorder", { link = "Normal" })
 	end,

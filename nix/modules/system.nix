@@ -57,6 +57,7 @@
     ];
     dock.show-recents = false;
     dock.mru-spaces = false;
+    finder.QuitMenuItem = true;
     loginwindow.GuestEnabled = false;
     NSGlobalDomain = {
       AppleShowAllExtensions = true;

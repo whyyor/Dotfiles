@@ -41,6 +41,7 @@
       "bluekeys"
       "terminal-notifier"
       "sevenzip"
+      "tuicr"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }

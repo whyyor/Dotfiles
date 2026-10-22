@@ -49,6 +49,11 @@ automatically-unhide-macos-hidden-apps = false
 [key-mapping]
     preset = 'qwerty'
 
+# Always send IINA to workspace 3 and follow it, no matter which app launched it
+[[on-window-detected]]
+    if.app-id = 'com.colliderli.iina'
+    run = 'move-node-to-workspace --focus-follows-window 3'
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -163,7 +168,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-alt-shift-s = ['workspace 7', 'exec-and-forget open -a "Slack"']
     ctrl-alt-shift-d = ['workspace 8', 'exec-and-forget open -a "Davinci Resolve"']
     ctrl-alt-shift-x = ['workspace 8', 'exec-and-forget open -a "xcode"']
-    ctrl-alt-shift-v = ['workspace 9', 'exec-and-forget open -a "iina"']
+    ctrl-alt-shift-v = ['workspace 3', 'exec-and-forget open -a "iina"']
     ctrl-alt-shift-e = 'exec-and-forget /Users/whyyor/.local/bin/hnew matcha'
 
     ctrl-alt-shift-f = 'exec-and-forget /Users/whyyor/.local/bin/hnew yazi'

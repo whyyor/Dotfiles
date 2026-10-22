@@ -24,7 +24,7 @@ telescope.setup({
 			},
 		},
 		file_ignore_patterns = { ".git/", "node_modules" },
-		winblend = 10,
+		winblend = 0,
 		borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
 		color_devicons = true,
 		mappings = {
@@ -53,7 +53,7 @@ telescope.setup({
 					width = 0.5,
 					height = 0.4,
 				},
-				winblend = 10,
+				winblend = 0,
 				borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
 			}),
 		},

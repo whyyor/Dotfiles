@@ -42,7 +42,7 @@
       "light": "#fafafa"
     },
     "backgroundPanel": {
-      "dark": "transparent",
+      "dark": "#0b0e13",
       "light": "#f0f0f0"
     },
     "backgroundElement": {
