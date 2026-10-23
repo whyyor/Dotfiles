@@ -1,0 +1,21 @@
+theme = "monokai-purple"
+
+diff_view = "unified"
+wrap = true
+cursor_line = true
+search_highlight = true
+transparent_background = true 
+compact_folders = true
+scroll_offset = 5
+mouse = true
+editor = "nvim"
+comment_vim = true
+diff_watch_interval_ms = 1000 
+
+comment_types = [
+  { id = "note", label = "question", definition = "ask for clarification", color = "#78DCE8" },
+  { id = "suggestion", definition = "possible improvements", color = "#AB9DF2" },
+  { id = "issue", definition = "problems to fix", color = "#FF6188" },
+  { id = "nit", label = "nitpick", definition = "small optional tweaks", color = "#FC9867" },
+  { id = "praise", definition = "positive feedback", color = "#A9DC76" },
+]

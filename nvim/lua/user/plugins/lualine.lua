@@ -54,7 +54,7 @@ local function config_lualine(colors)
 		end,
 		icon = "",
 		color = { bg = colors.bg, fg = colors.white },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 		draw_empty = true,
 	}
 
@@ -62,7 +62,7 @@ local function config_lualine(colors)
 		"branch",
 		icon = "",
 		color = { bg = colors.bg, fg = colors.white },
-		separator = { left = "", right = "" }, -- Use custom highlight
+		separator = { left = "", right = "" }, -- Use custom highlight
 		draw_empty = true,
 	}
 
@@ -96,7 +96,7 @@ local function config_lualine(colors)
 			local current_mode = vim.fn.mode()
 			return { bg = mode_colors[current_mode].bg, fg = mode_colors[current_mode].fg, gui = "nocombine" }
 		end,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local function getLspName()
@@ -165,7 +165,7 @@ local function config_lualine(colors)
 
 	local macro = {
 		recording,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 		color = { fg = "white", bg = "#FF746C" },
 	}
 

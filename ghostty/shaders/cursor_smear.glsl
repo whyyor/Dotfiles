@@ -6,7 +6,7 @@
 
 const float DURATION   = 0.20;  // seconds for the trailing edge to arrive
 const float LEAD       = 1.25;   // leading edge speed multiplier
-const float BG_OPACITY = 0.80;  // must match background-opacity
+const float BG_OPACITY = 0.20;  // must match background-opacity
 const float AA         = 1.0;   // edge antialiasing in pixels
 const float GLYPH_DARKEN = 0.22; // glyph brightness under the block (lower = darker)
 const float HOLLOW_T   = 2.0;   // unfocused outline thickness in pixels

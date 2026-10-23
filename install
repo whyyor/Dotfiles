@@ -93,6 +93,9 @@ mkdir -p $HOME/.config/herdr
 rm -f $HOME/.config/herdr/config.toml
 ln -s $DOTFILES/herdr/config.toml $HOME/.config/herdr/config.toml
 
+rm -rf $HOME/.config/tuicr
+ln -s $DOTFILES/tuicr $HOME/.config/tuicr
+
 rm -rf $HOME/.config/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
 

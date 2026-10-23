@@ -42,7 +42,7 @@
       "light": "#fafafa"
     },
     "backgroundPanel": {
-      "dark": "#0b0e13",
+      "dark": "transparent",
       "light": "#f0f0f0"
     },
     "backgroundElement": {
@@ -94,7 +94,7 @@
       "light": "#ffebee"
     },
     "diffContextBg": {
-      "dark": "#0B0E14",
+      "dark": "transparent",
       "light": "#fafafa"
     },
     "diffLineNumber": {

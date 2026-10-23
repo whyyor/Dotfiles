@@ -1,11 +1,14 @@
 # The syntax is "key = value". Press super + r to reload config
 background-opacity = 0.20
 background-blur-radius = 40
-background-opacity-cells = true
+background-opacity-cells = false
 
 # Font
 font-family = JetBrainsMono NFM Light
 font-size = 18
+# JetBrainsMono lacks ▢▣ (tuicr review boxes); borrow box/triangle glyphs from Menlo
+font-codepoint-map = U+25A0-U+25AB=Menlo
+font-codepoint-map = U+25B6,U+25BC=Menlo
 
 # macos-titlebar-style = hidden # Gives rounded corners
 confirm-close-surface = false
