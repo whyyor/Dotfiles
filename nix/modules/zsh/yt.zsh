@@ -26,12 +26,15 @@ ytd() {
     -movflags +faststart "${f%.src.mkv}.mp4" && rm "$f"
 }
 
-# ytp "URL" -> stream in IINA via system yt-dlp + cookies, VP9 (hardware decode on M2), no download
+# ytp [-4k] "URL" -> stream in IINA; default H.264 (hardware decode on M2, max 1080p), -4k = VP9 software decode
 ytp() {
+  local fmt="bv*[vcodec^=avc1][dynamic_range=SDR]+ba[ext=m4a]/b[vcodec^=avc1]/b"
+  [[ $1 == -4k ]] && { fmt="bv*[vcodec^=vp9][dynamic_range=SDR]+ba/$fmt"; shift; }
   local -a ck
   _ytc && [[ -f $REPLY ]] && ck=("--mpv-ytdl-raw-options=cookies=$REPLY")
   iina --no-stdin "$1" \
     --mpv-script-opts=ytdl_hook-ytdl_path=/opt/homebrew/bin/yt-dlp \
-    --mpv-ytdl-format="bv*[vcodec^=vp9][dynamic_range=SDR]+ba/bv*[vcodec^=avc1]+ba/b" \
+    --mpv-hwdec=videotoolbox \
+    --mpv-ytdl-format="$fmt" \
     "${ck[@]}"
 }

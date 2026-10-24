@@ -1,7 +1,39 @@
+gui:
+  nerdFontsVersion: "3"
+  border: rounded
+  sidePanelWidth: 0.3
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 2
+  showPanelJumps: false
+  showListFooter: false
+  showCommandLog: false
+  showRandomTip: false
+  showRootItemInFileTree: false
+  showNumstatInFilesView: true
+  showDivergenceFromBaseBranch: arrowAndNumber
+  commitHashLength: 7
+  # catppuccin/lazygit mocha-blue layout, recolored to Monokai Pro (ghostty/yazi/opencode)
+  theme:
+    activeBorderColor: ["#78dce8", bold]
+    inactiveBorderColor: ["#939293"]
+    searchingActiveBorderColor: ["#ffd866"]
+    optionsTextColor: ["#78dce8"]
+    selectedLineBgColor: ["#2b2b2b"]
+    inactiveViewSelectedLineBgColor: ["#1c1c1c"]
+    cherryPickedCommitFgColor: ["#78dce8"]
+    cherryPickedCommitBgColor: ["#403e41"]
+    markedBaseCommitFgColor: ["#78dce8"]
+    markedBaseCommitBgColor: ["#ffd866"]
+    unstagedChangesColor: ["#ff6188"]
+    defaultFgColor: ["#fcfcfa"]
+  authorColors:
+    "*": "#ab9df2"
 os:
   openCommand: nvim {{filename}}
   editCommand: nvim {{filename}}
   editCommandTemplate: nvim "{{filename}}" +{{line}}
 git:
-  pagers:
-    - pager: delta --dark --paging=never
+  diffRenderers:
+    # --config /dev/null ignores gitconfig's side-by-side so diffs fit the pane
+    - command: >-
+        delta --config /dev/null --dark --paging=never --line-numbers --syntax-theme='Monokai Extended' --file-style='#ffd866 bold' --file-decoration-style='#403e41 ul' --hunk-header-style='line-number syntax' --hunk-header-decoration-style='#403e41 box' --hunk-header-line-number-style='#78dce8' --line-numbers-zero-style='#5b595c' --line-numbers-minus-style='#ff6188' --line-numbers-plus-style='#a9dc76' --line-numbers-left-style='#403e41' --line-numbers-right-style='#403e41' --minus-style='syntax "#3b1f27"' --minus-emph-style='syntax "#5c2a38"' --plus-style='syntax "#26331f"' --plus-emph-style='syntax "#3a4f2c"'

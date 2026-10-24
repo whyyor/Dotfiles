@@ -5,7 +5,8 @@ name = "vesper"
 auto_switch = false
 
 [theme.custom]
-accent = "#2c2c2c"
+accent = "#1c1c1c"
+overlay0 = "#505050"
 panel_bg = "reset"
 surface0 = "reset"
 surface1 = "reset"
@@ -43,7 +44,10 @@ height = "50%"
 [ui]
 pane_borders = false
 pane_gaps = false
+pane_scrollbars = false
 sidebar_collapsed_mode = "hidden"
+hide_tab_bar_when_single_tab = true
+prompt_new_tab_name = false
 
 [ui.toast]
 delivery = "terminal"
