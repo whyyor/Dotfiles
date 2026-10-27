@@ -51,6 +51,8 @@
 
   system.defaults = {
     dock.autohide = true;
+    dock.autohide-delay = 0.0;
+    dock.autohide-time-modifier = 0.4;
     dock.persistent-apps = [
       "/Applications/Helium.app"
       "/Applications/Ghostty.app"
@@ -58,6 +60,8 @@
     dock.show-recents = false;
     dock.mru-spaces = false;
     finder.QuitMenuItem = true;
+    finder.AppleShowAllFiles = true;
+    universalaccess.reduceMotion = true;
     loginwindow.GuestEnabled = false;
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
@@ -75,7 +79,17 @@
       Clicking = true;
       TrackpadThreeFingerDrag = true;
     };
+    CustomUserPreferences."com.colliderli.iina" = {
+      useLegacyFullScreen = true;
+      currentInputConfigName = "mpv Default";
+      enableAdvancedSettings = true;
+      useMpvOsd = true;
+      useUserDefinedConfDir = false;
+    };
   };
+
+  # Minutes before the display sleeps (battery + AC)
+  power.sleep.display = 15;
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
