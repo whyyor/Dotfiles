@@ -1,150 +1,36 @@
 #!/usr/bin/env bash
+# Bootstrap a fresh Mac up to the point where nix-darwin takes over; safe to re-run.
+set -euo pipefail
 
-DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+DOTFILES=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+FLAKE="$DOTFILES/nix#$(whoami)"
 
-# Ask the user if they have Homebrew installed
-read -p "Do you have Homebrew installed? (y/n) " brew_installed
-if [[ $brew_installed =~ ^[Yy]$ ]]
-then
-    echo "Installing required applications via Homebrew..."
-    brew install --cask alacritty
-    brew install neovim
-    brew install koekeishiya/formulae/yabai
-    brew install koekeishiya/formulae/skhd
-    brew install tmux
-    brew install fzf
-    brew install ripgrep
-    brew install xclip
-    brew install pngpaste
-    brew install lazygit
-    brew install --cask sioyek
-    brew install --cask lookaway
-    brew install yazi
-else
-    echo "Skipping Homebrew installations."
+# git + swiftc (fileclip); the installer is a GUI prompt, so re-run once it finishes
+if ! xcode-select -p >/dev/null 2>&1; then
+    xcode-select --install
+    echo "Finish the Command Line Tools install, then re-run ./install"
+    exit 1
 fi
 
+# nix-homebrew enableRosetta needs it
+if ! /usr/bin/pgrep -q oahd; then
+    softwareupdate --install-rosetta --agree-to-license
+fi
 
-rm -rf $HOME/.config/aerospace
-ln -s $DOTFILES/aerospace $HOME/.config/
+if ! command -v nix >/dev/null 2>&1; then
+    curl -L https://nixos.org/nix/install | sh -s -- --daemon --yes
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
 
-rm -rf $HOME/.config/alacritty
-ln -s $DOTFILES/alacritty $HOME/.config/
+if command -v darwin-rebuild >/dev/null 2>&1; then
+    sudo darwin-rebuild switch --flake "$FLAKE"
+else
+    # nix-darwin refuses to overwrite the stock /etc shell files on first install
+    for f in /etc/zshrc /etc/bashrc; do
+        if [ -f "$f" ] && [ ! -L "$f" ]; then sudo mv "$f" "$f.before-nix-darwin"; fi
+    done
+    sudo nix --extra-experimental-features "nix-command flakes" \
+        run github:nix-darwin/nix-darwin/master#darwin-rebuild -- switch --flake "$FLAKE"
+fi
 
-rm -rf $HOME/.tmux.conf
-ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
-
-mkdir -p $HOME/.local/bin
-
-rm -rf $HOME/.config/sioyek
-ln -s $DOTFILES/sioyek $HOME/.config/
-
-rm -rf $HOME/.config/yabai
-ln -s $DOTFILES/yabai $HOME/.config/
-
-# lazygit on macOS reads ~/Library/Application Support; link only the file so state.yml stays out of the repo
-LG_DIR="$HOME/Library/Application Support/lazygit"
-mkdir -p "$LG_DIR"
-rm -f "$LG_DIR/config.yml"
-ln -s $DOTFILES/lazygit/config.yml "$LG_DIR/config.yml"
-
-rm -rf $HOME/.config/scripts
-ln -s $DOTFILES/scripts $HOME/.config/
-
-# Ensure the script is executable
-chmod +x $HOME/.config/scripts/restart_intermission.sh
-
-ln -s $DOTFILES/scripts/com.user.restartintermission.plist $HOME/Library/LaunchAgents/com.user.restartintermission.plist
-
-
-rm -rf $HOME/.config/skhd
-ln -s $DOTFILES/skhd $HOME/.config/
-
-rm -rf $HOME/poshthemes
-ln -s $DOTFILES/poshthemes $HOME/
-
-rm -rf $HOME/.local/bin/t
-ln -s $DOTFILES/scripts/t $HOME/.local/bin/t
-
-rm -rf $HOME/.local/bin/h
-ln -s $DOTFILES/scripts/h $HOME/.local/bin/h
-
-rm -rf $HOME/.local/bin/hw
-ln -s $DOTFILES/scripts/hw $HOME/.local/bin/hw
-
-rm -rf $HOME/.local/bin/ha
-ln -s $DOTFILES/scripts/ha $HOME/.local/bin/ha
-
-rm -rf $HOME/.local/bin/hgo
-ln -s $DOTFILES/scripts/hgo $HOME/.local/bin/hgo
-
-rm -rf $HOME/.local/bin/hnew
-ln -s $DOTFILES/scripts/hnew $HOME/.local/bin/hnew
-
-rm -rf $HOME/.local/bin/msg
-ln -s $DOTFILES/scripts/msg $HOME/.local/bin/msg
-
-# compiled binary, so build instead of symlink
-rm -f $HOME/.local/bin/fileclip
-swiftc -O $DOTFILES/scripts/fileclip.swift -o $HOME/.local/bin/fileclip
-
-mkdir -p $HOME/.config/herdr
-rm -f $HOME/.config/herdr/config.toml
-ln -s $DOTFILES/herdr/config.toml $HOME/.config/herdr/config.toml
-mkdir -p $HOME/.config/herdr-automatic-rename
-rm -f $HOME/.config/herdr-automatic-rename/config.sh
-ln -s $DOTFILES/herdr/automatic-rename.sh $HOME/.config/herdr-automatic-rename/config.sh
-
-rm -rf $HOME/.config/tuicr
-ln -s $DOTFILES/tuicr $HOME/.config/tuicr
-
-rm -rf $HOME/.config/nvim
-ln -s $DOTFILES/nvim $HOME/.config/nvim
-
-
-rm -rf $HOME/.config/ghostty
-ln -s $DOTFILES/ghostty $HOME/.config/ghostty
-
-
-rm -rf $HOME/.config/opencode
-ln -s $DOTFILES/opencode $HOME/.config/opencode
-
-# noodle rewrites this file at runtime (collections list is machine-local),
-# so seed it once instead of symlinking
-mkdir -p $HOME/.config/noodle
-[ -f $HOME/.config/noodle/config.yml ] || cp $DOTFILES/noodle/config.yml $HOME/.config/noodle/config.yml
-
-
-rm -rf $HOME/.config/nix
-ln -s $DOTFILES/nix $HOME/.config/nix
-
-rm -rf $HOME/.config/yazi
-ln -s $DOTFILES/yazi $HOME/.config/yazi
-
-# restore flavors/plugins listed in yazi/package.toml
-ya pkg install
-
-rm -rf $HOME/.w3m
-ln -s $DOTFILES/w3m $HOME/.w3m
-
-# Ask the user what they want to do with the launch agent
-echo "What would you like to do with the Intermission launch agent?"
-echo "1. Load"
-echo "2. Unload"
-echo "3. Do nothing"
-
-read -p "Enter your choice (1/2/3): " answer
-case $answer in
-    1 ) launchctl load ~/Library/LaunchAgents/com.user.restartintermission.plist
-        echo "Launch agent loaded."
-        ;;
-    2 ) launchctl unload ~/Library/LaunchAgents/com.user.restartintermission.plist
-        echo "Launch agent unloaded."
-        ;;
-    3 ) echo "No action taken."
-        ;;
-    * ) echo "Invalid response. No action taken."
-        ;;
-esac
-
-echo "Installation complete."
+echo "Done. From now on: sudo darwin-rebuild switch --flake $FLAKE"

@@ -42,6 +42,7 @@
       "terminal-notifier"
       "sevenzip"
       "tuicr"
+      "gh"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }

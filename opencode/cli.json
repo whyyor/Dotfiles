@@ -38,7 +38,7 @@
     "prompt.clear": "ctrl+c",
     "prompt.paste": "ctrl+v",
     "input.submit": "enter",
-    "input.newline": "shift+enter",
+    "input.newline": "shift+return,ctrl+return,alt+return,ctrl+j",
     "prompt.history.previous": "up",
     "prompt.history.next": "down"
   },

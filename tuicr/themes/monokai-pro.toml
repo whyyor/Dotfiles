@@ -1,0 +1,52 @@
+# Calm Monokai Pro: neutral chrome, cyan as the single accent, colour only where it carries meaning
+panel_bg = "#2D2A2E"
+bg_highlight = "#3A383B"
+fg_primary = "#E3E1E4"
+fg_secondary = "#A9A7AA"
+fg_dim = "#6E6C6F"
+syntax_theme = "monokai-pro-syntax.tmTheme"
+selection_marker = "#78DCE8"
+
+diff_add = "#A9DC76"
+diff_add_bg = "#2A3125"
+diff_del = "#FF6188"
+diff_del_bg = "#3D2329"
+diff_context = "#E3E1E4"
+diff_hunk_header = "#78DCE8"
+expanded_context_fg = "#6E6C6F"
+
+syntax_add_bg = "#2A3125"
+syntax_del_bg = "#3D2329"
+
+file_added = "#A9DC76"
+file_modified = "#FFD866"
+file_deleted = "#FF6188"
+file_renamed = "#AB9DF2"
+
+reviewed = "#A9DC76"
+pending = "#6E6C6F"
+
+comment_note = "#78DCE8"
+comment_suggestion = "#AB9DF2"
+comment_issue = "#FF6188"
+comment_praise = "#A9DC76"
+
+border_focused = "#78DCE8"
+border_unfocused = "#403E41"
+status_bar_bg = "#221F22"
+cursor_color = "#78DCE8"
+cursor_line_bg = "#333134"
+branch_name = "#78DCE8"
+help_indicator = "#6E6C6F"
+
+message_info_fg = "#78DCE8"
+message_info_bg = "#2D2A2E"
+message_warning_fg = "#FFD866"
+message_warning_bg = "#2D2A2E"
+message_error_fg = "#FF6188"
+message_error_bg = "#2D2A2E"
+update_badge_fg = "#A9A7AA"
+update_badge_bg = "#2D2A2E"
+
+mode_fg = "#221F22"
+mode_bg = "#78DCE8"

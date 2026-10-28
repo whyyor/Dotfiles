@@ -62,6 +62,7 @@ keybind = ctrl+backspace=text:\x1b\x7f
 keybind = alt+backspace=text:\x1b\x7f
 # tcell has no CSI-u parser; send a plain LF for shift+enter
 keybind = shift+enter=text:\n
+keybind = ctrl+enter=text:\n
 # ctrl+; is not a legacy-encodable key; send US (0x1f) for gomuks visual mode
 keybind = ctrl+semicolon=text:\x1f
 # ctrl+m is indistinguishable from Enter in legacy encoding; send RS (0x1e)

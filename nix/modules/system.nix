@@ -1,30 +1,38 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, user, dotfiles, ... }: {
+  # pure eval can't see the clone, so check at activation; Home Manager links would dangle without it
+  system.activationScripts.preActivation.text = ''
+    if [ ! -d "${dotfiles}" ]; then
+      printf '\n\033[1;33mwarning: dotfiles not found at ${dotfiles}\033[0m\n' >&2
+      printf 'config symlinks will be broken. clone the repo there, or edit `dotfiles` in nix/flake.nix\n\n' >&2
+    fi
+  '';
+
   environment.customIcons = {
     enable = true;
     icons = [
       {
         path = "/Applications/Zen.app";
-        icon = "/Users/whyyor/Configration/icons/zen.icns";
+        icon = ../../icons + "/zen.icns";
       }
       {
         path = "/Applications/Helium.app";
-        icon = "/Users/whyyor/Configration/icons/helium.icns";
+        icon = ../../icons + "/helium.icns";
       }
       {
         path = "/Applications/IINA.app";
-        icon = "/Users/whyyor/Configration/icons/iina.icns";
+        icon = ../../icons + "/iina.icns";
       }
       {
         path = "/Applications/Slack.app";
-        icon = "/Users/whyyor/Configration/icons/slack.icns";
+        icon = ../../icons + "/slack.icns";
       }
       {
         path = "/Applications/Stremio.app";
-        icon = "/Users/whyyor/Configration/icons/stremio.icns";
+        icon = ../../icons + "/stremio.icns";
       }
       {
         path = "/Applications/Xcode.app";
-        icon = "/Users/whyyor/Configration/icons/xcode.icns";
+        icon = ../../icons + "/xcode.icns";
       }
     ];
   };
@@ -99,7 +107,7 @@
   system.stateVersion = 5;
 
   # Set primary user for nix-darwin
-  system.primaryUser = "whyyor";
+  system.primaryUser = user;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
