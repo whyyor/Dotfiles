@@ -1,0 +1,47 @@
+# gomuks terminal: your colours and preferences.
+# Linked to ~/Library/Application Support/gomuks/gomuks.yaml (nix/modules/home.nix).
+# gomuks reads this at startup, after terminal.yaml, and never writes it.
+# Anything set here wins; anything left out keeps terminal.yaml's value.
+# Restart gomuks (hgo msg) after editing. Mistakes show as a yellow toast.
+# Colours: "#rrggbb" or a name such as red. Values below are the defaults.
+
+colors:
+  accent: "#a8a9eb" # composer bar, prompts (Monokai purple)
+  selection: "#8d70c2" # selected message, emoji picker selection
+  selection_text: "#ffffff"
+  sidebar_selection: "#f92672" # selected chat in the sidebar (Monokai red)
+  sidebar_selection_text: "#fff1f3"
+  panel: "#0e0e13" # Ctrl+k and Ctrl+p background
+  selection_bar: "#1f1f28" # selected row in Ctrl+k and Ctrl+p
+  border: "#54546d" # popup borders
+  dim_text: "#8a8a94" # status line, details, aliases
+  bar_text: "#c8c9c5"
+  switcher_pill: "#f92672" # Ctrl+k title pill and its ▌ (follows sidebar_selection)
+  switcher_pill_text: "#fff1f3"
+  palette_pill: "#adda78" # Ctrl+p title pill (follows toast_success)
+  palette_accent: "#adda78" # Ctrl+p ▌ and magnifier (follows palette_pill)
+  palette_pill_text: "#000000"
+  toast_success: "#adda78" # Monokai green
+  toast_info: "#a8a9eb" # Monokai purple
+  toast_warning: "#f9cc6c" # Monokai yellow
+  toast_error: "#fd6883" # Monokai red
+  unread_badge: "#7fb4ca"
+  unread_mention: "#e6c384"
+  pill_yellow: "#e6c384" # ctrl+m hint pill
+  pill_pink: "#d27e99" # search pill
+  pill_green: "#98bb6c"
+  pill_blue: "#7e9cd8"
+  pill_violet: "#a8a9eb" # peek pill
+  pill_text: "#1f1f28"
+  code_background: "#1a1a22" # code blocks and inline code
+  inline_code: "#f38d70"
+
+# Preferences: any key from terminal.yaml's preferences. Uncomment to pin one;
+# Ctrl+p can still change a pinned one, but only until restart.
+preferences:
+  file_picker: yazi # yazi | finder
+  sidebar_on_start: false
+  timestamp_style: relative # relative | absolute | off
+  hide_aliases: false
+  classic_layout: false
+  # disable_typing_notifs: true

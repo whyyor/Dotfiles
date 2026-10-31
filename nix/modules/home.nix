@@ -25,6 +25,8 @@ in {
     "poshthemes".source = link "poshthemes";
     # lazygit on macOS reads Application Support; only the file, so state.yml stays out of the repo
     "Library/Application Support/lazygit/config.yml".source = link "lazygit/config.yml";
+    # gomuks terminal: only gomuks.yaml (colours, preferences); terminal.yaml holds the password
+    "Library/Application Support/gomuks/gomuks.yaml".source = link "gomuks/gomuks.yaml";
     ".local/bin/t".source = link "scripts/t";
     ".local/bin/h".source = link "scripts/h";
     ".local/bin/hw".source = link "scripts/hw";

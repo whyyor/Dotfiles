@@ -3,6 +3,8 @@
 
 set -uo pipefail
 
+source "$HOME/.config/scripts/fzf-theme.sh"
+
 herdr_bin=${HERDR_BIN_PATH:-herdr}
 
 if [[ $# -eq 1 ]]; then
@@ -11,7 +13,7 @@ else
     # fzf must NOT run inside $() — herdr issue #2199 hangs the pane
     tmpfile=$(mktemp)
     trap 'rm -f "$tmpfile"' EXIT
-    { find ~/ -maxdepth 2 -mindepth 1 -type d; echo /tmp; } | fzf >"$tmpfile"
+    { find ~/ -maxdepth 2 -mindepth 1 -type d; echo /tmp; } | fzf_panel " Folders" adda78 000000 --margin=20%,10% >"$tmpfile"
     selected=$(<"$tmpfile")
 fi
 

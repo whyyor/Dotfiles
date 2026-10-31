@@ -33,10 +33,9 @@ ytd() {
     -movflags +faststart "${f%.src.mkv}.mp4" && rm "$f"
 }
 
-# ytp [-4k] "URL" -> stream in IINA (launched via LaunchServices, detached + focused); default H.264 (hardware decode on M2, max 1080p), -4k = VP9 software decode
+# ytp "URL" -> stream in IINA; best SDR VP9/H.264 (both hardware-decoded on M2 via VideoToolbox, up to 4K); AV1 excluded (no HW decode before M3)
 ytp() {
-  local fmt="bv*[vcodec^=avc1][dynamic_range=SDR]+ba[ext=m4a]/b[vcodec^=avc1]/b"
-  [[ $1 == -4k ]] && { fmt="bv*[vcodec^=vp9][dynamic_range=SDR]+ba/$fmt"; shift; }
+  local fmt="bv*[vcodec~='^(vp0?9|avc1)'][dynamic_range=SDR]+ba[ext=m4a]/b"
   local -a ck
   _ytc && [[ -f $REPLY ]] && ck=("--mpv-ytdl-raw-options=cookies=$REPLY")
   open -na IINA --args "$1" \

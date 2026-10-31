@@ -17,29 +17,26 @@ prefix = "ctrl+space"
 goto = ""
 settings = "prefix+g"
 
+# Finders open as temporary panes, not popups: herdr always frames popups
+# with a border and title, and panes (pane_borders = false) have neither.
+# fzf centres itself with margins (scripts/fzf-theme.sh).
 [[keys.command]]
 key = ["prefix+t", "prefix+shift+f"]
-type = "popup"
+type = "pane"
 command = "$HOME/.local/bin/h"
 description = "find folder -> workspace"
-width = "80%"
-height = "60%"
 
 [[keys.command]]
 key = "prefix+s"
-type = "popup"
+type = "pane"
 command = "$HOME/.local/bin/hw"
 description = "switch workspace"
-width = "60%"
-height = "50%"
 
 [[keys.command]]
 key = "prefix+a"
-type = "popup"
+type = "pane"
 command = "$HOME/.local/bin/ha"
 description = "jump to agent"
-width = "70%"
-height = "50%"
 
 [ui]
 pane_borders = false

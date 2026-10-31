@@ -3,6 +3,8 @@
 
 set -uo pipefail
 
+source "$HOME/.config/scripts/fzf-theme.sh"
+
 herdr_bin=${HERDR_BIN_PATH:-herdr}
 
 agents_json=$("$herdr_bin" agent list 2>/dev/null) || {
@@ -26,7 +28,7 @@ jq -r '
   | .[]
   | [ .pane_id, "\(.agent)  [\(.agent_status)]  \(.terminal_title_stripped // .cwd)" ]
   | @tsv' <<<"$agents_json" |
-    fzf --delimiter='\t' --with-nth=2.. --no-sort --prompt='agent> ' >"$tmpfile"
+    fzf_panel "󰚩 Agents" a8a9eb fff1f3 --margin=25%,15% --delimiter='\t' --with-nth=2.. --no-sort >"$tmpfile"
 
 id=$(cut -f1 "$tmpfile")
 

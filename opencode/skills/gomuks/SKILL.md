@@ -1,6 +1,6 @@
 ---
 name: gomuks
-description: Use when the user asks about their messages, chats, DMs, or conversations — Matrix, Beeper, WhatsApp, Telegram, iMessage, Instagram, or gomuks. Covers searching history, exporting a room, message counts, activity stats, and who said what. Reads the local gomuks SQLite cache read-only.
+description: Use when the user asks about their messages, chats, DMs, or conversations — Matrix, Beeper, WhatsApp, Telegram, iMessage, Instagram, or gomuks. Covers searching history, exporting a room, message counts, activity stats, and who said what. Reads the local gomuks SQLite cache read-only. Also use to send/text someone a message — always via the running gomuks backend HTTP API (never the web UI or TUI).
 ---
 
 # gomuks message access
@@ -103,8 +103,38 @@ WHERE cs.event_type='m.room.member' AND cs.room_id='!ROOM_ID_HERE';"
   `m.room.encrypted` (rows where `decrypted IS NULL` failed to decrypt).
 - Timestamps are **milliseconds**; divide by 1000 for `datetime()`.
 
-## Limits
+## Sending messages — ALWAYS use the backend config
 
-Read-only cache. Cannot send messages and only holds synced history — for
-sending or server-side backfill you'd need the gomuks HTTP API on
-`127.0.0.1:29325`, which requires auth from `config.yaml`.
+The SQLite cache is read-only and only holds synced history. To send, call the
+running gomuks backend (`~/.local/opt/gomuks/gomuks`) directly over HTTP.
+Do NOT use gomuks web (needs browser login) or `gomuks-tui` (needs a real tty;
+panics under the agent shell).
+
+- Endpoint: `POST http://localhost:29325/_gomuks/exec/<command>` (JSON body = command params)
+- Auth: HTTP basic, `username`/`password` from
+  `~/Library/Application Support/gomuks/terminal.yaml` (`config.yaml` only has a hash).
+  Read the password inside the command; never print it.
+- Commands are defined in `~/Projects/gomuks/pkg/hicli/jsoncmd/commands.go`
+  (`send_message` params in `params.go`: `room_id`, `text`, optional `relates_to`).
+- Pass `txn_id` + `start_ts` (ms) query params so retries are idempotent.
+
+```sh
+PW=$(python3 -c "import re,os;print(re.search(r'^password:\s*(.+)$',open(os.path.expanduser('~/Library/Application Support/gomuks/terminal.yaml')).read(),re.M).group(1).strip().strip('\"'))")
+BODY=$(python3 -c 'import json,sys;print(json.dumps({"room_id":sys.argv[1],"text":sys.argv[2]}))' '!ROOM_ID' 'message text')
+curl -s -u "whyyor:$PW" -H 'Content-Type: application/json' -d "$BODY" \
+  "http://localhost:29325/_gomuks/exec/send_message?txn_id=agent-$(date +%s)&start_ts=$(($(date +%s)*1000))" -w '\nHTTP %{http_code}\n'
+```
+
+Workflow: find the room via SQLite (above) → show the user the exact final
+text + recipient → send ONLY after explicit confirmation → verify.
+
+**Verify delivery via `com.beeper.message_send_status`, not `send_error`.**
+The local row's `send_error` stays `"not sent"` even on success. Check:
+
+```sh
+sqlite3 "$GM" "SELECT substr(COALESCE(decrypted,content),1,200) FROM event
+WHERE room_id='!ROOM_ID' AND COALESCE(decrypted_type,type)='com.beeper.message_send_status'
+ORDER BY rowid DESC LIMIT 2;"
+```
+
+`"status":"SUCCESS"` with `delivered_to_users` = delivered through the bridge.
