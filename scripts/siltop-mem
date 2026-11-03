@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# launch siltop on the ml (memory) preset
+# config is rewritten each launch, so in-session tweaks never stick
+set -uo pipefail
+
+export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+cfg="${TMPDIR:-/tmp}/siltop-memory.toml"
+cat >"$cfg" <<'EOF'
+version = 1
+theme = "heat"
+surface = "auto"
+zen = false
+
+[panels]
+gpu = true
+power = true
+net = false
+disk = false
+fans = false
+cores = false
+
+[proc.sort]
+column = "mem"
+desc = true
+
+[onboarding]
+completed = "1.2.1"
+EOF
+
+# argv0 = siltop-mem so hnew can find this pane by name
+exec -a siltop-mem siltop --config "$cfg" "$@"

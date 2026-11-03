@@ -1,0 +1,13 @@
+# graphs ramp bottom -> middle -> top, so higher load reaches yellow then red
+name = "heat"
+background = "#0b0e13"
+
+cpu = ["#50fa7b", "#f1fa8c", "#ff5555"]
+gpu = ["#50fa7b", "#f1fa8c", "#ff5555"]
+mem = ["#50fa7b", "#f1fa8c", "#ff5555"]
+temp = ["#50fa7b", "#f1fa8c", "#ff5555"]
+fan = ["#50fa7b", "#f1fa8c", "#ff5555"]
+
+ok = "#50fa7b"
+warn = "#f1fa8c"
+crit = "#ff5555"

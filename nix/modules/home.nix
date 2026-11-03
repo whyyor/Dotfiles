@@ -16,6 +16,8 @@ in {
     "nix".source = link "nix";
     "yazi".source = link "yazi";
     "tuicr".source = link "tuicr";
+    # only themes; siltop rewrites config.toml at runtime
+    "siltop/themes".source = link "siltop/themes";
     "herdr/config.toml".source = link "herdr/config.toml";
     "herdr-automatic-rename/config.sh".source = link "herdr/automatic-rename.sh";
   };

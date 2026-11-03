@@ -43,6 +43,7 @@
       "sevenzip"
       "tuicr"
       "gh"
+      "cloaky233/tap/siltop"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -53,6 +54,7 @@
       { name = "wilfredinni/noodle"; trusted = true; }
       { name = "floatpane/matcha"; trusted = true; }
       { name = "anirban12d/bluekeys"; trusted = true; }
+      { name = "cloaky233/tap"; trusted = true; }
     ];
     casks = [
       "claude-code@latest"

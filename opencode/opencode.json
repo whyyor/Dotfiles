@@ -34,8 +34,7 @@
     },
     "figma": {
       "type": "remote",
-      "url": "http://127.0.0.1:3845/mcp",
-      "enabled": false
+      "url": "https://mcp.figma.com/mcp"
     },
     "fireflies": {
       "type": "remote",
