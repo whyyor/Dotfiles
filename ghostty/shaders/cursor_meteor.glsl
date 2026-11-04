@@ -8,8 +8,13 @@ const float DURATION        = 0.20;  // seconds for the head to arrive
 const float TAIL_DURATION   = 0.26;  // tail waits at the start, then catches up
 const float TAIL_LENGTH     = 0.85;   // streak length multiplier (1.0 = full)
 const float BALL_SIZE       = 1.0;   // ball diameter as a fraction of the cell's narrow side
+const float BALL_MORPH_START = 0.6;  // fraction of head travel after which the ball turns back into a block
+const float BALL_SOFT       = 0.5;   // how much of the ball radius fades out (0 = hard edge)
+const float HEAD_GLOW       = 0.5;   // halo strength around the ball in flight
+const float HEAD_GLOW_PX    = 8.0;   // halo falloff distance (px)
 const float HEAD_WIDTH      = 0.8;   // tail width at the head, as a fraction of block height
 const float MIN_DIST        = 8.0;   // tail length (px) over which the trail/ball fades in and out
+const float CELL_ASPECT     = 0.45;  // cell width / height, used to size bar & underline cursors
 const vec2  MIN_CELLS       = vec2(4.0, 1.5);  // (cols, rows) a move must exceed to become a meteor
 const float SMEAR_DURATION  = 0.25;  // short-move smear: seconds for the trailing edge to arrive
 const float SMEAR_LEAD      = 1.25;  // short-move smear: leading edge speed multiplier
@@ -18,7 +23,7 @@ const float TAIL_R          = 0.5;   // radius of the tail tip in pixels
 const float FADE_POW        = 1.6;   // higher = tail fades faster
 const float GLOW_PX         = 4.0;   // halo falloff distance
 const float GLOW_STRENGTH   = 0.25;
-const float CORE_WHITE      = 0.55;  // how white-hot the centre line gets
+const float CORE_WHITE      = 0.0;   // how white-hot the centre line gets
 const float SPARKLE         = 1.0;   // 0 disables sparkles
 const float SPARKLE_DENSITY = 0.965; // higher = fewer sparkles
 const float SPARKLE_SPREAD  = 10.0;  // how far sparkles scatter outside the tail (px)
@@ -116,14 +121,23 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     vec2  dir    = head - tail;
     float len    = length(dir);
-    bool  flying = any(greaterThan(abs(p1 - p0), cur.zw * MIN_CELLS));  // fast typing can jump 2-3 cells per frame
+    // Bar/underline cursors are thin, so estimate the real cell size from the long side.
+    vec2 cell = cur.zw;
+    if (iCurrentCursorStyle == CURSORSTYLE_BAR)       cell.x = cur.w * CELL_ASPECT;
+    if (iCurrentCursorStyle == CURSORSTYLE_UNDERLINE) cell.y = cur.z / CELL_ASPECT;
+
+    bool  flying = any(greaterThan(abs(p1 - p0), cell * MIN_CELLS));  // fast typing can jump 2-3 cells per frame
     float alive  = flying ? smoothstep(0.0, MIN_DIST, len) : 0.0;  // 1 while the tail shows, 0 at rest
 
-    // Morph block -> ball while the tail is visible: a rounded rect whose corners grow to a circle.
-    float ballR  = min(size.x, size.y) * 0.5 * BALL_SIZE;
-    float corner = ballR * alive;
-    vec2  halfB  = mix(size * 0.5, vec2(ballR), alive);
-    float block  = 1.0 - smoothstep(0.0, AA, sdfRect(fragCoord, head, halfB - corner) - corner);
+    // Morph block -> ball in flight, back to a block as the head lands (not when the tail catches up).
+    float ballAmt = min(alive, 1.0 - smoothstep(BALL_MORPH_START, 1.0, clamp(elapsed / DURATION, 0.0, 1.0)));
+    float ballR  = min(cell.x, cell.y) * 0.5 * BALL_SIZE;  // cell-sized ball even for a bar cursor
+    float corner = ballR * ballAmt;
+    vec2  halfB  = mix(size * 0.5, vec2(ballR), ballAmt);
+    float dBall  = sdfRect(fragCoord, head, halfB - corner) - corner;
+    float edgeW  = mix(AA, max(AA, ballR * BALL_SOFT), ballAmt);  // soft orb edge only while it's a ball
+    float block  = 1.0 - smoothstep(AA - edgeW, AA, dBall);
+    float halo   = exp(-max(dBall, 0.0) / HEAD_GLOW_PX) * HEAD_GLOW * ballAmt;
 
     // Short moves: the old stretchy smear instead of a sliding block.
     if (!flying) {
@@ -156,7 +170,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                    * (1.0 - smoothstep(0.85, 1.0, h));  // no halo ball around the head
         float core = 1.0 - smoothstep(0.0, max(mix(TAIL_R, rHead, h) * 0.6, 1.0), axis);
 
-        trail = max(body, glow) * alive;
+        trail = max(max(body, glow) * alive, halo);
         hot   = core * body * alive;
 
         if (SPARKLE > 0.0 && d < SPARKLE_SPREAD && h < 0.95) {
