@@ -18,37 +18,4 @@
   };
 
   launchd.daemons.tailscaled.serviceConfig.KeepAlive = true;
-
-  # gomuks matrix backend; frontends (web/tui) attach to it over RPC
-  launchd.user.agents.gomuks = {
-    serviceConfig = {
-      ProgramArguments = [ "${home}/.local/opt/gomuks/gomuks" ];
-      RunAtLoad = true;
-      KeepAlive = true;
-      StandardOutPath = "${home}/Library/Logs/gomuks.out.log";
-      StandardErrorPath = "${home}/Library/Logs/gomuks.err.log";
-      EnvironmentVariables = {
-        HOME = "${home}";
-        # terminal-notifier + ffmpeg live here; launchd agents get a minimal PATH
-        PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin";
-        # outside ~/Library/Caches, which disk cleaners (Mole) wipe under the running daemon
-        GOMUKS_CACHE_HOME = "${home}/.local/share/gomuks-cache";
-      };
-    };
-  };
-
-  # expire gomuks media cache: files older than 7 days (re-downloaded on demand), stale temp files after a day
-  launchd.user.agents.gomuks-cache-expiry = {
-    serviceConfig = {
-      ProgramArguments = [ "/bin/sh" "-c" ''
-        C=${home}/.local/share/gomuks-cache
-        find "$C/media" -type f -mmin +10080 -delete 2>/dev/null
-        find "$C/tmp" -type f -mmin +1440 -delete 2>/dev/null
-        find "$C/media" -mindepth 1 -type d -empty -delete 2>/dev/null
-        true
-      '' ];
-      RunAtLoad = true;
-      StartCalendarInterval = [ { Hour = 4; Minute = 0; } ];
-    };
-  };
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # focus Ghostty, then jump to the herdr pane running a singleton TUI app
-# usage: hgo msg | hgo music
+# usage: hgo msg | hgo tm | hgo music
 
 set -uo pipefail
 
@@ -17,6 +17,12 @@ case "${1:-}" in
         ws_cwd="$HOME/Library/Messages"
         launch_cmd='gomuks-tui'
         ;;
+    tm | tuimessenger)
+        proc_re='^tuimessenger$'
+        ws_label='Messages'
+        ws_cwd="$HOME/Library/Messages"
+        launch_cmd='tuimessenger tui'
+        ;;
     music | jf | jellyfin)
         proc_re='^jellyfin-tui$'
         ws_label='Music'
@@ -30,7 +36,7 @@ case "${1:-}" in
         launch_cmd='tasks'
         ;;
     *)
-        echo "usage: ${0##*/} msg|music|tasks" >&2
+        echo "usage: ${0##*/} msg|tm|music|tasks" >&2
         exit 2
         ;;
 esac
