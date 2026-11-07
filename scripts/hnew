@@ -9,8 +9,15 @@ export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/
 
 source "$HOME/.config/scripts/herdr-lib.sh"
 
+# -g: dedupe across all workspaces/cwds (one instance total)
+global=0
+[[ ${1:-} == -g ]] && {
+    global=1
+    shift
+}
+
 [[ $# -eq 0 ]] && {
-    echo "usage: ${0##*/} <command> [args...]" >&2
+    echo "usage: ${0##*/} [-g] <command> [args...]" >&2
     exit 2
 }
 
@@ -26,9 +33,9 @@ cwd=$(jq -r '.result.pane.foreground_cwd // .result.pane.cwd' <<<"$cur")
 find_here() {
     local pane tab pws pcwd
     while IFS=$'\t' read -r pane tab pws pcwd; do
-        [[ $pws == "$ws" && $pcwd == "$cwd" ]] || continue
+        ((global)) || [[ $pws == "$ws" && $pcwd == "$cwd" ]] || continue
         pane_matches "$pane" "$proc_re" && {
-            printf '%s\n' "$tab"
+            printf '%s\t%s\n' "$tab" "$pws"
             return 0
         }
     done < <("$herdr_bin" pane list 2>/dev/null |
@@ -39,8 +46,11 @@ find_here() {
 
 focus_ghostty
 
-tab=$(find_here)
-if [[ -z $tab ]]; then
+hit=$(find_here)
+if [[ -n $hit ]]; then
+    # jump to wherever it lives, which may not be our workspace
+    IFS=$'\t' read -r tab ws <<<"$hit"
+else
     # an idle shell at this cwd beats opening yet another tab
     reuse=$(idle_pane_in "$ws" "$cwd")
     if [[ -n $reuse ]]; then

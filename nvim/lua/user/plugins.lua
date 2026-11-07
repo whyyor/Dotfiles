@@ -80,7 +80,7 @@ require("lazy").setup({
 	{ "jessarcher/vim-heritage" },
 
 	-- Highlight words selected
-	{ "RRethy/vim-illuminate",          event = "VeryLazy" },
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 
 	-- Text objects for HTML
 	{
@@ -405,17 +405,5 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
-	},
-
-	----------------------------- MCPHub ---------------------------------
-	{
-		"ravitemer/mcphub.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
-		config = function()
-			require("mcphub").setup()
-		end,
 	},
 })
