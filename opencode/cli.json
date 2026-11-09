@@ -52,5 +52,8 @@
     "thinking": "show"
   },
   "animations": true,
+  "tabs": {
+    "mode": "off"
+  },
   "plugins": ["./herdr-opencode"]
 }

@@ -72,5 +72,3 @@ keybind = ctrl+m=text:\x1e
 
 # Left Option acts as Alt (word motions); right Option still composes é/ñ/—
 macos-option-as-alt = left
-
-auto-update = off

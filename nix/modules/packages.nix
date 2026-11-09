@@ -25,6 +25,7 @@
     pkgs.btop
     pkgs.herdr
     pkgs.ghidra
+    pkgs.matcha
   ];
 
   fonts.packages = [

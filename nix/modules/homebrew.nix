@@ -44,6 +44,7 @@
       "tuicr"
       "gh"
       "cloaky233/tap/siltop"
+      "dungngminh/simutil/simutil"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -52,9 +53,9 @@
       { name = "oven-sh/bun"; trusted = true; }
       { name = "homebrew-ffmpeg/ffmpeg"; trusted = true; }
       { name = "wilfredinni/noodle"; trusted = true; }
-      { name = "floatpane/matcha"; trusted = true; }
       { name = "anirban12d/bluekeys"; trusted = true; }
       { name = "cloaky233/tap"; trusted = true; }
+      { name = "dungngminh/simutil"; trusted = true; }
     ];
     casks = [
       "claude-code@latest"
@@ -87,7 +88,6 @@
       "scoot"
       "helium-browser"
       "steam"
-      "floatpane/matcha/matcha"
       "terminal-browser"
       "vorssaint"
       "hopper-disassembler"
