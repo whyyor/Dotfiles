@@ -47,9 +47,11 @@ palette = 15=#fff1f3
 cursor-color = ffffff
 
 # Cursor glide shader (requires ghostty's own cursor hidden)
+# Smear while typing + an effect on jumps. Shaders draw the cursor, so keep opacity 0.
+# Options: cursor_comet, cursor_glacier, cursor_ember, cursor_slipstream
 cursor-opacity = 0
 cursor-text = cell-foreground
-custom-shader = shaders/cursor_meteor.glsl
+custom-shader = shaders/cursor_glacier.glsl
 custom-shader-animation = true
 
 # Icon: applied by Ghostty itself, so it survives Dock restarts
