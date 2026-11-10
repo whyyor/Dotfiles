@@ -12,6 +12,7 @@ font-codepoint-map = U+25B6,U+25BC=Menlo
 
 # macos-titlebar-style = hidden # Gives rounded corners
 confirm-close-surface = false
+initial-command = /bin/zsh -lic 'herdr; exec zsh -l'
 window-decoration = false
 
 # Mouse settings
