@@ -39,12 +39,12 @@
       "tlrc"
       "noodle"
       "bluekeys"
-      "terminal-notifier"
       "sevenzip"
       "tuicr"
       "gh"
       "cloaky233/tap/siltop"
       "dungngminh/simutil/simutil"
+      "whyyor/tap/tuimessenger"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -56,6 +56,7 @@
       { name = "anirban12d/bluekeys"; trusted = true; }
       { name = "cloaky233/tap"; trusted = true; }
       { name = "dungngminh/simutil"; trusted = true; }
+      { name = "whyyor/tap"; trusted = true; }
     ];
     casks = [
       "claude-code@latest"
