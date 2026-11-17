@@ -45,6 +45,7 @@
       "cloaky233/tap/siltop"
       "dungngminh/simutil/simutil"
       "whyyor/tap/tuimessenger"
+      "circumflex"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -89,14 +90,14 @@
       "scoot"
       "helium-browser"
       "steam"
-      "terminal-browser"
       "vorssaint"
       "hopper-disassembler"
+      "sst/tap/hex"
     ];
     onActivation = {
       cleanup = "zap";
       autoUpdate = true;
-      upgrade = false;
+      upgrade = true;
     };
   };
 }

@@ -20,7 +20,6 @@
     pkgs.openjdk17
     pkgs.wget
     pkgs.jira-cli-go
-    pkgs.termusic
     pkgs.jellyfin-tui
     pkgs.btop
     pkgs.herdr

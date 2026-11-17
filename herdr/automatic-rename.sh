@@ -2,5 +2,6 @@
 HIDE_SHELL=1
 PROGRAM_ALIASES=(
   "opencode=oc"
+  "opencode-native=oc"
   "lazygit=lg"
 )

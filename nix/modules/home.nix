@@ -63,5 +63,23 @@ in {
         run env PATH="${lib.makeBinPath [ pkgs.git ]}:$PATH" /opt/homebrew/bin/ya pkg install
       fi
     '';
+
+    # pinned rename plugin; github install (not link) so zsh/herdr.zsh's hook glob still finds it
+    herdrRenamePlugin = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      if ! ${pkgs.herdr}/bin/herdr plugin list 2>/dev/null | grep -q '^- herdr-automatic-rename '; then
+        run env PATH="${lib.makeBinPath [ pkgs.git ]}:$PATH" ${pkgs.herdr}/bin/herdr plugin install \
+          qu8n/herdr-automatic-rename --ref 31406e377d3c0b5b29ad3e4ff031bdcffe08d12d --yes \
+          || echo "herdr-automatic-rename install failed (offline?)"
+      fi
+    '';
+
+    # no nix/brew package exists; run the preview installer only when the binary is missing
+    opencodeNative = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      if [ ! -x "$HOME/.local/bin/opencode-native" ]; then
+        run env PATH="${lib.makeBinPath (with pkgs; [ curl gnutar gawk gnugrep gnused coreutils bash ])}:/usr/bin:/bin" \
+          bash -c 'curl -fsSL https://raw.githubusercontent.com/simonklee/opencode-native-preview/main/install.sh | bash' \
+          || echo "opencode-native install failed (offline?)"
+      fi
+    '';
   };
 }

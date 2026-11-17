@@ -8,22 +8,6 @@
   },
   "plugins": ["@ex-machina/opencode-anthropic-auth@next"],
   "mcp": {
-    "outlook": {
-      "type": "local",
-      "command": [
-        "node",
-        "{env:HOME}/Wiki/outlook-mcp/index.js",
-        "node",
-        "{env:HOME}/Wiki/outlook-mcp/outlook-auth-server.js"
-      ],
-      "environment": {
-        "MS_CLIENT_ID": "{env:MS_CLIENT_ID}",
-        "MS_CLIENT_SECRET": "{env:MS_CLIENT_SECRET}",
-        "OUTLOOK_CLIENT_ID": "{env:OUTLOOK_CLIENT_ID}",
-        "OUTLOOK_CLIENT_SECRET": "{env:OUTLOOK_CLIENT_SECRET}"
-      },
-      "enabled": false
-    },
     "github": {
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
@@ -52,6 +36,20 @@
         "JAVA_HOME": "/etc/rea/jdk21"
       },
       "enabled": false
+    },
+    "servers": {
+      "browse": {
+        "type": "local",
+        "command": [
+          "/Users/whyyor/.local/bin/browse",
+          "mcp"
+        ],
+        "cwd": "/Users/whyyor",
+        "pool": true,
+        "environment": {
+          "OPENCODE_BROWSER_RUNTIME": "auto-update"
+        }
+      }
     }
   }
 }

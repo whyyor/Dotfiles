@@ -9,8 +9,9 @@
   # bun global installs land in ~/.bun/bin, absent from PATH by default
   environment.systemPath = pkgs.lib.mkOrder 1100 [ "$HOME/.bun/bin" ];
 
-  # yt helpers + herdr rename hook land in /etc/zshrc; ~/.zshrc definitions would override these
+  # yt helpers + herdr rename hook + oc aliases land in /etc/zshrc; ~/.zshrc definitions would override these
+  # (not environment.shellAliases: nix-darwin puts those in /etc/zprofile, so `exec zsh` would lose them)
   programs.zsh.enable = true;
   programs.zsh.interactiveShellInit =
-    builtins.readFile ./zsh/yt.zsh + "\n" + builtins.readFile ./zsh/herdr.zsh;
+    builtins.readFile ./zsh/yt.zsh + "\n" + builtins.readFile ./zsh/herdr.zsh + "\n" + builtins.readFile ./zsh/opencode.zsh;
 }

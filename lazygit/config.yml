@@ -26,8 +26,8 @@ gui:
     markedBaseCommitBgColor: ["#ffd866"]
     unstagedChangesColor: ["#ff6188"]
     defaultFgColor: ["#fcfcfa"]
-  authorColors:
-    "*": "#ab9df2"
+    authorColors:
+      "*": "#ab9df2"
 os:
   openCommand: nvim {{filename}}
   editCommand: nvim {{filename}}
