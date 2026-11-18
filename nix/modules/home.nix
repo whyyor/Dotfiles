@@ -82,4 +82,15 @@ in {
       fi
     '';
   };
+
+  # on-demand light VM; mutableSettings lets colima write state, rebuild re-forces these values
+  services.colima = {
+    enable = true;
+    profiles.default = {
+      isActive = true;
+      isService = false;
+      mutableSettings = true;
+      settings = { cpu = 2; memory = 2; disk = 20; arch = "aarch64"; runtime = "docker"; vmType = "vz"; mountType = "virtiofs"; };
+    };
+  };
 }

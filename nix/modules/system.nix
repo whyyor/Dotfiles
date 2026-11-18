@@ -102,6 +102,14 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
+  # weekly GC (Sun 2am) keeps 2 weeks of rollback; optimise hardlinks dupes (auto-optimise-store is unsafe on darwin)
+  nix.gc = {
+    automatic = true;
+    interval = { Weekday = 0; Hour = 2; Minute = 0; };
+    options = "--delete-older-than 14d";
+  };
+  nix.optimise.automatic = true;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
