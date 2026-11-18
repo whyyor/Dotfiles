@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+# full refresh: snapshot opencode panes, restart opencode + herdr servers, relaunch Ghostty, resume sessions
+set -uo pipefail
+
+# launchd gives us a bare PATH
+export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+source "$HOME/.config/scripts/herdr-lib.sh"
+
+state="$HOME/.local/state/ghostty-refresh"
+snap="$state/opencode-panes.tsv"
+mkdir -p "$state"
+
+log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
+gone() { ! pgrep "$@" >/dev/null; }
+
+# usage: wait_until <tenths-of-a-second> <cmd...>
+wait_until() {
+    local n=$1 i
+    shift
+    for ((i = 0; i < n; i++)); do
+        "$@" && return 0
+        sleep 0.1
+    done
+    return 1
+}
+
+herdr_up() {
+    "$herdr_bin" pane list 2>/dev/null | jq -e '.result.panes | length > 0' >/dev/null
+}
+
+# panes come back as fresh shells, so remember which session each opencode pane had
+snapshot() {
+    local pane tab cwd title sid list tmp="$snap.tmp"
+    list=$("$herdr_bin" pane list 2>/dev/null) || return 1
+    : >"$tmp"
+    while IFS=$'\t' read -r pane tab cwd title; do
+        title=${title#OC | }
+        sid=$(cd "$cwd" 2>/dev/null && opencode session list --format json -n 200 2>/dev/null |
+            jq -r --arg t "$title" '[.[] | select(.title == $t)] | max_by(.updated) | .id // empty')
+        printf '%s\t%s\t%s\t%s\n' "$pane" "$tab" "$cwd" "$sid" >>"$tmp"
+        log "saved $pane -> ${sid:-<new>} ($title)"
+    done < <(jq -r '.result.panes[] | select(.agent == "opencode")
+        | [.pane_id, .tab_id, (.foreground_cwd // .cwd), .terminal_title_stripped] | @tsv' <<<"$list")
+    mv "$tmp" "$snap"
+}
+
+# restored pane ids should match; fall back to any pane in the same tab
+target_for() {
+    "$herdr_bin" pane list 2>/dev/null | jq -r --arg p "$1" --arg t "$2" '
+        .result.panes as $ps
+        | (($ps[] | select(.pane_id == $p)) // ($ps[] | select(.tab_id == $t)) // empty)
+        | .pane_id' | head -n1
+}
+
+resume() {
+    local pane tab cwd sid target
+    [[ -s $snap ]] || return 0
+    while IFS=$'\t' read -r pane tab cwd sid; do
+        target=$(target_for "$pane" "$tab")
+        [[ -z $target ]] && {
+            log "no pane for $pane, skipping ${sid:-<new>}"
+            continue
+        }
+        log "resume $target -> ${sid:-<new>}"
+        pane_launch "$target" 'opencode' oc ${sid:+-s "$sid"} &
+    done <"$snap"
+    wait
+}
+
+pgrep -xq ghostty || {
+    log "ghostty not running, skip"
+    exit 0
+}
+
+# ghostty-refresh drops a fresh flag; without it this is the scheduled run, so don't kill busy agents
+manual=$(find "$state/manual" -mmin -2 2>/dev/null)
+rm -f "$state/manual"
+if [[ -z $manual ]] && "$herdr_bin" pane list 2>/dev/null |
+    jq -e 'any(.result.panes[]; .agent_status == "working")' >/dev/null; then
+    log "agent working, skipping scheduled refresh"
+    exit 0
+fi
+
+log "--- refresh start"
+snapshot || log "herdr not reachable, keeping previous snapshot"
+
+pkill -9 -x ghostty
+wait_until 40 gone -x ghostty
+
+"$herdr_bin" server stop >/dev/null 2>&1
+wait_until 50 gone -f 'herdr server' || pkill -9 -f 'herdr server'
+
+opencode service stop >/dev/null 2>&1
+wait_until 50 gone -f 'opencode serve --service' || pkill -9 -f 'opencode serve --service'
+pkill -f 'opencode-pty daemon'
+
+opencode service start >/dev/null 2>&1 || log "opencode service start failed"
+
+# Ghostty's initial-command runs `herdr`, which boots a fresh server and restores the layout
+open -a Ghostty
+wait_until 200 herdr_up || {
+    log "herdr did not come back"
+    exit 1
+}
+
+resume
+log "--- refresh done"

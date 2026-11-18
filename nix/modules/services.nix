@@ -1,22 +1,20 @@
 { pkgs, home, ... }:
 let
-  # does the actual kill + relaunch; runs under launchd so it survives Ghostty dying
-  ghosttyRefreshWorker = pkgs.writeShellScript "ghostty-refresh-worker" ''
-    /usr/bin/pgrep -xq ghostty || exit 0
-    /usr/bin/pkill -9 -x ghostty
-    for _ in {1..40}; do /usr/bin/pgrep -xq ghostty || break; /bin/sleep 0.05; done
-    /usr/bin/open -a Ghostty
-  '';
   # manual trigger: asks launchd to run the worker, so it's safe to call from inside Ghostty
   ghosttyRefresh = pkgs.writeShellScriptBin "ghostty-refresh" ''
+    # marks the run as manual so the worker skips its busy-agent guard
+    /bin/mkdir -p "$HOME/.local/state/ghostty-refresh"
+    /usr/bin/touch "$HOME/.local/state/ghostty-refresh/manual"
     exec /bin/launchctl kickstart -k "gui/$(/usr/bin/id -u)/org.nixos.ghostty-refresh"
   '';
 in {
   environment.systemPackages = [ ghosttyRefresh ];
 
+  # worker lives in the repo (scripts/ghostty-refresh-worker); runs under launchd so it survives Ghostty dying
   launchd.user.agents.ghostty-refresh.serviceConfig = {
-    ProgramArguments = [ "${ghosttyRefreshWorker}" ];
+    ProgramArguments = [ "${pkgs.bash}/bin/bash" "${home}/.config/scripts/ghostty-refresh-worker" ];
     StartCalendarInterval = [ { Hour = 6; Minute = 0; } ];
+    StandardOutPath = "/tmp/ghostty-refresh.log";
     StandardErrorPath = "/tmp/ghostty-refresh.log";
   };
 
