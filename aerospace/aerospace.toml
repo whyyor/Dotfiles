@@ -179,7 +179,6 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-alt-shift-f = 'exec-and-forget /Users/whyyor/.local/bin/hnew yazi'
     ctrl-alt-shift-o = 'exec-and-forget open -a "OBS"'
     ctrl-alt-shift-a = 'exec-and-forget /Users/whyyor/.local/bin/hnew -g /Users/whyyor/.config/scripts/siltop-mem'
-    ctrl-alt-shift-r = 'exec-and-forget /Users/whyyor/.local/bin/hgo tasks'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

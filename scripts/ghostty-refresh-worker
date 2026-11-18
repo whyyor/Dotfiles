@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# full refresh: snapshot opencode panes, restart opencode + herdr servers, relaunch Ghostty, resume sessions
+# full refresh: snapshot opencode + TUI panes, restart opencode + herdr servers, relaunch Ghostty, resume sessions
 set -uo pipefail
 
 # launchd gives us a bare PATH
@@ -7,8 +7,15 @@ export PATH="/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:/usr/
 source "$HOME/.config/scripts/herdr-lib.sh"
 
 state="$HOME/.local/state/ghostty-refresh"
-snap="$state/opencode-panes.tsv"
+snap="$state/panes.tsv"
 mkdir -p "$state"
+
+# TUIs to bring back after restart: [process regex]=launch command
+declare -A apps=(
+    ['^tuimessenger$']='tuimessenger tui'
+    ['^jellyfin-tui$']='jellyfin-tui'
+    ['^gomuks']='gomuks-tui'
+)
 
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
 gone() { ! pgrep "$@" >/dev/null; }
@@ -28,19 +35,38 @@ herdr_up() {
     "$herdr_bin" pane list 2>/dev/null | jq -e '.result.panes | length > 0' >/dev/null
 }
 
-# panes come back as fresh shells, so remember which session each opencode pane had
+# echoes "<regex>\t<command>" if the pane's foreground process is one of $apps
+app_in() {
+    local fg re
+    fg=$("$herdr_bin" pane process-info --pane "$1" 2>/dev/null |
+        jq -r '.result.process_info.foreground_processes[]? | .name, .argv0') || return 1
+    for re in "${!apps[@]}"; do
+        grep -qE "$re" <<<"$fg" && {
+            printf '%s\t%s\n' "$re" "${apps[$re]}"
+            return 0
+        }
+    done
+    return 1
+}
+
+# panes come back as fresh shells, so remember what each one was running
 snapshot() {
-    local pane tab cwd title sid list tmp="$snap.tmp"
+    local pane tab cwd agent title sid hit list tmp="$snap.tmp"
     list=$("$herdr_bin" pane list 2>/dev/null) || return 1
     : >"$tmp"
-    while IFS=$'\t' read -r pane tab cwd title; do
-        title=${title#OC | }
-        sid=$(cd "$cwd" 2>/dev/null && opencode session list --format json -n 200 2>/dev/null |
-            jq -r --arg t "$title" '[.[] | select(.title == $t)] | max_by(.updated) | .id // empty')
-        printf '%s\t%s\t%s\t%s\n' "$pane" "$tab" "$cwd" "$sid" >>"$tmp"
-        log "saved $pane -> ${sid:-<new>} ($title)"
-    done < <(jq -r '.result.panes[] | select(.agent == "opencode")
-        | [.pane_id, .tab_id, (.foreground_cwd // .cwd), .terminal_title_stripped] | @tsv' <<<"$list")
+    while IFS=$'\t' read -r pane tab cwd agent title; do
+        if [[ $agent == opencode ]]; then
+            title=${title#OC | }
+            sid=$(cd "$cwd" 2>/dev/null && opencode session list --format json -n 200 2>/dev/null |
+                jq -r --arg t "$title" '[.[] | select(.title == $t)] | max_by(.updated) | .id // empty')
+            printf '%s\t%s\t%s\t%s\n' "$pane" "$tab" 'opencode' "oc${sid:+ -s $sid}" >>"$tmp"
+            log "saved $pane -> oc ${sid:-<new>} ($title)"
+        elif hit=$(app_in "$pane"); then
+            printf '%s\t%s\t%s\n' "$pane" "$tab" "$hit" >>"$tmp"
+            log "saved $pane -> ${hit#*$'\t'}"
+        fi
+    done < <(jq -r '.result.panes[] | [.pane_id, .tab_id, (.foreground_cwd // .cwd),
+        (.agent // "-"), .terminal_title_stripped] | @tsv' <<<"$list")
     mv "$tmp" "$snap"
 }
 
@@ -53,16 +79,17 @@ target_for() {
 }
 
 resume() {
-    local pane tab cwd sid target
+    local pane tab re cmd target
     [[ -s $snap ]] || return 0
-    while IFS=$'\t' read -r pane tab cwd sid; do
+    while IFS=$'\t' read -r pane tab re cmd; do
         target=$(target_for "$pane" "$tab")
         [[ -z $target ]] && {
-            log "no pane for $pane, skipping ${sid:-<new>}"
+            log "no pane for $pane, skipping $cmd"
             continue
         }
-        log "resume $target -> ${sid:-<new>}"
-        pane_launch "$target" 'opencode' oc ${sid:+-s "$sid"} &
+        log "resume $target -> $cmd"
+        # unquoted on purpose so "oc -s <id>" splits into args
+        pane_launch "$target" "$re" $cmd &
     done <"$snap"
     wait
 }
