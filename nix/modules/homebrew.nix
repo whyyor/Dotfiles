@@ -46,6 +46,8 @@
       "dungngminh/simutil/simutil"
       "whyyor/tap/tuimessenger"
       "circumflex"
+      # shadows /usr/bin/trash; reads native ~/.Trash for macos-trash.yazi
+      "walavave/tap/trash-cli"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -58,6 +60,7 @@
       { name = "cloaky233/tap"; trusted = true; }
       { name = "dungngminh/simutil"; trusted = true; }
       { name = "whyyor/tap"; trusted = true; }
+      { name = "walavave/tap"; trusted = true; }
     ];
     casks = [
       "claude-code@latest"

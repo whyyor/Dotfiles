@@ -1,5 +1,7 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "walavave/macos-trash"
+rev = "130e6dd"
+hash = "e480ef57299a14ae1414bc010a02551d"
 
 [[flavor.deps]]
 use = "malick-tammal/monokai"

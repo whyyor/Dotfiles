@@ -3,3 +3,9 @@ on   = "<C-y>"
 run  = [ "shell -- fileclip %s", "escape --select" ]  # clear cross-dir selection so next copy starts fresh
 desc = "Copy file(s) to macOS clipboard"
 for  = "macos"
+
+[[mgr.prepend_keymap]]
+on   = "R"
+run  = "plugin macos-trash"
+desc = "Open macOS Trash"
+for  = "macos"
