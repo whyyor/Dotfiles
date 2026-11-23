@@ -1,10 +1,10 @@
 local function config_lualine(colors)
 	local mode_colors = {
-		n = { fg = colors.white, bg = colors.red },  -- Normal mode
-		i = { fg = colors.bg, bg = colors.cyan },    -- Insert mode
-		v = { fg = colors.white, bg = colors.purple }, -- Visual mode
-		[""] = { fg = colors.white, bg = colors.purple }, -- Visual block
-		V = { fg = colors.white, bg = colors.red },  -- Visual line
+		n = { fg = colors.white, bg = colors.red },
+		i = { fg = colors.bg, bg = colors.cyan },
+		v = { fg = colors.white, bg = colors.purple },
+		[""] = { fg = colors.white, bg = colors.purple },
+		V = { fg = colors.white, bg = colors.red },
 		c = { fg = colors.bg, bg = colors.yellow },
 		no = { fg = colors.white, bg = colors.red },
 		s = { fg = colors.bg, bg = colors.yellow },
@@ -15,11 +15,11 @@ local function config_lualine(colors)
 		Rv = { fg = colors.white, bg = colors.purple },
 		cv = { fg = colors.white, bg = colors.red },
 		ce = { fg = colors.white, bg = colors.red },
-		r = { fg = colors.bg, bg = colors.cyan }, -- Prompt mode
+		r = { fg = colors.bg, bg = colors.cyan },
 		rm = { fg = colors.bg, bg = colors.cyan },
 		["r?"] = { fg = colors.bg, bg = colors.cyan },
 		["!"] = { fg = colors.white, bg = colors.red },
-		t = { fg = colors.white, bg = colors.red }, -- Terminal mode
+		t = { fg = colors.white, bg = colors.red },
 	}
 
 	local theme = {
@@ -54,7 +54,7 @@ local function config_lualine(colors)
 		end,
 		icon = "",
 		color = { bg = colors.bg, fg = colors.white },
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 		draw_empty = true,
 	}
 
@@ -62,7 +62,7 @@ local function config_lualine(colors)
 		"branch",
 		icon = "",
 		color = { bg = colors.bg, fg = colors.white },
-		separator = { left = "", right = "" }, -- Use custom highlight
+		separator = { left = "", right = "" }, -- Use custom highlight
 		draw_empty = true,
 	}
 
@@ -96,7 +96,7 @@ local function config_lualine(colors)
 			local current_mode = vim.fn.mode()
 			return { bg = mode_colors[current_mode].bg, fg = mode_colors[current_mode].fg, gui = "nocombine" }
 		end,
-		separator = { left = "", right = "" },
+		separator = { left = "", right = "" },
 	}
 
 	local function getLspName()
@@ -165,8 +165,8 @@ local function config_lualine(colors)
 
 	local macro = {
 		recording,
-		separator = { left = "", right = "" },
-		color = { fg = "white", bg = "#FF746C" },
+		separator = { left = "", right = "" },
+		color = { fg = "white", bg = "#fd6883" },
 	}
 
 	local dia = {
