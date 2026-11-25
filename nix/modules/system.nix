@@ -11,10 +11,6 @@
     enable = true;
     icons = [
       {
-        path = "/Applications/Zen.app";
-        icon = ../../icons + "/zen.icns";
-      }
-      {
         path = "/Applications/Helium.app";
         icon = ../../icons + "/helium.icns";
       }

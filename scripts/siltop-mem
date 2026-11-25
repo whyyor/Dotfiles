@@ -14,9 +14,9 @@ zen = false
 
 [panels]
 gpu = true
-power = true
-net = false
-disk = false
+power = false
+net = true
+disk = true
 fans = false
 cores = false
 

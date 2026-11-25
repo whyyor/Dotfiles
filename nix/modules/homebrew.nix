@@ -45,6 +45,7 @@
       "circumflex"
       # shadows /usr/bin/trash; reads native ~/.Trash for macos-trash.yazi
       "walavave/tap/trash-cli"
+      "melqtx/tap/tork"
     ];
     taps = [
       { name = "dart-lang/dart"; trusted = true; }
@@ -58,20 +59,17 @@
       { name = "dungngminh/simutil"; trusted = true; }
       { name = "whyyor/tap"; trusted = true; }
       { name = "walavave/tap"; trusted = true; }
+      { name = "melqtx/tap"; trusted = true; }
     ];
     casks = [
       "claude-code@latest"
-      "chatgpt"
       "aerospace"
       "android-platform-tools"
       "aldente"
       "ghostty"
-      "mac-mouse-fix"
       "flux-app"
-      "keyboardcleantool"
       "slack"
       "iina"
-      "zen"
       "android-studio"
       "microsoft-teams"
       "microsoft-auto-update"
