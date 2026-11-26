@@ -31,6 +31,7 @@
         ./modules/services.nix
         ./modules/system.nix
         ./modules/shell.nix
+        ./modules/spark-server.nix
         nix-homebrew.darwinModules.nix-homebrew
         darwin-custom-icons.darwinModules.default
         home-manager.darwinModules.home-manager
